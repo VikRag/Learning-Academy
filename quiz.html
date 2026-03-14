@@ -400,7 +400,7 @@
 <!-- Top nav -->
 <div class="topnav">
   <a href="dashboard.html" class="back-btn">← Dashboard</a>
-  <a href="dashboard.html" class="logo-chip">🎓 Learning Academy</a>
+  <div class="logo-chip">🎓 Learning Academy</div>
 </div>
 
 <!-- Setup Card -->
@@ -538,7 +538,13 @@
 </div>
 
 <script type="module">
-
+/* ─────────────────────────────────────────
+   ROOT CAUSE FIX:
+   <script type="module"> creates its own scope.
+   HTML onclick="fn()" looks on window — can't find
+   module-scoped functions. Fix: use addEventListener
+   for every button instead of inline onclick.
+───────────────────────────────────────── */
 
 import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -662,8 +668,10 @@ function useLifeline(type) {
   }
 
   if (type === 'hint') {
-    const ans  = q.correctAnswer;
-    const hint = q.hint || `The answer starts with "${ans[0]}" and has ${ans.length} character${ans.length !== 1 ? 's' : ''}.`;
+    // Use hint directly from JSON; fallback only if somehow missing
+    const hint = q.hint
+      ? q.hint
+      : `The answer starts with "${q.correctAnswer[0]}" and has ${q.correctAnswer.length} character${q.correctAnswer.length !== 1 ? 's' : ''}.`;
     $("hintBox").textContent = "💡 Hint: " + hint;
     $("hintBox").style.display = "block";
     if (lifelineMax !== 'unlimited') lifelines['hint']--;
@@ -941,10 +949,6 @@ async function saveQuizResult() {
   } catch(e) { console.error("Error saving quiz:", e); }
 }
 
-/* ══════════════════════════════════════════
-   WIRE UP ALL BUTTONS via addEventListener
-   (fixes the module scope issue entirely)
-══════════════════════════════════════════ */
 $("btnGenerate").addEventListener("click", generateQuestions);
 $("btnNext").addEventListener("click",     nextQuestion);
 $("btnEndQuiz").addEventListener("click",  confirmEndQuiz);
