@@ -10,7 +10,8 @@
       "181"
     ],
     "correctAnswer": "180",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -23,7 +24,8 @@
       "9"
     ],
     "correctAnswer": "8",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -36,7 +38,8 @@
       "46"
     ],
     "correctAnswer": "45",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -49,7 +52,8 @@
       "3:00"
     ],
     "correctAnswer": "2:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -62,7 +66,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -75,7 +80,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -88,7 +94,8 @@
       "73"
     ],
     "correctAnswer": "72",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -101,7 +108,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -114,7 +122,8 @@
       "127"
     ],
     "correctAnswer": "126",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -127,7 +136,8 @@
       "2"
     ],
     "correctAnswer": "1",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -140,7 +150,8 @@
       "19"
     ],
     "correctAnswer": "18",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -153,7 +164,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -166,7 +178,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -179,7 +192,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -192,7 +206,8 @@
       "78"
     ],
     "correctAnswer": "77",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -205,7 +220,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -218,7 +234,8 @@
       "144"
     ],
     "correctAnswer": "143",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -231,7 +248,8 @@
       "5"
     ],
     "correctAnswer": "4",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -244,7 +262,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -257,7 +276,8 @@
       "7:00"
     ],
     "correctAnswer": "6:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -270,7 +290,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -283,7 +304,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -296,7 +318,8 @@
       "63"
     ],
     "correctAnswer": "62",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -309,7 +332,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -322,7 +346,8 @@
       "77"
     ],
     "correctAnswer": "76",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -335,7 +360,8 @@
       "24"
     ],
     "correctAnswer": "23",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -348,7 +374,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -361,7 +388,8 @@
       "7:00"
     ],
     "correctAnswer": "6:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -374,7 +402,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -387,7 +416,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -400,7 +430,8 @@
       "49"
     ],
     "correctAnswer": "48",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -413,7 +444,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -426,7 +458,8 @@
       "51"
     ],
     "correctAnswer": "50",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -439,7 +472,8 @@
       "12"
     ],
     "correctAnswer": "11",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -452,7 +486,8 @@
       "5"
     ],
     "correctAnswer": "4",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -465,7 +500,8 @@
       "4:00"
     ],
     "correctAnswer": "3:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -478,7 +514,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -491,7 +528,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -504,7 +542,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -517,7 +556,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -530,7 +570,8 @@
       "144"
     ],
     "correctAnswer": "143",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -543,7 +584,8 @@
       "27"
     ],
     "correctAnswer": "26",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -556,7 +598,8 @@
       "13"
     ],
     "correctAnswer": "12",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -569,7 +612,8 @@
       "10:00"
     ],
     "correctAnswer": "9:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -582,7 +626,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -595,7 +640,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -608,7 +654,8 @@
       "79"
     ],
     "correctAnswer": "78",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -621,7 +668,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -634,7 +682,8 @@
       "90"
     ],
     "correctAnswer": "89",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -647,7 +696,8 @@
       "14"
     ],
     "correctAnswer": "13",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -660,7 +710,8 @@
       "16"
     ],
     "correctAnswer": "15",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -673,7 +724,8 @@
       "2:00"
     ],
     "correctAnswer": "1:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -686,7 +738,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -699,7 +752,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -712,7 +766,8 @@
       "72"
     ],
     "correctAnswer": "71",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -725,7 +780,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -738,7 +794,8 @@
       "110"
     ],
     "correctAnswer": "109",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -751,7 +808,8 @@
       "22"
     ],
     "correctAnswer": "21",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -764,7 +822,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -777,7 +836,8 @@
       "10:00"
     ],
     "correctAnswer": "9:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -790,7 +850,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -803,7 +864,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -816,7 +878,8 @@
       "29"
     ],
     "correctAnswer": "28",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -829,7 +892,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -842,7 +906,8 @@
       "117"
     ],
     "correctAnswer": "116",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -855,7 +920,8 @@
       "39"
     ],
     "correctAnswer": "38",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -868,7 +934,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -881,7 +948,8 @@
       "1:00"
     ],
     "correctAnswer": "12:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -894,7 +962,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -907,7 +976,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -920,7 +990,8 @@
       "77"
     ],
     "correctAnswer": "76",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -933,7 +1004,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -946,7 +1018,8 @@
       "37"
     ],
     "correctAnswer": "36",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -959,7 +1032,8 @@
       "47"
     ],
     "correctAnswer": "46",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -972,7 +1046,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -985,7 +1060,8 @@
       "3:00"
     ],
     "correctAnswer": "2:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -998,7 +1074,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1011,7 +1088,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1024,7 +1102,8 @@
       "49"
     ],
     "correctAnswer": "48",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1037,7 +1116,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1050,7 +1130,8 @@
       "88"
     ],
     "correctAnswer": "87",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1063,7 +1144,8 @@
       "29"
     ],
     "correctAnswer": "28",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1076,7 +1158,8 @@
       "28"
     ],
     "correctAnswer": "27",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1089,7 +1172,8 @@
       "3:00"
     ],
     "correctAnswer": "2:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1102,7 +1186,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1115,7 +1200,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1128,7 +1214,8 @@
       "65"
     ],
     "correctAnswer": "64",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1141,7 +1228,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1154,7 +1242,8 @@
       "117"
     ],
     "correctAnswer": "116",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1167,7 +1256,8 @@
       "38"
     ],
     "correctAnswer": "37",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1180,7 +1270,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1193,7 +1284,8 @@
       "7:00"
     ],
     "correctAnswer": "6:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1206,7 +1298,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1219,7 +1312,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1232,7 +1326,8 @@
       "61"
     ],
     "correctAnswer": "60",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1245,7 +1340,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1258,7 +1354,8 @@
       "161"
     ],
     "correctAnswer": "160",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1271,7 +1368,8 @@
       "34"
     ],
     "correctAnswer": "33",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1284,7 +1382,8 @@
       "16"
     ],
     "correctAnswer": "15",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1297,7 +1396,8 @@
       "10:00"
     ],
     "correctAnswer": "9:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1310,7 +1410,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1323,7 +1424,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1336,7 +1438,8 @@
       "35"
     ],
     "correctAnswer": "34",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1349,7 +1452,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1362,7 +1466,8 @@
       "106"
     ],
     "correctAnswer": "105",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1375,7 +1480,8 @@
       "2"
     ],
     "correctAnswer": "1",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1388,7 +1494,8 @@
       "13"
     ],
     "correctAnswer": "12",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1401,7 +1508,8 @@
       "3:00"
     ],
     "correctAnswer": "2:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1414,7 +1522,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1427,7 +1536,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1440,7 +1550,8 @@
       "63"
     ],
     "correctAnswer": "62",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1453,7 +1564,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1466,7 +1578,8 @@
       "89"
     ],
     "correctAnswer": "88",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1479,7 +1592,8 @@
       "77"
     ],
     "correctAnswer": "76",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1492,7 +1606,8 @@
       "51"
     ],
     "correctAnswer": "50",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1505,7 +1620,8 @@
       "8:00"
     ],
     "correctAnswer": "7:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1518,7 +1634,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1531,7 +1648,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1544,7 +1662,8 @@
       "59"
     ],
     "correctAnswer": "58",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1557,7 +1676,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1570,7 +1690,8 @@
       "146"
     ],
     "correctAnswer": "145",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1583,7 +1704,8 @@
       "20"
     ],
     "correctAnswer": "19",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1596,7 +1718,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1609,7 +1732,8 @@
       "6:00"
     ],
     "correctAnswer": "5:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1622,7 +1746,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1635,7 +1760,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1648,7 +1774,8 @@
       "68"
     ],
     "correctAnswer": "67",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1661,7 +1788,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1674,7 +1802,8 @@
       "36"
     ],
     "correctAnswer": "35",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1687,7 +1816,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1700,7 +1830,8 @@
       "25"
     ],
     "correctAnswer": "24",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1713,7 +1844,8 @@
       "3:00"
     ],
     "correctAnswer": "2:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1726,7 +1858,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1739,7 +1872,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1752,7 +1886,8 @@
       "52"
     ],
     "correctAnswer": "51",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1765,7 +1900,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1778,7 +1914,8 @@
       "127"
     ],
     "correctAnswer": "126",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1791,7 +1928,8 @@
       "44"
     ],
     "correctAnswer": "43",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1804,7 +1942,8 @@
       "9"
     ],
     "correctAnswer": "8",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1817,7 +1956,8 @@
       "3:00"
     ],
     "correctAnswer": "2:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1830,7 +1970,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1843,7 +1984,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1856,7 +1998,8 @@
       "61"
     ],
     "correctAnswer": "60",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1869,7 +2012,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1882,7 +2026,8 @@
       "102"
     ],
     "correctAnswer": "101",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1895,7 +2040,8 @@
       "4"
     ],
     "correctAnswer": "3",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -1908,7 +2054,8 @@
       "36"
     ],
     "correctAnswer": "35",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -1921,7 +2068,8 @@
       "12:00"
     ],
     "correctAnswer": "11:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -1934,7 +2082,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -1947,7 +2096,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -1960,7 +2110,8 @@
       "62"
     ],
     "correctAnswer": "61",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -1973,7 +2124,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -1986,7 +2138,8 @@
       "104"
     ],
     "correctAnswer": "103",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -1999,7 +2152,8 @@
       "40"
     ],
     "correctAnswer": "39",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2012,7 +2166,8 @@
       "25"
     ],
     "correctAnswer": "24",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2025,7 +2180,8 @@
       "4:00"
     ],
     "correctAnswer": "3:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2038,7 +2194,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2051,7 +2208,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2064,7 +2222,8 @@
       "32"
     ],
     "correctAnswer": "31",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2077,7 +2236,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2090,7 +2250,8 @@
       "93"
     ],
     "correctAnswer": "92",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2103,7 +2264,8 @@
       "3"
     ],
     "correctAnswer": "2",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2116,7 +2278,8 @@
       "11"
     ],
     "correctAnswer": "10",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2129,7 +2292,8 @@
       "7:00"
     ],
     "correctAnswer": "6:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2142,7 +2306,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2155,7 +2320,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2168,7 +2334,8 @@
       "87"
     ],
     "correctAnswer": "86",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2181,7 +2348,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2194,7 +2362,8 @@
       "156"
     ],
     "correctAnswer": "155",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2207,7 +2376,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2220,7 +2390,8 @@
       "31"
     ],
     "correctAnswer": "30",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2233,7 +2404,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2246,7 +2418,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2259,7 +2432,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2272,7 +2446,8 @@
       "51"
     ],
     "correctAnswer": "50",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2285,7 +2460,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2298,7 +2474,8 @@
       "93"
     ],
     "correctAnswer": "92",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2311,7 +2488,8 @@
       "5"
     ],
     "correctAnswer": "4",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2324,7 +2502,8 @@
       "10"
     ],
     "correctAnswer": "9",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2337,7 +2516,8 @@
       "9:00"
     ],
     "correctAnswer": "8:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2350,7 +2530,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2363,7 +2544,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2376,7 +2558,8 @@
       "60"
     ],
     "correctAnswer": "59",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2389,7 +2572,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2402,7 +2586,8 @@
       "145"
     ],
     "correctAnswer": "144",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2415,7 +2600,8 @@
       "20"
     ],
     "correctAnswer": "19",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2428,7 +2614,8 @@
       "15"
     ],
     "correctAnswer": "14",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2441,7 +2628,8 @@
       "10:00"
     ],
     "correctAnswer": "9:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2454,7 +2642,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2467,7 +2656,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2480,7 +2670,8 @@
       "65"
     ],
     "correctAnswer": "64",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2493,7 +2684,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2506,7 +2698,8 @@
       "136"
     ],
     "correctAnswer": "135",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2519,7 +2712,8 @@
       "46"
     ],
     "correctAnswer": "45",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2532,7 +2726,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2545,7 +2740,8 @@
       "8:00"
     ],
     "correctAnswer": "7:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2558,7 +2754,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2571,7 +2768,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2584,7 +2782,8 @@
       "47"
     ],
     "correctAnswer": "46",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2597,7 +2796,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2610,7 +2810,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2623,7 +2824,8 @@
       "24"
     ],
     "correctAnswer": "23",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2636,7 +2838,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2649,7 +2852,8 @@
       "2:00"
     ],
     "correctAnswer": "1:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2662,7 +2866,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2675,7 +2880,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2688,7 +2894,8 @@
       "30"
     ],
     "correctAnswer": "29",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2701,7 +2908,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2714,7 +2922,8 @@
       "77"
     ],
     "correctAnswer": "76",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2727,7 +2936,8 @@
       "11"
     ],
     "correctAnswer": "10",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2740,7 +2950,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2753,7 +2964,8 @@
       "2:00"
     ],
     "correctAnswer": "1:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2766,7 +2978,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2779,7 +2992,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2792,7 +3006,8 @@
       "56"
     ],
     "correctAnswer": "55",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2805,7 +3020,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2818,7 +3034,8 @@
       "138"
     ],
     "correctAnswer": "137",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2831,7 +3048,8 @@
       "4"
     ],
     "correctAnswer": "3",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2844,7 +3062,8 @@
       "15"
     ],
     "correctAnswer": "14",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2857,7 +3076,8 @@
       "9:00"
     ],
     "correctAnswer": "8:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2870,7 +3090,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2883,7 +3104,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -2896,7 +3118,8 @@
       "38"
     ],
     "correctAnswer": "37",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -2909,7 +3132,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -2922,7 +3146,8 @@
       "137"
     ],
     "correctAnswer": "136",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -2935,7 +3160,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -2948,7 +3174,8 @@
       "33"
     ],
     "correctAnswer": "32",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -2961,7 +3188,8 @@
       "11:00"
     ],
     "correctAnswer": "10:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -2974,7 +3202,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -2987,7 +3216,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3000,7 +3230,8 @@
       "64"
     ],
     "correctAnswer": "63",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3013,7 +3244,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3026,7 +3258,8 @@
       "185"
     ],
     "correctAnswer": "184",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3039,7 +3272,8 @@
       "24"
     ],
     "correctAnswer": "23",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3052,7 +3286,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3065,7 +3300,8 @@
       "8:00"
     ],
     "correctAnswer": "7:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3078,7 +3314,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3091,7 +3328,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3104,7 +3342,8 @@
       "87"
     ],
     "correctAnswer": "86",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3117,7 +3356,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3130,7 +3370,8 @@
       "179"
     ],
     "correctAnswer": "178",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3143,7 +3384,8 @@
       "23"
     ],
     "correctAnswer": "22",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3156,7 +3398,8 @@
       "11"
     ],
     "correctAnswer": "10",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3169,7 +3412,8 @@
       "10:00"
     ],
     "correctAnswer": "9:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3182,7 +3426,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3195,7 +3440,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3208,7 +3454,8 @@
       "100"
     ],
     "correctAnswer": "99",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3221,7 +3468,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3234,7 +3482,8 @@
       "88"
     ],
     "correctAnswer": "87",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3247,7 +3496,8 @@
       "18"
     ],
     "correctAnswer": "17",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3260,7 +3510,8 @@
       "25"
     ],
     "correctAnswer": "24",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3273,7 +3524,8 @@
       "10:00"
     ],
     "correctAnswer": "9:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3286,7 +3538,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3299,7 +3552,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3312,7 +3566,8 @@
       "53"
     ],
     "correctAnswer": "52",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3325,7 +3580,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3338,7 +3594,8 @@
       "36"
     ],
     "correctAnswer": "35",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3351,7 +3608,8 @@
       "78"
     ],
     "correctAnswer": "77",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3364,7 +3622,8 @@
       "17"
     ],
     "correctAnswer": "16",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3377,7 +3636,8 @@
       "6:00"
     ],
     "correctAnswer": "5:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3390,7 +3650,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3403,7 +3664,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3416,7 +3678,8 @@
       "52"
     ],
     "correctAnswer": "51",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3429,7 +3692,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3442,7 +3706,8 @@
       "76"
     ],
     "correctAnswer": "75",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3455,7 +3720,8 @@
       "6"
     ],
     "correctAnswer": "5",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3468,7 +3734,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3481,7 +3748,8 @@
       "5:00"
     ],
     "correctAnswer": "4:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3494,7 +3762,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3507,7 +3776,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3520,7 +3790,8 @@
       "57"
     ],
     "correctAnswer": "56",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3533,7 +3804,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3546,7 +3818,8 @@
       "165"
     ],
     "correctAnswer": "164",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3559,7 +3832,8 @@
       "2"
     ],
     "correctAnswer": "1",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3572,7 +3846,8 @@
       "51"
     ],
     "correctAnswer": "50",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3585,7 +3860,8 @@
       "5:00"
     ],
     "correctAnswer": "4:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3598,7 +3874,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3611,7 +3888,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3624,7 +3902,8 @@
       "46"
     ],
     "correctAnswer": "45",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3637,7 +3916,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3650,7 +3930,8 @@
       "114"
     ],
     "correctAnswer": "113",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3663,7 +3944,8 @@
       "17"
     ],
     "correctAnswer": "16",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3676,7 +3958,8 @@
       "22"
     ],
     "correctAnswer": "21",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3689,7 +3972,8 @@
       "9:00"
     ],
     "correctAnswer": "8:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3702,7 +3986,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3715,7 +4000,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3728,7 +4014,8 @@
       "45"
     ],
     "correctAnswer": "44",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3741,7 +4028,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3754,7 +4042,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3767,7 +4056,8 @@
       "9"
     ],
     "correctAnswer": "8",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3780,7 +4070,8 @@
       "22"
     ],
     "correctAnswer": "21",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3793,7 +4084,8 @@
       "12:00"
     ],
     "correctAnswer": "11:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3806,7 +4098,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3819,7 +4112,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3832,7 +4126,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3845,7 +4140,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3858,7 +4154,8 @@
       "151"
     ],
     "correctAnswer": "150",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3871,7 +4168,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3884,7 +4182,8 @@
       "16"
     ],
     "correctAnswer": "15",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -3897,7 +4196,8 @@
       "10:00"
     ],
     "correctAnswer": "9:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -3910,7 +4210,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -3923,7 +4224,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -3936,7 +4238,8 @@
       "53"
     ],
     "correctAnswer": "52",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -3949,7 +4252,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -3962,7 +4266,8 @@
       "90"
     ],
     "correctAnswer": "89",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -3975,7 +4280,8 @@
       "70"
     ],
     "correctAnswer": "69",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -3988,7 +4294,8 @@
       "26"
     ],
     "correctAnswer": "25",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4001,7 +4308,8 @@
       "8:00"
     ],
     "correctAnswer": "7:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4014,7 +4322,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4027,7 +4336,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4040,7 +4350,8 @@
       "34"
     ],
     "correctAnswer": "33",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4053,7 +4364,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4066,7 +4378,8 @@
       "87"
     ],
     "correctAnswer": "86",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4079,7 +4392,8 @@
       "18"
     ],
     "correctAnswer": "17",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4092,7 +4406,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4105,7 +4420,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4118,7 +4434,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4131,7 +4448,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4144,7 +4462,8 @@
       "31"
     ],
     "correctAnswer": "30",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4157,7 +4476,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4170,7 +4490,8 @@
       "104"
     ],
     "correctAnswer": "103",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4183,7 +4504,8 @@
       "24"
     ],
     "correctAnswer": "23",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4196,7 +4518,8 @@
       "15"
     ],
     "correctAnswer": "14",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4209,7 +4532,8 @@
       "9:00"
     ],
     "correctAnswer": "8:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4222,7 +4546,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4235,7 +4560,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4248,7 +4574,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4261,7 +4588,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4274,7 +4602,8 @@
       "159"
     ],
     "correctAnswer": "158",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4287,7 +4616,8 @@
       "30"
     ],
     "correctAnswer": "29",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4300,7 +4630,8 @@
       "28"
     ],
     "correctAnswer": "27",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4313,7 +4644,8 @@
       "3:00"
     ],
     "correctAnswer": "2:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4326,7 +4658,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4339,7 +4672,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4352,7 +4686,8 @@
       "65"
     ],
     "correctAnswer": "64",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4365,7 +4700,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4378,7 +4714,8 @@
       "146"
     ],
     "correctAnswer": "145",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4391,7 +4728,8 @@
       "42"
     ],
     "correctAnswer": "41",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4404,7 +4742,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4417,7 +4756,8 @@
       "11:00"
     ],
     "correctAnswer": "10:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4430,7 +4770,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4443,7 +4784,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4456,7 +4798,8 @@
       "89"
     ],
     "correctAnswer": "88",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4469,7 +4812,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4482,7 +4826,8 @@
       "116"
     ],
     "correctAnswer": "115",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4495,7 +4840,8 @@
       "55"
     ],
     "correctAnswer": "54",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4508,7 +4854,8 @@
       "46"
     ],
     "correctAnswer": "45",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4521,7 +4868,8 @@
       "6:00"
     ],
     "correctAnswer": "5:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4534,7 +4882,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4547,7 +4896,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4560,7 +4910,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4573,7 +4924,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4586,7 +4938,8 @@
       "81"
     ],
     "correctAnswer": "80",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4599,7 +4952,8 @@
       "4"
     ],
     "correctAnswer": "3",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4612,7 +4966,8 @@
       "7"
     ],
     "correctAnswer": "6",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4625,7 +4980,8 @@
       "5:00"
     ],
     "correctAnswer": "4:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4638,7 +4994,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4651,7 +5008,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4664,7 +5022,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4677,7 +5036,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4690,7 +5050,8 @@
       "164"
     ],
     "correctAnswer": "163",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4703,7 +5064,8 @@
       "40"
     ],
     "correctAnswer": "39",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4716,7 +5078,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4729,7 +5092,8 @@
       "1:00"
     ],
     "correctAnswer": "12:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4742,7 +5106,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4755,7 +5120,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4768,7 +5134,8 @@
       "62"
     ],
     "correctAnswer": "61",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4781,7 +5148,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4794,7 +5162,8 @@
       "102"
     ],
     "correctAnswer": "101",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4807,7 +5176,8 @@
       "53"
     ],
     "correctAnswer": "52",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4820,7 +5190,8 @@
       "25"
     ],
     "correctAnswer": "24",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4833,7 +5204,8 @@
       "2:00"
     ],
     "correctAnswer": "1:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4846,7 +5218,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4859,7 +5232,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4872,7 +5246,8 @@
       "43"
     ],
     "correctAnswer": "42",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4885,7 +5260,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -4898,7 +5274,8 @@
       "133"
     ],
     "correctAnswer": "132",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -4911,7 +5288,8 @@
       "18"
     ],
     "correctAnswer": "17",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -4924,7 +5302,8 @@
       "33"
     ],
     "correctAnswer": "32",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -4937,7 +5316,8 @@
       "6:00"
     ],
     "correctAnswer": "5:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -4950,7 +5330,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -4963,7 +5344,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -4976,7 +5358,8 @@
       "45"
     ],
     "correctAnswer": "44",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -4989,7 +5372,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5002,7 +5386,8 @@
       "87"
     ],
     "correctAnswer": "86",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5015,7 +5400,8 @@
       "15"
     ],
     "correctAnswer": "14",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5028,7 +5414,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5041,7 +5428,8 @@
       "5:00"
     ],
     "correctAnswer": "4:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5054,7 +5442,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5067,7 +5456,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5080,7 +5470,8 @@
       "66"
     ],
     "correctAnswer": "65",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5093,7 +5484,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5106,7 +5498,8 @@
       "99"
     ],
     "correctAnswer": "98",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5119,7 +5512,8 @@
       "60"
     ],
     "correctAnswer": "59",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5132,7 +5526,8 @@
       "46"
     ],
     "correctAnswer": "45",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5145,7 +5540,8 @@
       "10:00"
     ],
     "correctAnswer": "9:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5158,7 +5554,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5171,7 +5568,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5184,7 +5582,8 @@
       "65"
     ],
     "correctAnswer": "64",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5197,7 +5596,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5210,7 +5610,8 @@
       "184"
     ],
     "correctAnswer": "183",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5223,7 +5624,8 @@
       "19"
     ],
     "correctAnswer": "18",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5236,7 +5638,8 @@
       "41"
     ],
     "correctAnswer": "40",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5249,7 +5652,8 @@
       "8:00"
     ],
     "correctAnswer": "7:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5262,7 +5666,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5275,7 +5680,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5288,7 +5694,8 @@
       "44"
     ],
     "correctAnswer": "43",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5301,7 +5708,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5314,7 +5722,8 @@
       "98"
     ],
     "correctAnswer": "97",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5327,7 +5736,8 @@
       "47"
     ],
     "correctAnswer": "46",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5340,7 +5750,8 @@
       "29"
     ],
     "correctAnswer": "28",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5353,7 +5764,8 @@
       "9:00"
     ],
     "correctAnswer": "8:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5366,7 +5778,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5379,7 +5792,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5392,7 +5806,8 @@
       "70"
     ],
     "correctAnswer": "69",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5405,7 +5820,8 @@
       "hexagon"
     ],
     "correctAnswer": "hexagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5418,7 +5834,8 @@
       "54"
     ],
     "correctAnswer": "53",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5431,7 +5848,8 @@
       "5"
     ],
     "correctAnswer": "4",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5444,7 +5862,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5457,7 +5876,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5470,7 +5890,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5483,7 +5904,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5496,7 +5918,8 @@
       "44"
     ],
     "correctAnswer": "43",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5509,7 +5932,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5522,7 +5946,8 @@
       "167"
     ],
     "correctAnswer": "166",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5535,7 +5960,8 @@
       "13"
     ],
     "correctAnswer": "12",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5548,7 +5974,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5561,7 +5988,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5574,7 +6002,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5587,7 +6016,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5600,7 +6030,8 @@
       "55"
     ],
     "correctAnswer": "54",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5613,7 +6044,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5626,7 +6058,8 @@
       "120"
     ],
     "correctAnswer": "119",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5639,7 +6072,8 @@
       "2"
     ],
     "correctAnswer": "1",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5652,7 +6086,8 @@
       "11"
     ],
     "correctAnswer": "10",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5665,7 +6100,8 @@
       "6:00"
     ],
     "correctAnswer": "5:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5678,7 +6114,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5691,7 +6128,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5704,7 +6142,8 @@
       "34"
     ],
     "correctAnswer": "33",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5717,7 +6156,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5730,7 +6170,8 @@
       "99"
     ],
     "correctAnswer": "98",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5743,7 +6184,8 @@
       "23"
     ],
     "correctAnswer": "22",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5756,7 +6198,8 @@
       "16"
     ],
     "correctAnswer": "15",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5769,7 +6212,8 @@
       "1:00"
     ],
     "correctAnswer": "12:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5782,7 +6226,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5795,7 +6240,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5808,7 +6254,8 @@
       "52"
     ],
     "correctAnswer": "51",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5821,7 +6268,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5834,7 +6282,8 @@
       "97"
     ],
     "correctAnswer": "96",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5847,7 +6296,8 @@
       "18"
     ],
     "correctAnswer": "17",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5860,7 +6310,8 @@
       "21"
     ],
     "correctAnswer": "20",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5873,7 +6324,8 @@
       "9:00"
     ],
     "correctAnswer": "8:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5886,7 +6338,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -5899,7 +6352,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -5912,7 +6366,8 @@
       "67"
     ],
     "correctAnswer": "66",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -5925,7 +6380,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -5938,7 +6394,8 @@
       "109"
     ],
     "correctAnswer": "108",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -5951,7 +6408,8 @@
       "26"
     ],
     "correctAnswer": "25",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -5964,7 +6422,8 @@
       "19"
     ],
     "correctAnswer": "18",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -5977,7 +6436,8 @@
       "5:00"
     ],
     "correctAnswer": "4:15",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -5990,7 +6450,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -6003,7 +6464,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -6016,7 +6478,8 @@
       "85"
     ],
     "correctAnswer": "84",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -6029,7 +6492,8 @@
       "hexagon"
     ],
     "correctAnswer": "pentagon",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -6042,7 +6506,8 @@
       "107"
     ],
     "correctAnswer": "106",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -6055,7 +6520,8 @@
       "15"
     ],
     "correctAnswer": "14",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -6068,7 +6534,8 @@
       "5"
     ],
     "correctAnswer": "4",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -6081,7 +6548,8 @@
       "12:00"
     ],
     "correctAnswer": "11:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -6094,7 +6562,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.75",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -6107,7 +6576,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -6120,7 +6590,8 @@
       "76"
     ],
     "correctAnswer": "75",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -6133,7 +6604,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -6146,7 +6618,8 @@
       "90"
     ],
     "correctAnswer": "89",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -6159,7 +6632,8 @@
       "18"
     ],
     "correctAnswer": "17",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -6172,7 +6646,8 @@
       "25"
     ],
     "correctAnswer": "24",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -6185,7 +6660,8 @@
       "5:00"
     ],
     "correctAnswer": "4:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -6198,7 +6674,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.25",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -6211,7 +6688,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -6224,7 +6702,8 @@
       "39"
     ],
     "correctAnswer": "38",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -6237,7 +6716,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -6250,7 +6730,8 @@
       "120"
     ],
     "correctAnswer": "119",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -6263,7 +6744,8 @@
       "35"
     ],
     "correctAnswer": "34",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -6276,7 +6758,8 @@
       "13"
     ],
     "correctAnswer": "12",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -6289,7 +6772,8 @@
       "3:00"
     ],
     "correctAnswer": "2:45",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -6302,7 +6786,8 @@
       "$0.05"
     ],
     "correctAnswer": "$0.50",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -6315,7 +6800,8 @@
       "none"
     ],
     "correctAnswer": ">",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -6328,7 +6814,8 @@
       "79"
     ],
     "correctAnswer": "78",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -6341,7 +6828,8 @@
       "hexagon"
     ],
     "correctAnswer": "square",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -6354,7 +6842,8 @@
       "76"
     ],
     "correctAnswer": "75",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -6367,7 +6856,8 @@
       "20"
     ],
     "correctAnswer": "19",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -6380,7 +6870,8 @@
       "19"
     ],
     "correctAnswer": "18",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -6393,7 +6884,8 @@
       "3:00"
     ],
     "correctAnswer": "2:00",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   },
   {
     "grade": 2,
@@ -6406,7 +6898,8 @@
       "$0.05"
     ],
     "correctAnswer": "$1.00",
-    "hint": "100 cents = 1 dollar."
+    "hint": "100 cents = 1 dollar.",
+    "topic": "Money"
   },
   {
     "grade": 2,
@@ -6419,7 +6912,8 @@
       "none"
     ],
     "correctAnswer": "<",
-    "hint": "Compare place values."
+    "hint": "Compare place values.",
+    "topic": "Comparing Numbers"
   },
   {
     "grade": 2,
@@ -6432,7 +6926,8 @@
       "68"
     ],
     "correctAnswer": "67",
-    "hint": "Add the amounts together."
+    "hint": "Add the amounts together.",
+    "topic": "Word Problems"
   },
   {
     "grade": 2,
@@ -6445,7 +6940,8 @@
       "hexagon"
     ],
     "correctAnswer": "triangle",
-    "hint": "Count the sides of each shape."
+    "hint": "Count the sides of each shape.",
+    "topic": "Geometry"
   },
   {
     "grade": 2,
@@ -6458,7 +6954,8 @@
       "38"
     ],
     "correctAnswer": "37",
-    "hint": "Add tens and ones separately."
+    "hint": "Add tens and ones separately.",
+    "topic": "Addition"
   },
   {
     "grade": 2,
@@ -6471,7 +6968,8 @@
       "10"
     ],
     "correctAnswer": "9",
-    "hint": "Subtract ones, then tens."
+    "hint": "Subtract ones, then tens.",
+    "topic": "Subtraction"
   },
   {
     "grade": 2,
@@ -6484,7 +6982,8 @@
       "22"
     ],
     "correctAnswer": "21",
-    "hint": "Multiply means repeated addition."
+    "hint": "Multiply means repeated addition.",
+    "topic": "Multiplication"
   },
   {
     "grade": 2,
@@ -6497,6 +6996,7 @@
       "2:00"
     ],
     "correctAnswer": "1:30",
-    "hint": "Each number on clock = 5 minutes."
+    "hint": "Each number on clock = 5 minutes.",
+    "topic": "Time"
   }
 ]
