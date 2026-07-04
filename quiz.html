@@ -436,6 +436,32 @@ body {
 .btn-confirm-end:hover{background:#dc2626;}
 @keyframes pop{0%{transform:scale(.9);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
 
+/* ── AUTH GATE ── */
+.auth-loading {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 60vh; gap: 12px; color: var(--muted); width: 100%;
+}
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 99px;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Inline banner for save errors */
+.save-error-banner {
+  display: none;
+  width: 100%; max-width: 640px;
+  background: var(--red-light); border: 1.5px solid var(--red);
+  color: #991b1b; border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 16px;
+  font-size: .85em; font-weight: 600;
+  align-items: center; gap: 8px;
+}
+.save-error-banner.show { display: flex; }
+
 /* ── RESPONSIVE ── */
 @media(max-width:520px){
   body{padding:16px 10px 50px;}
@@ -448,10 +474,24 @@ body {
 </head>
 <body>
 
+<!-- Auth loading state -->
+<div class="auth-loading" id="authLoading">
+  <div class="spinner"></div>
+  <span>Checking your session…</span>
+</div>
+
+<!-- Everything below is hidden until auth resolves -->
+<div id="appRoot" style="display:none; width:100%; max-width:640px; flex-direction:column; align-items:center;">
+
 <!-- Top Nav -->
 <div class="topnav">
   <a href="dashboard.html" class="back-btn">← Dashboard</a>
   <div class="logo-chip">🎓 Learning Academy</div>
+</div>
+
+<!-- Save error banner (shown if a quiz result fails to write to Firestore) -->
+<div class="save-error-banner" id="saveErrorBanner">
+  ⚠️ <span id="saveErrorText">Your last quiz result couldn't be saved. Check your connection and try again.</span>
 </div>
 
 <!-- STEP INDICATOR -->
@@ -632,6 +672,8 @@ body {
   </div>
 </div>
 
+</div><!-- /appRoot -->
+
 <script type="module">
 import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -648,20 +690,62 @@ const app = initializeApp({
 const auth = getAuth(app);
 const db   = getFirestore(app);
 let currentUser = null;
-onAuthStateChanged(auth, u => { currentUser = u || null; });
 
-/* ── Question file map ── */
+/* ── AUTH GATE ──
+   Quiz page now waits for Firebase to resolve auth state before showing
+   anything, and redirects to login if there's no signed-in user. This
+   prevents the previous bug where a quiz could be taken and completed
+   before `currentUser` was set, causing saveQuizResult() to silently
+   no-op and the result to never reach the dashboard. */
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+  currentUser = user;
+  document.getElementById("authLoading").style.display = "none";
+  const root = document.getElementById("appRoot");
+  root.style.display = "flex";
+});
+
 const questionFiles = {
-  "English-1":"english_1_Questions.json","English-2":"english_2_Questions.json","English-3":"english_3_Questions.json","English-4":"english_4_Questions.json","English-5":"english_5_Questions.json","English-6":"english_6_Questions.json","English-7":"english_7_Questions.json","English-8":"english_8_Questions.json",
-  "Math-1":"math_1_Questions.json","Math-2":"math_2_Questions.json","Math-3":"math_3_Questions.json","Math-4":"math_4_Questions.json","Math-5":"math_5_Questions.json","Math-6":"math_6_Questions.json","Math-7":"math_7_Questions.json","Math-8":"math_8_Questions.json",
-  "Science-1":"science_1_Questions.json","Science-2":"science_2_Questions.json","Science-3":"science_3_Questions.json","Science-4":"science_4_Questions.json","Science-5":"science_5_Questions.json","Science-6":"science_6_Questions.json","Science-7":"science_7_Questions.json","Science-8":"science_8_Questions.json",
-  "Social-1":"social_1_Questions.json","Social-2":"social_2_Questions.json","Social-3":"social_3_Questions.json","Social-4":"social_4_Questions.json","Social-5":"social_5_Questions.json","Social-6":"social_6_Questions.json","Social-7":"social_7_Questions.json","Social-8":"social_8_Questions.json",
+  "English-1":"english_1_Questions.json",
+  "English-2":"english_2_Questions.json",
+  "English-3":"english_3_Questions.json",
+  "English-4":"english_4_Questions.json",
+  "English-5":"english_5_Questions.json",
+  "English-6":"english_6_Questions.json",
+  "English-7":"english_7_Questions.json",
+  "English-8":"english_8_Questions.json",
+  "Math-1":"math_1_Questions.json",
+  "Math-2":"math_2_Questions.json",
+  "Math-3":"math_3_Questions.json",
+  "Math-4":"math_4_Questions.json",
+  "Math-5":"math_5_Questions.json",
+  "Math-6":"math_6_Questions.json",
+  "Math-7":"math_7_Questions.json",
+  "Math-8":"math_8_Questions.json",
+  "Science-1":"science_1_Questions.json",
+  "Science-2":"science_2_Questions.json",
+  "Science-3":"science_3_Questions.json",
+  "Science-4":"science_4_Questions.json",
+  "Science-5":"science_5_Questions.json",
+  "Science-6":"science_6_Questions.json",
+  "Science-7":"science_7_Questions.json",
+  "Science-8":"science_8_Questions.json",
+  "Social-1":"social_1_Questions.json",
+  "Social-2":"social_2_Questions.json",
+  "Social-3":"social_3_Questions.json",
+  "Social-4":"social_4_Questions.json",
+  "Social-5":"social_5_Questions.json",
+  "Social-6":"social_6_Questions.json",
+  "Social-7":"social_7_Questions.json",
+   "Social-8":"social_8_Questions.json",
 };
 
-/* ── State ── */
 const $ = id => document.getElementById(id);
-let allLoadedQuestions  = [];  // full JSON file
-let selectedQuestions   = [];  // after topic + count filter
+let allLoadedQuestions  = []; 
+let selectedQuestions   = []; 
 let answers = [];
 let correctCount = 0, incorrectCount = 0, skipCount = 0;
 let currentIdx = 0, currentStreak = 0, bestStreak = 0;
@@ -673,12 +757,9 @@ let answeredThisQ = false;
 let selectedTopics = new Set();
 let currentStep = 1;
 
-/* ══════════════════════════════════
-   STEP NAVIGATION
-══════════════════════════════════ */
 function setStep(n) {
   currentStep = n;
-  // Update indicator
+
   [1,2,3].forEach(i => {
     const si = $(`si${i}`);
     si.className = 'step-item' + (i < n ? ' done' : i === n ? ' active' : '');
@@ -691,9 +772,6 @@ function setStep(n) {
   $('quizCard').className = 'quiz-card' + (n === 4 ? ' visible' : '');
 }
 
-/* ══════════════════════════════════
-   STEP 1 → STEP 2: load questions, build topics
-══════════════════════════════════ */
 $('btnStep1Next').addEventListener('click', async () => {
   const subject = $('subject').value;
   const grade   = $('grade').value;
@@ -886,6 +964,7 @@ $('btnStartQuiz').addEventListener('click', () => {
   $('btnNext').disabled = true;
   $('timerPill').className = 'timer-pill';
   $('quizLabel').textContent = `${subject} · Grade ${grade}`;
+  $('saveErrorBanner').className = 'save-error-banner';
 
   buildSegments(selectedQuestions.length);
   setSeg(0, 'active');
@@ -1129,6 +1208,7 @@ function showComplete() {
         <div class="stat-cell"><div class="sv amber">${bestStreak}</div><div class="sl">Best Streak</div></div>
         <div class="stat-cell"><div class="sv blue">${avgT}s</div><div class="sl">Avg Time</div></div>
       </div>
+      <div class="save-error-banner" id="saveErrorBanner2" style="margin-bottom:14px;"></div>
       <button class="review-toggle" id="reviewToggleBtn">▼ Review Answers</button>
       <div class="review-list" id="reviewList">${reviewHTML}</div>
       <div class="complete-actions">
@@ -1177,9 +1257,23 @@ function confirmEndQuiz() {
   });
 }
 
-/* ── Save ── */
+/* ── Save ──
+   Now surfaces failures instead of silently swallowing them. If there's
+   no authenticated user (shouldn't happen now that the auth gate redirects
+   unauthenticated visitors to login.html) or the Firestore write is
+   rejected (e.g. by security rules), the person sees a clear banner on
+   the results screen instead of a quietly-missing dashboard entry. */
 async function saveQuizResult() {
-  if (!currentUser) return;
+  const banner = document.getElementById('saveErrorBanner2');
+
+  if (!currentUser) {
+    if (banner) {
+      banner.textContent = "⚠️ You're not signed in, so this result wasn't saved. Please log in and retake the quiz.";
+      banner.classList.add('show');
+    }
+    return;
+  }
+
   try {
     await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), {
       score:      correctCount,
@@ -1190,7 +1284,13 @@ async function saveQuizResult() {
       topics:     [...selectedTopics],
       timestamp:  new Date()
     });
-  } catch(e) { console.error('Save error:', e); }
+  } catch(e) {
+    console.error('Save error:', e);
+    if (banner) {
+      banner.textContent = "⚠️ This result couldn't be saved to your dashboard (" + (e.code || e.message) + "). Check your Firestore security rules or connection.";
+      banner.classList.add('show');
+    }
+  }
 }
 
 /* ── Wire buttons ── */

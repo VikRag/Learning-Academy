@@ -128,6 +128,25 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* ── ERROR BANNER ── */
+  .error-banner {
+    display: none;
+    align-items: center; gap: 10px;
+    background: var(--red-light); border: 1.5px solid var(--red);
+    color: #991b1b; border-radius: 12px;
+    padding: 14px 18px; margin-bottom: 22px;
+    font-size: 0.88em; font-weight: 600; line-height: 1.5;
+  }
+  .error-banner.show { display: flex; }
+  .error-banner .icon { font-size: 1.3em; flex-shrink: 0; }
+  .error-banner .retry-btn {
+    margin-left: auto; flex-shrink: 0;
+    padding: 6px 12px; background: var(--red); color: #fff;
+    border: none; border-radius: 7px; font-family: inherit;
+    font-size: 0.85em; font-weight: 700; cursor: pointer;
+  }
+  .error-banner .retry-btn:hover { background: #dc2626; }
+
   /* ── WELCOME HEADER ── */
   .welcome-header {
     margin-bottom: 28px;
@@ -336,6 +355,13 @@
 <!-- Page -->
 <div class="page" id="mainPage" style="display:none">
 
+  <!-- Error banner: shown if Firestore reads fail (e.g. security rules) -->
+  <div class="error-banner" id="errorBanner">
+    <span class="icon">⚠️</span>
+    <span id="errorBannerText">Something went wrong loading your data.</span>
+    <button class="retry-btn" id="retryBtn">Retry</button>
+  </div>
+
   <!-- Welcome -->
   <div class="welcome-header">
     <h1 id="welcomeHeading">Hello 👋</h1>
@@ -449,6 +475,18 @@ window.signOutUser = async () => {
   window.location.href = "login.html";
 };
 
+document.getElementById("retryBtn").addEventListener("click", () => {
+  window.location.reload();
+});
+
+function showErrorBanner(message) {
+  document.getElementById("errorBannerText").textContent = message;
+  document.getElementById("errorBanner").classList.add("show");
+}
+function hideErrorBanner() {
+  document.getElementById("errorBanner").classList.remove("show");
+}
+
 /* Auth gate */
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
@@ -456,59 +494,75 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  // 🔥 Get First + Last Name from Firestore (with fallback)
+  hideErrorBanner();
   let name = "Student";
   let initial = "?";
+  let profileLoadFailed = false;
 
+  // 🔥 Get First + Last Name from Firestore (with fallback)
   try {
-  const userDoc = await getDoc(doc(db, "users", user.uid));
+    const userDoc = await getDoc(doc(db, "users", user.uid));
 
-  if (userDoc.exists()) {
-  const data = userDoc.data();
+    if (userDoc.exists()) {
+      const data = userDoc.data();
+      const first = data.firstName || "";
+      const last  = data.lastName || "";
+      const fullName = `${first} ${last}`.trim();
 
-  const first = data.firstName || "";
-  const last  = data.lastName || "";
+      if (fullName) {
+        name = fullName;
+        initial = (first.charAt(0) || last.charAt(0)).toUpperCase();
+      }
+    }
 
-  const fullName = `${first} ${last}`.trim();
-
-  if (fullName) {
-    name = fullName;
-    initial = (first.charAt(0) || last.charAt(0)).toUpperCase();
-  }
-  }
-
-  // 🔥 FALLBACK if Firestore empty
-  if (name === "Student") {
-  if (user.displayName) {
-    name = user.displayName;
-    initial = user.displayName.charAt(0).toUpperCase();
-  } else if (user.email) {
-    name = user.email.split("@")[0];
-    initial = user.email.charAt(0).toUpperCase();
-  }
-  }
-
+    // Fallback if Firestore doc is empty/missing
+    if (name === "Student") {
+      if (user.displayName) {
+        name = user.displayName;
+        initial = user.displayName.charAt(0).toUpperCase();
+      } else if (user.email) {
+        name = user.email.split("@")[0];
+        initial = user.email.charAt(0).toUpperCase();
+      }
+    }
   } catch (err) {
-  console.error("Error loading user name:", err);
+    // Previously this was only logged to console, so a permissions
+    // error would silently show "Student" with no explanation. Now we
+    // surface it, since this is the most common cause of "logs in fine
+    // but shows nobody's data".
+    console.error("Error loading user profile:", err);
+    profileLoadFailed = true;
+    if (user.email) {
+      name = user.email.split("@")[0];
+      initial = user.email.charAt(0).toUpperCase();
+    }
   }
 
-  // ✅ Always update UI AFTER logic
   document.getElementById("navUserName").textContent = name;
   document.getElementById("avatarInitial").textContent = initial;
   document.getElementById("welcomeHeading").textContent = `Hello, ${name}! 👋`;
 
   // Load quiz results
+  let resultsLoadFailed = false;
+  let results = [];
   try {
     const q = query(
       collection(db, "users", user.uid, "quizResults"),
       orderBy("timestamp", "desc")
     );
     const snap = await getDocs(q);
-    const results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderDashboard(results);
+    results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   } catch (e) {
     console.error("Error loading results:", e);
-    renderDashboard([]);
+    resultsLoadFailed = true;
+  }
+
+  renderDashboard(results);
+
+  if (profileLoadFailed || resultsLoadFailed) {
+    showErrorBanner(
+      "Couldn't load your saved data from Firestore — this usually means your Firestore security rules aren't allowing this read. Your progress may still be safe; check the rules and hit Retry."
+    );
   }
 
   document.getElementById("loadingScreen").style.display = "none";
