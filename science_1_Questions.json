@@ -7,11 +7,10 @@
       "Shark",
       "Tiger",
       "Cow",
-         
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -25,7 +24,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -39,7 +38,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -53,7 +52,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -67,7 +66,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -81,7 +80,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -95,7 +94,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -109,7 +108,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -123,7 +122,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -137,7 +136,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -151,7 +150,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -165,7 +164,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -179,7 +178,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -193,7 +192,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -207,7 +206,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -221,7 +220,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -235,7 +234,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -249,7 +248,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -263,7 +262,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -277,7 +276,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -291,7 +290,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -305,7 +304,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -319,7 +318,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -333,7 +332,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -347,7 +346,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -361,7 +360,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -375,7 +374,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -389,7 +388,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -403,7 +402,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -417,7 +416,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -431,7 +430,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -445,7 +444,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -459,7 +458,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -473,7 +472,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -487,7 +486,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -501,7 +500,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -515,7 +514,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -529,7 +528,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -543,7 +542,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -557,7 +556,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -571,7 +570,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -585,7 +584,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -599,7 +598,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -613,7 +612,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -627,7 +626,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -641,7 +640,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -655,7 +654,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -669,7 +668,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -683,7 +682,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -697,7 +696,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -711,7 +710,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -725,7 +724,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -739,7 +738,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -753,7 +752,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -767,7 +766,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -781,7 +780,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -795,7 +794,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -809,7 +808,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -823,7 +822,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -837,7 +836,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -851,7 +850,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -865,7 +864,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -879,7 +878,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -893,7 +892,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -907,7 +906,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -921,7 +920,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -935,7 +934,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -949,7 +948,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -963,7 +962,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -977,7 +976,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -991,7 +990,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1005,7 +1004,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1019,7 +1018,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -1033,7 +1032,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1047,7 +1046,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1061,7 +1060,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1075,7 +1074,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1089,7 +1088,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1103,7 +1102,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1117,7 +1116,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1131,7 +1130,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1145,7 +1144,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -1159,7 +1158,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1173,7 +1172,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1187,7 +1186,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1201,7 +1200,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1215,7 +1214,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1229,7 +1228,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1243,7 +1242,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1257,7 +1256,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1271,7 +1270,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -1285,7 +1284,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1299,7 +1298,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1313,7 +1312,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1327,7 +1326,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1341,7 +1340,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1355,7 +1354,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1369,7 +1368,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1383,7 +1382,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1397,7 +1396,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -1411,7 +1410,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1425,7 +1424,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1439,7 +1438,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1453,7 +1452,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1467,7 +1466,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1481,7 +1480,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1495,7 +1494,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1509,7 +1508,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1523,7 +1522,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -1537,7 +1536,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1551,7 +1550,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1565,7 +1564,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1579,7 +1578,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1593,7 +1592,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1607,7 +1606,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1621,7 +1620,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1635,7 +1634,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1649,7 +1648,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -1663,7 +1662,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1677,7 +1676,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1691,7 +1690,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1705,7 +1704,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1719,7 +1718,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1733,7 +1732,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1747,7 +1746,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1761,7 +1760,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1775,7 +1774,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -1789,7 +1788,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1803,7 +1802,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1817,7 +1816,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1831,7 +1830,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1845,7 +1844,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1859,7 +1858,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1873,7 +1872,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -1887,7 +1886,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -1901,7 +1900,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -1915,7 +1914,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -1929,7 +1928,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -1943,7 +1942,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -1957,7 +1956,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -1971,7 +1970,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -1985,7 +1984,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -1999,7 +1998,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2013,7 +2012,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2027,7 +2026,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -2041,7 +2040,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2055,7 +2054,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2069,7 +2068,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2083,7 +2082,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2097,7 +2096,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2111,7 +2110,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2125,7 +2124,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2139,7 +2138,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2153,7 +2152,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -2167,7 +2166,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2181,7 +2180,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2195,7 +2194,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2209,7 +2208,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2223,7 +2222,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2237,7 +2236,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2251,7 +2250,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2265,7 +2264,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2279,7 +2278,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -2293,7 +2292,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2307,7 +2306,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2321,7 +2320,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2335,7 +2334,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2349,7 +2348,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2363,7 +2362,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2377,7 +2376,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2391,7 +2390,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2405,7 +2404,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -2419,7 +2418,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2433,7 +2432,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2447,7 +2446,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2461,7 +2460,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2475,7 +2474,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2489,7 +2488,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2503,7 +2502,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2517,7 +2516,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2531,7 +2530,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -2545,7 +2544,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2559,7 +2558,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2573,7 +2572,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2587,7 +2586,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2601,7 +2600,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2615,7 +2614,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2629,7 +2628,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2643,7 +2642,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2657,7 +2656,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -2671,7 +2670,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2685,7 +2684,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2699,7 +2698,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2713,7 +2712,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2727,7 +2726,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2741,7 +2740,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2755,7 +2754,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2769,7 +2768,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2783,7 +2782,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -2797,7 +2796,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2811,7 +2810,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2825,7 +2824,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2839,7 +2838,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2853,7 +2852,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2867,7 +2866,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -2881,7 +2880,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -2895,7 +2894,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -2909,7 +2908,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -2923,7 +2922,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -2937,7 +2936,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -2951,7 +2950,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -2965,7 +2964,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -2979,7 +2978,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -2993,7 +2992,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3007,7 +3006,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3021,7 +3020,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3035,7 +3034,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -3049,7 +3048,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3063,7 +3062,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3077,7 +3076,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3091,7 +3090,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3105,7 +3104,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3119,7 +3118,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3133,7 +3132,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3147,7 +3146,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3161,7 +3160,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3175,7 +3174,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3189,7 +3188,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3203,7 +3202,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3217,7 +3216,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3231,7 +3230,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3245,7 +3244,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3259,7 +3258,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3273,7 +3272,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3287,7 +3286,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -3301,7 +3300,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3315,7 +3314,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3329,7 +3328,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3343,7 +3342,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3357,7 +3356,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3371,7 +3370,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3385,7 +3384,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3399,7 +3398,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3413,7 +3412,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3427,7 +3426,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3441,7 +3440,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3455,7 +3454,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3469,7 +3468,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3483,7 +3482,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3497,7 +3496,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3511,7 +3510,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3525,7 +3524,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3539,7 +3538,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3553,7 +3552,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3567,7 +3566,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3581,7 +3580,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3595,7 +3594,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3609,7 +3608,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3623,7 +3622,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3637,7 +3636,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3651,7 +3650,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3665,7 +3664,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3679,7 +3678,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3693,7 +3692,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3707,7 +3706,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3721,7 +3720,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3735,7 +3734,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3749,7 +3748,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3763,7 +3762,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3777,7 +3776,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3791,7 +3790,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3805,7 +3804,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3819,7 +3818,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3833,7 +3832,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3847,7 +3846,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3861,7 +3860,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -3875,7 +3874,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -3889,7 +3888,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -3903,7 +3902,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -3917,7 +3916,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -3931,7 +3930,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -3945,7 +3944,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -3959,7 +3958,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -3973,7 +3972,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -3987,7 +3986,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4001,7 +4000,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4015,7 +4014,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4029,7 +4028,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4043,7 +4042,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -4057,7 +4056,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4071,7 +4070,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4085,7 +4084,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4099,7 +4098,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4113,7 +4112,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4127,7 +4126,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4141,7 +4140,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4155,7 +4154,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4169,7 +4168,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -4183,7 +4182,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4197,7 +4196,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4211,7 +4210,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4225,7 +4224,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4239,7 +4238,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4253,7 +4252,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4267,7 +4266,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4281,7 +4280,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4295,7 +4294,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -4309,7 +4308,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4323,7 +4322,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4337,7 +4336,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4351,7 +4350,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4365,7 +4364,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4379,7 +4378,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4393,7 +4392,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4407,7 +4406,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4421,7 +4420,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -4435,7 +4434,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4449,7 +4448,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4463,7 +4462,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4477,7 +4476,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4491,7 +4490,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4505,7 +4504,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4519,7 +4518,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4533,7 +4532,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4547,7 +4546,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -4561,7 +4560,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4575,7 +4574,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4589,7 +4588,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4603,7 +4602,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4617,7 +4616,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4631,7 +4630,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4645,7 +4644,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4659,7 +4658,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4673,7 +4672,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -4687,7 +4686,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4701,7 +4700,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4715,7 +4714,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4729,7 +4728,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4743,7 +4742,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4757,7 +4756,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4771,7 +4770,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4785,7 +4784,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4799,7 +4798,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -4813,7 +4812,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4827,7 +4826,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4841,7 +4840,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4855,7 +4854,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4869,7 +4868,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -4883,7 +4882,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -4897,7 +4896,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -4911,7 +4910,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -4925,7 +4924,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -4939,7 +4938,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -4953,7 +4952,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -4967,7 +4966,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -4981,7 +4980,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -4995,7 +4994,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5009,7 +5008,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5023,7 +5022,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5037,7 +5036,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5051,7 +5050,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -5065,7 +5064,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5079,7 +5078,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5093,7 +5092,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5107,7 +5106,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5121,7 +5120,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5135,7 +5134,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5149,7 +5148,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5163,7 +5162,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5177,7 +5176,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -5191,7 +5190,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5205,7 +5204,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5219,7 +5218,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5233,7 +5232,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5247,7 +5246,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5261,7 +5260,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5275,7 +5274,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5289,7 +5288,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5303,7 +5302,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -5317,7 +5316,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5331,7 +5330,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5345,7 +5344,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5359,7 +5358,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5373,7 +5372,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5387,7 +5386,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5401,7 +5400,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5415,7 +5414,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5429,7 +5428,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -5443,7 +5442,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5457,7 +5456,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5471,7 +5470,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5485,7 +5484,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5499,7 +5498,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5513,7 +5512,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5527,7 +5526,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5541,7 +5540,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5555,7 +5554,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -5569,7 +5568,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5583,7 +5582,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5597,7 +5596,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5611,7 +5610,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5625,7 +5624,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5639,7 +5638,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5653,7 +5652,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5667,7 +5666,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5681,7 +5680,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -5695,7 +5694,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5709,7 +5708,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5723,7 +5722,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5737,7 +5736,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5751,7 +5750,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5765,7 +5764,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5779,7 +5778,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5793,7 +5792,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5807,7 +5806,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -5821,7 +5820,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5835,7 +5834,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5849,7 +5848,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5863,7 +5862,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -5877,7 +5876,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -5891,7 +5890,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -5905,7 +5904,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -5919,7 +5918,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -5933,7 +5932,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -5947,7 +5946,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -5961,7 +5960,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -5975,7 +5974,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -5989,7 +5988,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6003,7 +6002,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6017,7 +6016,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6031,7 +6030,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6045,7 +6044,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6059,7 +6058,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -6073,7 +6072,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6087,7 +6086,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6101,7 +6100,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6115,7 +6114,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6129,7 +6128,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6143,7 +6142,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6157,7 +6156,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6171,7 +6170,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6185,7 +6184,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -6199,7 +6198,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6213,7 +6212,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6227,7 +6226,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6241,7 +6240,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6255,7 +6254,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6269,7 +6268,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6283,7 +6282,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6297,7 +6296,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6311,7 +6310,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -6325,7 +6324,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6339,7 +6338,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6353,7 +6352,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6367,7 +6366,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6381,7 +6380,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6395,7 +6394,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6409,7 +6408,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6423,7 +6422,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6437,7 +6436,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -6451,7 +6450,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6465,7 +6464,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6479,7 +6478,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6493,7 +6492,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6507,7 +6506,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6521,7 +6520,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6535,7 +6534,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6549,7 +6548,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6563,7 +6562,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -6577,7 +6576,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6591,7 +6590,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6605,7 +6604,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6619,7 +6618,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6633,7 +6632,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6647,7 +6646,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6661,7 +6660,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6675,7 +6674,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6689,7 +6688,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -6703,7 +6702,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6717,7 +6716,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6731,7 +6730,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6745,7 +6744,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6759,7 +6758,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6773,7 +6772,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6787,7 +6786,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6801,7 +6800,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6815,7 +6814,7 @@
       "Rabbit"
     ],
     "correctAnswer": "Shark",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Think about where each animal makes its home.",
     "topic": "Animals"
   },
   {
@@ -6829,7 +6828,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6843,7 +6842,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6857,7 +6856,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6871,7 +6870,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   },
   {
@@ -6885,7 +6884,7 @@
       "Hand"
     ],
     "correctAnswer": "Ear",
-    "hint": "Which body part does this job?",
+    "hint": "Think about which body part matches the job.",
     "topic": "Human Body"
   },
   {
@@ -6899,7 +6898,7 @@
       "Sight"
     ],
     "correctAnswer": "Smell",
-    "hint": "Which sense helps you notice this?",
+    "hint": "Match the sense to the body part.",
     "topic": "Five Senses"
   },
   {
@@ -6913,7 +6912,7 @@
       "Whale"
     ],
     "correctAnswer": "Deer",
-    "hint": "Think about the animal's natural home.",
+    "hint": "Think about where each animal naturally lives.",
     "topic": "Habitats"
   },
   {
@@ -6927,7 +6926,7 @@
       "Book"
     ],
     "correctAnswer": "Tree",
-    "hint": "Can it grow and change on its own?",
+    "hint": "Living things can grow and change.",
     "topic": "Living Things"
   },
   {
@@ -6941,7 +6940,7 @@
       "Horse"
     ],
     "correctAnswer": "Bird",
-    "hint": "Think about where this animal is most often found.",
+    "hint": "Look closely at what makes each animal different.",
     "topic": "Animals"
   },
   {
@@ -6955,7 +6954,7 @@
       "Sand"
     ],
     "correctAnswer": "Water",
-    "hint": "Think about what every plant needs every day.",
+    "hint": "Think about what helps living things stay healthy.",
     "topic": "Plants"
   },
   {
@@ -6969,7 +6968,7 @@
       "Foggy"
     ],
     "correctAnswer": "Snowy",
-    "hint": "Think about what you would wear outside.",
+    "hint": "Picture what you might see outside.",
     "topic": "Weather"
   },
   {
@@ -6983,7 +6982,7 @@
       "Spring"
     ],
     "correctAnswer": "Summer",
-    "hint": "Think about the time of year this usually happens.",
+    "hint": "Think about the time of year with the warmest days.",
     "topic": "Seasons"
   },
   {
@@ -6997,7 +6996,7 @@
       "Cloud"
     ],
     "correctAnswer": "Sun",
-    "hint": "Look up during the daytime.",
+    "hint": "Think about what you see in the daytime sky.",
     "topic": "Space"
   }
 ]
