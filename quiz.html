@@ -802,7 +802,7 @@ $('btnStep1Next').addEventListener('click', async () => {
   $('btnStep1Next').textContent = 'Continue → Pick Topics';
   $('btnStep1Next').disabled = false;
 
-  $('step2Title').textContent = `📚 Choose Topics — ${subject} Grade ${grade}`;
+  $('step2Title').textContent = `Choose Topics — ${subject} Grade ${grade}`;
   buildTopicGrid();
   setStep(2);
 });
@@ -819,23 +819,6 @@ function buildTopicGrid() {
   const grid = $('topicGrid');
   grid.innerHTML = '';
   selectedTopics.clear();
-
-  const topicEmojis = {
-    'Place Value & Number Sense': '🔢',
-    'Multiplication': '✖️',
-    'Division': '➗',
-    'Fractions': '½',
-    'Decimals': '.',
-    'Geometry': '📐',
-    'Measurement & Conversion': '📏',
-    'Ratios & Proportions': '⚖️',
-    'Percentages': '%',
-    'Order of Operations & Algebra': '🔣',
-    'Data & Statistics': '📊',
-    'Word Problems': '📝',
-    'General': '📚',
-  };
-
   const sorted = Object.entries(topicCounts).sort((a,b) => b[1]-a[1]);
   if (sorted.length === 0) {
     $('topicsNoneMsg').style.display = 'block';
@@ -848,8 +831,7 @@ function buildTopicGrid() {
     const btn = document.createElement('button');
     btn.className = 'topic-btn';
     btn.dataset.topic = topic;
-    const emoji = topicEmojis[topic] || '📚';
-    btn.innerHTML = `${emoji} ${topic} <span class="topic-count">${count}</span>`;
+    btn.innerHTML = `${topic} <span class="topic-count">${count}</span>`;
     btn.addEventListener('click', () => toggleTopic(btn, topic));
     grid.appendChild(btn);
   });
