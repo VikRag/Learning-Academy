@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress – Learning Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --surface2: #f0f1f7;
+    --border: #e4e6f0;
+    --text: #1a1d2e;
+    --text-muted: #7b7f96;
+    --primary: #4f6ef7;
+    --primary-light: #eef1fe;
+    --green: #22c55e;
+    --green-light: #dcfce7;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --amber-light: #fef3c7;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 0 60px; }
+
+  .topnav {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .logo-chip { font-size: 1em; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+  .nav-divider { width: 1px; height: 20px; background: var(--border); }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-link { padding: 6px 12px; border-radius: 8px; font-size: 0.85em; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: all .15s; }
+  .nav-link:hover, .nav-link.active { color: var(--primary); background: var(--primary-light); }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .user-chip { display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--surface2); border: 1.5px solid var(--border); border-radius: 99px; font-size: 0.85em; font-weight: 600; color: var(--text); }
+  .user-avatar { width: 26px; height: 26px; background: var(--primary); border-radius: 99px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; font-weight: 800; color: white; flex-shrink: 0; }
+  .btn-quiz { padding: 8px 16px; background: var(--primary); border: none; border-radius: 8px; font-family: inherit; font-size: 0.85em; font-weight: 700; color: white; cursor: pointer; transition: all 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+  .btn-quiz:hover { background: #3d5ce5; transform: translateY(-1px); }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 36px 24px 0; }
+
+  .loading-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; gap: 12px; color: var(--text-muted); }
+  .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 99px; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .page-header { margin-bottom: 28px; }
+  .page-header h1 { font-size: 1.6em; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .page-header p { font-size: 0.9em; color: var(--text-muted); }
+
+  .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 22px; }
+  .section-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .section-head h2 { font-size: 0.95em; font-weight: 700; display: flex; align-items: center; gap: 7px; }
+  .section-body { padding: 18px 20px; }
+
+  .empty-state { padding: 36px 20px; text-align: center; color: var(--text-muted); font-size: 0.9em; }
+  .empty-state .icon { font-size: 2em; margin-bottom: 8px; }
+
+  .bar-track { height: 8px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 99px; background: var(--primary); transition: width 1s cubic-bezier(.4,0,.2,1); width: 0; }
+
+  /* Overall mastery hero */
+  .mastery-hero-value { font-size: 2.6em; font-weight: 800; font-family: 'DM Mono', monospace; color: var(--primary); line-height: 1; margin-bottom: 10px; }
+  .mastery-bar-track { height: 12px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+  .mastery-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--primary), #7b93ff); transition: width 1.2s cubic-bezier(.4,0,.2,1); width: 0%; }
+
+  /* Subject mastery rows */
+  .subject-row-block { margin-bottom: 16px; cursor: pointer; }
+  .subject-row-block:last-child { margin-bottom: 0; }
+  .subject-row-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .subject-row-top .name { font-weight: 700; font-size: 0.92em; display: flex; align-items: center; gap: 6px; }
+  .subject-row-top .pct  { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--primary); font-size: 0.88em; }
+  .chevron { transition: transform .2s; color: var(--text-muted); font-size: 0.8em; }
+  .chevron.open { transform: rotate(90deg); }
+  .topic-detail { display: none; margin-top: 12px; padding-left: 4px; }
+  .topic-detail.open { display: block; }
+  .topic-detail-row { margin-bottom: 10px; }
+  .topic-detail-row:last-child { margin-bottom: 0; }
+  .topic-detail-top { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px; }
+  .topic-detail-top .uname { font-weight: 600; color: var(--text); }
+  .topic-detail-top .upct { font-family: 'DM Mono', monospace; color: var(--text-muted); }
+
+  /* Chart */
+  .chart-wrap { padding: 6px 4px 0; }
+  .chart-svg { width: 100%; height: 180px; }
+
+  /* Activity feed */
+  .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .activity-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .activity-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1em; flex-shrink: 0; }
+  .activity-icon.green { background: var(--green-light); }
+  .activity-icon.blue  { background: var(--primary-light); }
+  .activity-icon.amber { background: var(--amber-light); }
+  .activity-text { flex: 1; }
+  .activity-text .title { font-size: 0.875em; font-weight: 600; margin-bottom: 2px; }
+  .activity-text .meta  { font-size: 0.78em; color: var(--text-muted); }
+  .activity-time { font-size: 0.75em; color: var(--text-muted); font-family: 'DM Mono', monospace; white-space: nowrap; }
+
+  @media(max-width: 700px) {
+    .topnav { padding: 0 16px; }
+    .page { padding: 24px 14px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="logo-chip">🎓 Learning Academy</div>
+    <div class="nav-divider"></div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="progress.html" class="nav-link active">Progress</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="user-chip">
+      <div class="user-avatar" id="avatarInitial">?</div>
+      <span class="user-name" id="navUserName">Loading...</span>
+    </div>
+    <a href="quiz.html" class="btn-quiz">✏️ Take Quiz</a>
+  </div>
+</nav>
+
+<div class="page" id="mainPage" style="display:none">
+
+  <div class="page-header">
+    <h1>Your Progress</h1>
+    <p>A closer look at mastery across every subject and topic.</p>
+  </div>
+
+  <!-- Overall mastery -->
+  <div class="section-card" id="overallCard">
+    <div class="section-head"><h2>Overall Mastery</h2></div>
+    <div class="section-body" id="overallBody"></div>
+  </div>
+
+  <!-- Subject mastery + expandable topic breakdown -->
+  <div class="section-card" id="subjectCard" style="display:none;">
+    <div class="section-head"><h2>📚 Subject Mastery</h2></div>
+    <div class="section-body" id="subjectBody"></div>
+  </div>
+
+  <!-- Mastery over time -->
+  <div class="section-card" id="chartCard" style="display:none;">
+    <div class="section-head"><h2>📈 Improvement Over Time</h2></div>
+    <div class="section-body chart-wrap" id="chartBody"></div>
+  </div>
+
+  <!-- Recent activity -->
+  <div class="section-card" id="activityCard" style="display:none;">
+    <div class="section-head"><h2>⚡ Recent Activity</h2></div>
+    <div class="section-body" id="activityBody"></div>
+  </div>
+
+</div>
+
+<div id="loadingScreen" class="loading-screen">
+  <div class="spinner"></div>
+  <span>Loading your progress...</span>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, getDocs, query, orderBy, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import * as Mastery from "./mastery.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
+  authDomain: "learning-academy-1063f.firebaseapp.com",
+  projectId: "learning-academy-1063f",
+  storageBucket: "learning-academy-1063f.firebasestorage.app",
+  messagingSenderId: "388313798196",
+  appId: "1:388313798196:web:23de2662c83deae6d25c61"
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) { window.location.href = "login.html"; return; }
+
+  let name = "Student", initial = "?";
+  try {
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    if (userDoc.exists()) {
+      const data = userDoc.data();
+      const full = `${data.firstName || ""} ${data.lastName || ""}`.trim();
+      if (full) { name = full; initial = full.charAt(0).toUpperCase(); }
+    }
+    if (name === "Student" && user.email) { name = user.email.split("@")[0]; initial = user.email.charAt(0).toUpperCase(); }
+  } catch (e) { console.error(e); }
+
+  document.getElementById("navUserName").textContent = name;
+  document.getElementById("avatarInitial").textContent = initial;
+
+  let results = [];
+  try {
+    const q = query(collection(db, "users", user.uid, "quizResults"), orderBy("timestamp", "desc"));
+    const snap = await getDocs(q);
+    results = snap.docs.map(d => d.data());
+  } catch (e) { console.error("Error loading results:", e); }
+
+  render(results);
+
+  document.getElementById("loadingScreen").style.display = "none";
+  document.getElementById("mainPage").style.display = "block";
+});
+
+function render(results) {
+  renderOverall(results);
+  renderSubjects(results);
+  renderChart(results);
+  renderActivity(results);
+}
+
+function renderOverall(results) {
+  if (results.length === 0) {
+    document.getElementById("overallBody").innerHTML = `
+      <div class="empty-state"><div class="icon">📊</div>
+      No progress to show yet — <a href="quiz.html" style="color:var(--primary);font-weight:600;">take your first quiz</a> to start tracking mastery.</div>`;
+    return;
+  }
+  const stats = Mastery.computeProgressStats(results);
+  document.getElementById("overallBody").innerHTML = `
+    <div class="mastery-hero-value">${stats.overallMastery ?? '—'}%</div>
+    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="ovBar" data-target="${stats.overallMastery ?? 0}"></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;font-size:0.85em;color:var(--text-muted);font-weight:600;margin-top:14px;">
+      <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.questionsAnswered}</strong> Questions</span>
+      <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.accuracy ?? '—'}%</strong> Accuracy</span>
+      <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.topicsPracticed}</strong> Topics</span>
+      <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.studyTimeLabel}</strong> Study Time</span>
+      <span>🔥 <strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.streak}</strong> Day Streak</span>
+    </div>`;
+  requestAnimationFrame(() => setTimeout(() => {
+    const el = document.getElementById("ovBar");
+    if (el) el.style.width = el.dataset.target + "%";
+  }, 100));
+}
+
+function renderSubjects(results) {
+  const card = document.getElementById("subjectCard");
+  const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
+  if (topics.length === 0) { card.style.display = "none"; return; }
+  card.style.display = "block";
+
+  const bySubject = {};
+  topics.forEach(t => {
+    if (!bySubject[t.subject]) bySubject[t.subject] = [];
+    bySubject[t.subject].push(t);
+  });
+
+  const html = Object.entries(bySubject).map(([subject, list], idx) => {
+    const { mastery } = Mastery.calculateMastery(list.flatMap(t => t.events));
+    const sortedList = [...list].sort((a, b) => a.mastery - b.mastery);
+    const detailId = `detail-${idx}`;
+    const detailHTML = sortedList.map(t => `
+      <div class="topic-detail-row">
+        <div class="topic-detail-top">
+          <span class="uname">${t.topic}${t.isMastered ? ' <span style="color:var(--green);font-size:0.85em;">✓ Mastered</span>' : ''}</span>
+          <span class="upct">${t.mastery}%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${t.mastery}%;"></div></div>
+      </div>`).join('');
+
+    return `
+      <div class="subject-row-block" onclick="document.getElementById('${detailId}').classList.toggle('open'); this.querySelector('.chevron').classList.toggle('open');">
+        <div class="subject-row-top">
+          <span class="name"><span class="chevron">▶</span> ${subject}</span>
+          <span class="pct">${mastery}%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${mastery}%;"></div></div>
+        <div class="topic-detail" id="${detailId}">${detailHTML}</div>
+      </div>`;
+  }).join('');
+
+  document.getElementById("subjectBody").innerHTML = html;
+}
+
+function renderChart(results) {
+  const card = document.getElementById("chartCard");
+  const series = Mastery.computeWeeklyMasterySeries(results);
+  if (series.length < 2) {
+    card.style.display = "block";
+    document.getElementById("chartBody").innerHTML = `
+      <div class="empty-state"><div class="icon">📈</div>Keep practicing across a few more sessions to see your mastery trend over time.</div>`;
+    return;
+  }
+  card.style.display = "block";
+
+  const w = 700, h = 170, pad = 30;
+  const maxWeek = series[series.length - 1].week;
+  const xFor = (week) => pad + (week - 1) / Math.max(1, maxWeek - 1) * (w - pad * 2);
+  const yFor = (pct) => h - pad - (pct / 100) * (h - pad * 1.5);
+
+  const points = series.map(p => `${xFor(p.week)},${yFor(p.mastery)}`).join(' ');
+  const dots = series.map(p => `<circle cx="${xFor(p.week)}" cy="${yFor(p.mastery)}" r="4" fill="var(--primary)" />`).join('');
+  const gridLines = [0, 25, 50, 75, 100].map(v => `
+    <line x1="${pad}" y1="${yFor(v)}" x2="${w - pad}" y2="${yFor(v)}" stroke="var(--border)" stroke-width="1" />
+    <text x="2" y="${yFor(v) + 4}" font-size="10" fill="var(--text-muted)" font-family="DM Mono, monospace">${v}%</text>`).join('');
+  const xLabels = series.map(p => `<text x="${xFor(p.week)}" y="${h - 6}" font-size="10" fill="var(--text-muted)" text-anchor="middle" font-family="DM Mono, monospace">W${p.week}</text>`).join('');
+
+  document.getElementById("chartBody").innerHTML = `
+    <svg class="chart-svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">
+      ${gridLines}
+      <polyline points="${points}" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+      ${dots}
+      ${xLabels}
+    </svg>`;
+}
+
+function renderActivity(results) {
+  const card = document.getElementById("activityCard");
+  if (results.length === 0) { card.style.display = "none"; return; }
+  card.style.display = "block";
+
+  const sorted = [...results].sort((a, b) => Mastery.toDate(b.timestamp) - Mastery.toDate(a.timestamp)).slice(0, 10);
+  const html = sorted.map(r => {
+    const pct = r.percentage || 0;
+    const icon = pct >= 70 ? "🏆" : pct >= 50 ? "✅" : "📝";
+    const iconClass = pct >= 70 ? "green" : pct >= 50 ? "blue" : "amber";
+    const d = Mastery.toDate(r.timestamp);
+    const timeStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const topics = Object.keys(r.topicBreakdown || {}).join(', ') || '—';
+    return `
+      <div class="activity-item">
+        <div class="activity-icon ${iconClass}">${icon}</div>
+        <div class="activity-text">
+          <div class="title">${r.subject || "Quiz"} · Grade ${r.grade || "?"} — ${r.score || 0}/${r.total || "?"} correct</div>
+          <div class="meta">${topics}</div>
+        </div>
+        <div class="activity-time">${timeStr}</div>
+      </div>`;
+  }).join('');
+
+  document.getElementById("activityBody").innerHTML = html;
+}
+</script>
+</body>
+</html>
