@@ -331,91 +331,6 @@
     .stats-row { grid-template-columns: 1fr 1fr; }
     .user-chip .user-name { display: none; }
   }
-
-  /* ── NAV LINKS ── */
-  .nav-links { display: flex; align-items: center; gap: 4px; }
-  .nav-link {
-    padding: 6px 12px; border-radius: 8px;
-    font-size: 0.85em; font-weight: 600; color: var(--text-muted);
-    text-decoration: none; transition: all .15s;
-  }
-  .nav-link:hover, .nav-link.active { color: var(--primary); background: var(--primary-light); }
-
-  /* ── MASTERY HERO (Your Progress) ── */
-  .mastery-hero {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: 22px 24px; margin-bottom: 28px;
-  }
-  .mastery-hero-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
-  .mastery-hero-label { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 4px; }
-  .mastery-hero-value { font-size: 2.6em; font-weight: 800; font-family: 'DM Mono', monospace; line-height: 1; color: var(--primary); }
-  .mastery-bar-track { height: 12px; background: var(--surface2); border-radius: 99px; overflow: hidden; margin-bottom: 16px; }
-  .mastery-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--primary), #7b93ff); transition: width 1.2s cubic-bezier(.4,0,.2,1); width: 0%; }
-  .mastery-meta-row { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.85em; color: var(--text-muted); font-weight: 600; }
-  .mastery-meta-row span strong { color: var(--text); font-family: 'DM Mono', monospace; }
-
-  /* ── TOPIC MASTERY ── */
-  .subject-mastery-block { margin-bottom: 18px; }
-  .subject-mastery-block:last-child { margin-bottom: 0; }
-  .subject-mastery-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .subject-mastery-head .name { font-weight: 700; font-size: 0.92em; }
-  .subject-mastery-head .pct  { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--primary); font-size: 0.88em; }
-  .sw-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-  .sw-col-label { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); margin-bottom: 4px; }
-  .sw-item { font-size: 0.82em; padding: 2px 0; }
-  .sw-item.good { color: var(--green); }
-  .sw-item.bad  { color: var(--amber); }
-  @media(max-width: 500px) { .sw-columns { grid-template-columns: 1fr; } }
-
-  /* ── RECOMMENDATION CARD ── */
-  .rec-card { display: flex; flex-direction: column; gap: 10px; }
-  .rec-topic { font-size: 1.15em; font-weight: 800; }
-  .rec-mastery { font-size: 0.85em; color: var(--text-muted); }
-  .rec-meta { font-size: 0.82em; color: var(--text-muted); }
-  .btn-practice {
-    align-self: flex-start; margin-top: 4px;
-    padding: 9px 16px; background: var(--primary); color: #fff;
-    border: none; border-radius: 8px; font-family: inherit;
-    font-size: 0.85em; font-weight: 700; cursor: pointer;
-    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-    transition: all .15s;
-  }
-  .btn-practice:hover { background: #3d5ce5; transform: translateY(-1px); }
-
-  /* ── EXAM READINESS ── */
-  .readiness-block { margin-bottom: 20px; }
-  .readiness-block:last-child { margin-bottom: 0; }
-  .readiness-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-  .readiness-subject { font-weight: 700; font-size: 0.95em; }
-  .readiness-pct { font-family: 'DM Mono', monospace; font-weight: 800; font-size: 1.1em; color: var(--primary); }
-  .readiness-basis { font-size: 0.76em; color: var(--text-muted); margin: 6px 0 12px; }
-  .unit-row { margin-bottom: 9px; }
-  .unit-row:last-child { margin-bottom: 0; }
-  .unit-row-top { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px; }
-  .unit-row-top .uname { font-weight: 600; }
-  .unit-row-top .upct { font-family: 'DM Mono', monospace; color: var(--text-muted); }
-  .opportunity-box {
-    margin-top: 14px; padding: 12px 14px; background: var(--amber-light);
-    border: 1.5px solid #fde68a; border-radius: 10px;
-  }
-  .opportunity-box .label { font-size: 0.72em; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--amber); margin-bottom: 4px; }
-  .opportunity-box .topic { font-weight: 700; font-size: 0.95em; margin-bottom: 2px; }
-  .opportunity-box .sub { font-size: 0.8em; color: #92650a; margin-bottom: 10px; }
-
-  /* ── ACHIEVEMENTS ── */
-  .achv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .achv-item { text-align: center; padding: 14px 8px; background: var(--surface2); border-radius: 10px; }
-  .achv-item .icon { font-size: 1.6em; margin-bottom: 6px; }
-  .achv-item .title { font-size: 0.78em; font-weight: 700; }
-  .achv-item .desc  { font-size: 0.68em; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
-  @media(max-width: 500px) { .achv-grid { grid-template-columns: repeat(2, 1fr); } }
-
-  .badge-mastered {
-    display: inline-block; font-size: 0.68em; font-weight: 800;
-    background: var(--green-light); color: var(--green);
-    padding: 1px 7px; border-radius: 99px; margin-left: 6px;
-  }
 </style>
 </head>
 <body>
@@ -425,10 +340,7 @@
   <div class="nav-left">
     <div class="logo-chip">🎓 Learning Academy</div>
     <div class="nav-divider"></div>
-    <div class="nav-links">
-      <a href="dashboard.html" class="nav-link active">Dashboard</a>
-      <a href="progress.html" class="nav-link">Progress</a>
-    </div>
+    <span class="nav-title">Dashboard</span>
   </div>
   <div class="nav-right">
     <div class="user-chip">
@@ -454,11 +366,6 @@
   <div class="welcome-header">
     <h1 id="welcomeHeading">Hello 👋</h1>
     <p id="welcomeSub">Here's how you're doing across all your quizzes.</p>
-  </div>
-
-  <!-- Your Progress (overall mastery) -->
-  <div class="mastery-hero" id="progressHero">
-    <!-- Filled by JS: either the mastery bar, or a first-quiz empty state -->
   </div>
 
   <!-- Stats Row -->
@@ -510,41 +417,6 @@
 
   </div>
 
-  <!-- Exam Readiness -->
-  <div class="full-section" id="readinessSection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head"><h2>📝 Exam Readiness</h2></div>
-      <div class="section-body" id="readinessBody"></div>
-    </div>
-  </div>
-
-  <!-- Recommended For You -->
-  <div class="full-section" id="recSection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head"><h2>🎯 Recommended For You</h2></div>
-      <div class="section-body rec-card" id="recBody"></div>
-    </div>
-  </div>
-
-  <!-- Topic Mastery -->
-  <div class="full-section" id="masterySection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head"><h2>🧠 Topic Mastery</h2></div>
-      <div class="section-body" id="masteryBody"></div>
-    </div>
-  </div>
-
-  <!-- Achievements -->
-  <div class="full-section" id="achvSection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head">
-        <h2>🏆 Achievements</h2>
-        <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="achvCount"></span>
-      </div>
-      <div class="section-body" id="achvBody"></div>
-    </div>
-  </div>
-
   <!-- Full Quiz History -->
   <div class="full-section">
     <div class="section-card">
@@ -583,7 +455,6 @@ import {
   doc,
   getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import * as Mastery from "./mastery.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
@@ -700,10 +571,7 @@ onAuthStateChanged(auth, async (user) => {
 
 /* ── Render everything ── */
 function renderDashboard(results) {
-  if (results.length === 0) {
-    renderProgressHeroEmpty();
-    return; // leave the rest of the page's built-in empty states
-  }
+  if (results.length === 0) return; // leave empty states
 
   /* ── Stats ── */
   const total    = results.length;
@@ -803,179 +671,6 @@ function renderDashboard(results) {
       </thead>
       <tbody>${rows}</tbody>
     </table>`;
-
-  /* ── New: mastery-driven sections ── */
-  renderProgressHero(results);
-  renderTopicMastery(results);
-  renderRecommendation(results);
-  renderExamReadiness(results);
-  renderAchievements(results);
-}
-
-/* ── Your Progress (overall mastery) ── */
-function renderProgressHeroEmpty() {
-  document.getElementById("progressHero").innerHTML = `
-    <div class="mastery-hero-label">📊 Your Progress</div>
-    <p style="font-size:0.95em;color:var(--text-muted);margin:6px 0 14px;line-height:1.5;">
-      Let's build your learning profile. Complete your first practice session to start tracking mastery.
-    </p>
-    <a href="quiz.html" class="btn-practice">Start Your First Quiz →</a>`;
-}
-
-function renderProgressHero(results) {
-  const stats = Mastery.computeProgressStats(results);
-  const hero = document.getElementById("progressHero");
-  hero.innerHTML = `
-    <div class="mastery-hero-top">
-      <div>
-        <div class="mastery-hero-label">📊 Your Progress — Overall Mastery</div>
-        <div class="mastery-hero-value">${stats.overallMastery ?? '—'}%</div>
-      </div>
-    </div>
-    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="heroBarFill" data-target="${stats.overallMastery ?? 0}"></div></div>
-    <div class="mastery-meta-row">
-      <span><strong>${stats.questionsAnswered}</strong> Questions</span>
-      <span><strong>${stats.accuracy ?? '—'}%</strong> Accuracy</span>
-      <span><strong>${stats.topicsPracticed}</strong> Topics</span>
-      <span><strong>${stats.studyTimeLabel}</strong> Study Time</span>
-      <span>🔥 <strong>${stats.streak}</strong> Day Streak</span>
-    </div>`;
-  requestAnimationFrame(() => setTimeout(() => {
-    const el = document.getElementById("heroBarFill");
-    if (el) el.style.width = el.dataset.target + "%";
-  }, 100));
-}
-
-/* ── Topic Mastery, grouped by subject, with strengths/weaknesses ── */
-function renderTopicMastery(results) {
-  const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
-  const section = document.getElementById("masterySection");
-  if (topics.length === 0) { section.style.display = "none"; return; }
-  section.style.display = "block";
-
-  const bySubject = {};
-  topics.forEach(t => {
-    if (!bySubject[t.subject]) bySubject[t.subject] = [];
-    bySubject[t.subject].push(t);
-  });
-
-  const html = Object.entries(bySubject).map(([subject, list]) => {
-    const { mastery: subjMastery } = Mastery.calculateMastery(
-      list.flatMap(t => t.events)
-    );
-    const { strengths, weaknesses } = Mastery.getStrengthsAndWeaknesses(list);
-
-    const swHTML = (strengths.length || weaknesses.length) ? `
-      <div class="sw-columns">
-        <div>
-          <div class="sw-col-label">Strengths</div>
-          ${strengths.map(t => `<div class="sw-item good">✓ ${t.topic} — ${t.mastery}%</div>`).join('') || '<div class="sw-item" style="color:var(--text-muted);">Still building data</div>'}
-        </div>
-        <div>
-          <div class="sw-col-label">Needs Practice</div>
-          ${weaknesses.map(t => `<div class="sw-item bad">⚠ ${t.topic} — ${t.mastery}%</div>`).join('') || '<div class="sw-item" style="color:var(--text-muted);">None right now 🎉</div>'}
-        </div>
-      </div>` : `<p style="font-size:0.8em;color:var(--text-muted);margin-top:6px;">Practice a few more questions to reveal strengths and weaknesses.</p>`;
-
-    return `
-      <div class="subject-mastery-block">
-        <div class="subject-mastery-head">
-          <span class="name">${subject}</span>
-          <span class="pct">${subjMastery}%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="width:${subjMastery}%;"></div></div>
-        ${swHTML}
-      </div>`;
-  }).join('<div style="height:1px;background:var(--border);margin:16px 0;"></div>');
-
-  document.getElementById("masteryBody").innerHTML = html;
-}
-
-/* ── Recommended For You ── */
-function renderRecommendation(results) {
-  const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
-  const section = document.getElementById("recSection");
-
-  // Don't repeat the topic(s) from the very last quiz if a real alternative exists.
-  const sortedResults = [...results].sort((a, b) => Mastery.toDate(b.timestamp) - Mastery.toDate(a.timestamp));
-  const lastTopics = sortedResults.length ? Object.keys(sortedResults[0].topicBreakdown || {}) : [];
-
-  const rec = Mastery.getRecommendation(topics, lastTopics);
-  if (!rec) { section.style.display = "none"; return; }
-  section.style.display = "block";
-
-  const qCount = 5, minutes = Math.max(3, Math.round(qCount * 1.2));
-  document.getElementById("recBody").innerHTML = `
-    <div class="rec-topic">${rec.topic}</div>
-    <div class="rec-mastery">Your mastery: <strong>${rec.mastery}%</strong> · ${rec.subject} · Grade ${rec.grade}</div>
-    <div class="rec-meta">${qCount} targeted questions · ~${minutes} minutes</div>
-    <a class="btn-practice" href="quiz.html?subject=${encodeURIComponent(rec.subject)}&grade=${encodeURIComponent(rec.grade)}&topic=${encodeURIComponent(rec.topic)}">Practice Now →</a>`;
-}
-
-/* ── Exam Readiness, per subject+grade the student has practiced ── */
-function renderExamReadiness(results) {
-  const section = document.getElementById("readinessSection");
-  const combos = [...new Set(results.map(r => `${r.subject}::${r.grade}`))];
-  if (combos.length === 0) { section.style.display = "none"; return; }
-  section.style.display = "block";
-
-  const topics = Mastery.computeTopicMastery(results);
-
-  const html = combos.map(key => {
-    const [subject, grade] = key.split('::');
-    const readiness = Mastery.computeSubjectReadiness(results, subject, grade);
-    const unitList = topics.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0)
-      .sort((a, b) => a.mastery - b.mastery);
-
-    const unitsHTML = unitList.map(u => `
-      <div class="unit-row">
-        <div class="unit-row-top"><span class="uname">${u.topic}</span><span class="upct">${u.mastery}%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:${u.mastery}%;"></div></div>
-      </div>`).join('');
-
-    const weakest = unitList[0];
-    const opportunityHTML = weakest ? `
-      <div class="opportunity-box">
-        <div class="label">⚠ Your Biggest Opportunity</div>
-        <div class="topic">${weakest.topic}</div>
-        <div class="sub">Mastery: ${weakest.mastery}% — currently your weakest ${subject} Grade ${grade} topic.</div>
-        <a class="btn-practice" href="quiz.html?subject=${encodeURIComponent(subject)}&grade=${encodeURIComponent(grade)}&topic=${encodeURIComponent(weakest.topic)}">Practice This Topic →</a>
-      </div>` : '';
-
-    const totalQs = results.filter(r => r.subject === subject && String(r.grade) === String(grade)).reduce((s, r) => s + (r.total || 0), 0);
-
-    return `
-      <div class="readiness-block">
-        <div class="readiness-top">
-          <span class="readiness-subject">${subject} · Grade ${grade}</span>
-          <span class="readiness-pct">${readiness.mastery ?? '—'}%</span>
-        </div>
-        <div class="mastery-bar-track" style="margin-bottom:4px;"><div class="mastery-bar-fill" style="width:${readiness.mastery ?? 0}%;"></div></div>
-        <div class="readiness-basis">Based on ✓ ${totalQs} questions · ✓ ${unitList.length} topic${unitList.length !== 1 ? 's' : ''} practiced${readiness.attempts < 8 ? ' · still gathering data' : ''}</div>
-        ${unitsHTML}
-        ${opportunityHTML}
-      </div>`;
-  }).join('<div style="height:1px;background:var(--border);margin:18px 0;"></div>');
-
-  document.getElementById("readinessBody").innerHTML = html;
-}
-
-/* ── Achievements ── */
-function renderAchievements(results) {
-  const section = document.getElementById("achvSection");
-  const unlocked = Mastery.computeAchievements(results);
-  if (unlocked.length === 0) { section.style.display = "none"; return; }
-  section.style.display = "block";
-  document.getElementById("achvCount").textContent = `${unlocked.length} unlocked`;
-  document.getElementById("achvBody").innerHTML = `
-    <div class="achv-grid">
-      ${unlocked.map(a => `
-        <div class="achv-item">
-          <div class="icon">${a.icon}</div>
-          <div class="title">${a.title}</div>
-          <div class="desc">${a.desc}</div>
-        </div>`).join('')}
-    </div>`;
 }
 
 /* ── Time formatter ── */

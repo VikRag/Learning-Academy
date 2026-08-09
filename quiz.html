@@ -677,8 +677,7 @@ body {
 <script type="module">
 import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, addDoc, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import * as Mastery from "./mastery.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const app = initializeApp({
   apiKey:"AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
@@ -707,15 +706,6 @@ onAuthStateChanged(auth, (user) => {
   document.getElementById("authLoading").style.display = "none";
   const root = document.getElementById("appRoot");
   root.style.display = "flex";
-
-  // Prefill subject/grade from a deep link and jump straight in.
-  const dlSubject = deepLink.get('subject');
-  const dlGrade = deepLink.get('grade');
-  if (dlSubject && dlGrade) {
-    $('subject').value = dlSubject;
-    $('grade').value = dlGrade;
-    $('btnStep1Next').click();
-  }
 });
 
 const questionFiles = {
@@ -766,14 +756,6 @@ let lifelineMax = 2;
 let answeredThisQ = false;
 let selectedTopics = new Set();
 let currentStep = 1;
-
-/* ── Deep-link support ──
-   "Practice This Topic" buttons on the dashboard/progress page link
-   here with ?subject=Science&grade=7&topic=Population%20Growth so the
-   student lands straight in a quiz on their weakest area instead of
-   re-picking subject/grade/topic by hand. */
-const deepLink = new URLSearchParams(window.location.search);
-const deepLinkTopic = deepLink.get('topic');
 
 function setStep(n) {
   currentStep = n;
@@ -855,17 +837,6 @@ function buildTopicGrid() {
   });
 
   updateTopicCount();
-
-  // If we arrived via a deep link for a specific topic, select it and
-  // skip straight to the settings step.
-  if (deepLinkTopic) {
-    const match = [...grid.querySelectorAll('.topic-btn')].find(b => b.dataset.topic === deepLinkTopic);
-    if (match) {
-      toggleTopic(match, deepLinkTopic);
-      buildSummary();
-      setStep(3);
-    }
-  }
 }
 
 function toggleTopic(btn, topic) {
@@ -965,6 +936,7 @@ $('btnStartQuiz').addEventListener('click', () => {
     return;
   }
 
+  // Reset
   answers = [];
   correctCount = incorrectCount = skipCount = currentIdx = currentStreak = bestStreak = totalTimeUsed = 0;
   answeredThisQ = false;
@@ -984,6 +956,9 @@ $('btnStartQuiz').addEventListener('click', () => {
   displayQuestion();
 });
 
+/* ══════════════════════════════════
+   QUIZ ENGINE
+══════════════════════════════════ */
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -993,6 +968,7 @@ function shuffle(arr) {
 
 function buildSegments(n) {
   const t = $('segTrack'); t.innerHTML = '';
+  // Limit visible segments to avoid tiny slivers
   const show = Math.min(n, 50);
   for (let i = 0; i < show; i++) {
     const s = document.createElement('div');
@@ -1006,6 +982,7 @@ function setSeg(i, state) {
   if (s) s.className = `seg ${state}`;
 }
 
+/* ── Timer ── */
 function startTimer() {
   if (!timerMax) return;
   timerRemaining = timerMax;
@@ -1038,11 +1015,13 @@ function handleTimeout() {
   $('btnNext').disabled = false;
 }
 
+/* ── Streak ── */
 function updateStreak() {
   $('streakNum').textContent = currentStreak;
   $('streakBadge').className = currentStreak >= 2 ? 'streak-badge show' : 'streak-badge';
 }
 
+/* ── Lifelines ── */
 function refreshLifelineBtns() {
   const unlimited = lifelineMax === 'unlimited';
   [['5050','btn5050','badge5050'],['hint','btnHint','badgeHint'],['skip','btnSkip','badgeSkip']].forEach(([key, btnId, badgeId]) => {
@@ -1233,6 +1212,7 @@ function showComplete() {
   }, 80));
 }
 
+/* ── End quiz early ── */
 function confirmEndQuiz() {
   if (!selectedQuestions.length) return;
   const answered = answers.length;
@@ -1259,18 +1239,12 @@ function confirmEndQuiz() {
   });
 }
 
-function computeTopicBreakdown() {
-  const breakdown = {};
-  selectedQuestions.forEach((q, i) => {
-    const topic = q.topic || 'General';
-    const a = answers[i] || { result: 'unanswered' };
-    if (!breakdown[topic]) breakdown[topic] = { correct: 0, total: 0 };
-    breakdown[topic].total++;
-    if (a.result === 'correct') breakdown[topic].correct++;
-  });
-  return breakdown;
-}
-
+/* ── Save ──
+   Now surfaces failures instead of silently swallowing them. If there's
+   no authenticated user (shouldn't happen now that the auth gate redirects
+   unauthenticated visitors to login.html) or the Firestore write is
+   rejected (e.g. by security rules), the person sees a clear banner on
+   the results screen instead of a quietly-missing dashboard entry. */
 async function saveQuizResult() {
   const banner = document.getElementById('saveErrorBanner2');
 
@@ -1282,32 +1256,16 @@ async function saveQuizResult() {
     return;
   }
 
-  const topicBreakdown = computeTopicBreakdown();
-
-  let priorResults = [];
   try {
-    const q = query(collection(db, 'users', currentUser.uid, 'quizResults'), orderBy('timestamp', 'desc'));
-    const snap = await getDocs(q);
-    priorResults = snap.docs.map(d => d.data());
-  } catch (e) {
-    console.error('Could not load prior results for improvement comparison:', e);
-  }
-
-  const newResult = {
-    score:      correctCount,
-    total:      selectedQuestions.length,
-    percentage: Math.round((correctCount / selectedQuestions.length) * 100),
-    subject:    $('subject')?.value ?? 'Unknown',
-    grade:      $('grade')?.value   ?? 'Unknown',
-    topics:     [...selectedTopics],
-    topicBreakdown,
-    timeTakenSeconds: Math.round(totalTimeUsed),
-    timestamp:  new Date()
-  };
-
-  try {
-    await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), newResult);
-    renderImprovementPanel(priorResults, newResult);
+    await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), {
+      score:      correctCount,
+      total:      selectedQuestions.length,
+      percentage: Math.round((correctCount / selectedQuestions.length) * 100),
+      subject:    $('subject')?.value ?? 'Unknown',
+      grade:      $('grade')?.value   ?? 'Unknown',
+      topics:     [...selectedTopics],
+      timestamp:  new Date()
+    });
   } catch(e) {
     console.error('Save error:', e);
     if (banner) {
@@ -1317,57 +1275,7 @@ async function saveQuizResult() {
   }
 }
 
-function renderImprovementPanel(priorResults, newResult) {
-  const afterResults = [...priorResults, newResult];
-
-  const beforeTopics = Mastery.computeTopicMastery(priorResults);
-  const afterTopics  = Mastery.computeTopicMastery(afterResults);
-
-  const changedTopics = Object.keys(newResult.topicBreakdown).map(topic => {
-    const before = beforeTopics.find(t => t.topic === topic && t.subject === newResult.subject);
-    const after  = afterTopics.find(t => t.topic === topic && t.subject === newResult.subject);
-    return { topic, before: before ? before.mastery : null, after: after ? after.mastery : null };
-  }).filter(t => t.after !== null);
-
-  const beforeAchievements = new Set(Mastery.computeAchievements(priorResults).map(a => a.id));
-  const newlyUnlocked = Mastery.computeAchievements(afterResults).filter(a => !beforeAchievements.has(a.id));
-
-  if (changedTopics.length === 0 && newlyUnlocked.length === 0) return;
-
-  const improvedRows = changedTopics.map(t => {
-    const delta = t.before === null ? null : t.after - t.before;
-    const deltaLabel = delta === null ? 'New topic tracked' : (delta >= 0 ? `+${delta}%` : `${delta}%`);
-    const deltaColor = delta === null ? 'var(--muted)' : delta > 0 ? 'var(--green)' : delta < 0 ? 'var(--red)' : 'var(--muted)';
-    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);">
-      <span style="font-weight:600;font-size:.88em;">${t.topic}</span>
-      <span style="font-family:'DM Mono',monospace;font-size:.85em;">
-        ${t.before === null ? '' : `${t.before}% → `}${t.after}%
-        <span style="color:${deltaColor};font-weight:700;margin-left:6px;">${deltaLabel}</span>
-      </span>
-    </div>`;
-  }).join('');
-
-  const achievementHTML = newlyUnlocked.map(a => `
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;">
-      <span style="font-size:1.4em;">${a.icon}</span>
-      <div>
-        <div style="font-weight:700;font-size:.88em;">${a.title}</div>
-        <div style="font-size:.78em;color:var(--muted);">${a.desc}</div>
-      </div>
-    </div>`).join('');
-
-  const panel = document.createElement('div');
-  panel.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-top:16px;width:100%;max-width:640px;text-align:left;';
-  panel.innerHTML = `
-    ${improvedRows ? `<div style="font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px;">📈 Mastery Update</div>${improvedRows}` : ''}
-    ${achievementHTML ? `<div style="font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:${improvedRows ? '16px' : '0'} 0 4px;">🏆 Achievement Unlocked</div>${achievementHTML}` : ''}
-  `;
-
-  const completeCard = document.querySelector('.complete-card');
-  if (completeCard) completeCard.appendChild(panel);
-  else document.body.appendChild(panel);
-}
-
+/* ── Wire buttons ── */
 $('btnEndQuiz').addEventListener('click', confirmEndQuiz);
 $('btnNext').addEventListener('click', nextQuestion);
 $('btn5050').addEventListener('click', () => useLifeline('5050'));
