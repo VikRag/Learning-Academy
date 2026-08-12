@@ -677,7 +677,448 @@ body {
 <script type="module">
 import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, addDoc, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ════════════════════════════════════════════════════════════════
+   MASTERY ENGINE (inlined) — see comments below for the reasoning
+   behind the algorithm. Kept identical across dashboard.html,
+   progress.html, and quiz.html so every page computes the exact
+   same numbers from the exact same quiz history.
+   ════════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════════
+   mastery.js — AR Learning Academy shared analytics engine
+   ════════════════════════════════════════════════════════════════════
+   Every dashboard / progress-page / post-quiz number in the app is
+   derived from this one module, from the SAME raw source: the
+   student's `quizResults` documents in Firestore. Nothing here is
+   hardcoded and nothing is stored twice — mastery, readiness,
+   recommendations, and achievements are all recomputed from quiz
+   history each time they're needed. That keeps the numbers honest
+   and avoids two copies of "the truth" drifting apart.
+
+   WHERE THE DATA COMES FROM
+   Each quizResult document (already saved by quiz.html) now also
+   carries a `topicBreakdown` field:
+       topicBreakdown: { "Food Webs": { correct: 3, total: 4 }, ... }
+   That's simply a tally of the questions the student saw in THAT
+   quiz, grouped by topic. Nothing new to store per-question — we
+   already know each question's topic and whether it was answered
+   correctly, so we can group it at save time for free.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tunable constants (kept in one place, with reasoning) ── */
+
+// Bayesian smoothing: every topic starts with 4 "phantom" attempts at
+// 50%. This is what stops a single lucky/unlucky answer from swinging
+// a topic to 100% or 0% mastery — the more real attempts a student
+// has, the less the phantom attempts matter, and the score converges
+// on their true accuracy.
+const PRIOR_ATTEMPTS = 4;
+const PRIOR_MEAN = 0.5;
+
+// Recency weighting: a student's last few quiz attempts on a topic
+// matter more than attempts from a month ago, because mastery changes
+// as they learn. The most recent RECENT_WINDOW quiz-attempts on a
+// topic count RECENT_WEIGHT times as much as older ones.
+const RECENT_WINDOW = 3;
+const RECENT_WEIGHT = 2;
+
+// A topic can't be labeled "Mastered" just because the last couple of
+// answers were lucky — it needs a real track record.
+const MASTERED_MIN_ATTEMPTS = 8;
+const MASTERED_THRESHOLD = 85;
+
+// A topic only counts as "meaningful" for strengths/weaknesses and
+// recommendations once it has at least this many answered questions.
+const MEANINGFUL_MIN_ATTEMPTS = 3;
+
+/* ── Helpers ── */
+
+function toDate(ts) {
+  if (!ts) return new Date(0);
+  if (typeof ts.toDate === 'function') return ts.toDate();
+  return new Date(ts);
+}
+
+function formatDuration(totalSeconds) {
+  const s = Math.max(0, Math.round(totalSeconds || 0));
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m`;
+  return `${s}s`;
+}
+
+function dateKey(d) {
+  return d.toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+/* ── Core mastery calculation ──
+   events: [{ correct, total, timestamp }], one entry per quiz attempt
+   that touched this topic. Order does not need to be sorted — we sort
+   internally. Returns null mastery if there is no data at all. */
+function calculateMastery(events) {
+  if (!events || events.length === 0) {
+    return { mastery: null, attempts: 0, isMastered: false };
+  }
+  const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
+
+  let weightedCorrect = 0;
+  let weightedTotal = 0;
+  let attempts = 0;
+
+  sorted.forEach((e, i) => {
+    const isRecent = i >= sorted.length - RECENT_WINDOW;
+    const w = isRecent ? RECENT_WEIGHT : 1;
+    weightedCorrect += e.correct * w;
+    weightedTotal += e.total * w;
+    attempts += e.total;
+  });
+
+  const smoothedCorrect = weightedCorrect + PRIOR_ATTEMPTS * PRIOR_MEAN;
+  const smoothedTotal = weightedTotal + PRIOR_ATTEMPTS;
+  const mastery = Math.round((smoothedCorrect / smoothedTotal) * 100);
+  const isMastered = attempts >= MASTERED_MIN_ATTEMPTS && mastery >= MASTERED_THRESHOLD;
+
+  return { mastery, attempts, isMastered };
+}
+
+/* Mastery as it evolved attempt-by-attempt — powers the "68% → 76%"
+   improvement callouts and the mastery-over-time chart. */
+function masteryHistory(events) {
+  const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
+  const history = [];
+  for (let i = 0; i < sorted.length; i++) {
+    const prefix = sorted.slice(0, i + 1);
+    const { mastery, attempts } = calculateMastery(prefix);
+    history.push({ timestamp: sorted[i].timestamp, mastery, attempts });
+  }
+  return history;
+}
+
+/* ── Build topic-level event map from raw quizResults ── */
+function buildTopicMap(quizResults) {
+  // key -> { topic, subject, grade, events: [] }
+  const map = {};
+  const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+
+  sorted.forEach(r => {
+    const ts = toDate(r.timestamp);
+    const breakdown = r.topicBreakdown || {};
+    Object.entries(breakdown).forEach(([topic, d]) => {
+      const key = `${r.subject || 'Unknown'}::${r.grade || '?'}::${topic}`;
+      if (!map[key]) {
+        map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
+      }
+      map[key].events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
+    });
+  });
+
+  return map;
+}
+
+/* Topic mastery, one row per topic (subject+grade+topic), with mastery
+   computed. Sorted by subject then mastery ascending isn't forced here
+   — callers sort as needed. */
+function computeTopicMastery(quizResults) {
+  const map = buildTopicMap(quizResults);
+  return Object.values(map).map(t => ({
+    ...t,
+    ...calculateMastery(t.events),
+  }));
+}
+
+/* Overall mastery across everything the student has ever done. Uses
+   the same smoothing/recency logic, just applied to every event from
+   every topic at once, so a student with lots of practice earns a
+   confident number and a brand-new student doesn't get 0%. */
+function computeOverallMastery(quizResults) {
+  const allEvents = [];
+  quizResults.forEach(r => {
+    const ts = toDate(r.timestamp);
+    Object.values(r.topicBreakdown || {}).forEach(d => {
+      allEvents.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
+    });
+  });
+  return calculateMastery(allEvents);
+}
+
+/* Exam readiness for one subject+grade = mastery aggregated over just
+   that subject's events. Same honest math — a student who has only
+   answered a handful of questions will not see a high number, because
+   the Bayesian prior pulls a low-attempt score toward 50%. */
+function computeSubjectReadiness(quizResults, subject, grade) {
+  const events = [];
+  quizResults
+    .filter(r => r.subject === subject && String(r.grade) === String(grade))
+    .forEach(r => {
+      const ts = toDate(r.timestamp);
+      Object.values(r.topicBreakdown || {}).forEach(d => {
+        events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
+      });
+    });
+  return calculateMastery(events);
+}
+
+/* ── Strengths / weaknesses ── */
+function getStrengthsAndWeaknesses(topicMasteryList) {
+  const meaningful = topicMasteryList.filter(t => t.attempts >= MEANINGFUL_MIN_ATTEMPTS && t.mastery !== null);
+  const sorted = [...meaningful].sort((a, b) => b.mastery - a.mastery);
+  const strengths = sorted.filter(t => t.mastery >= 75).slice(0, 3);
+  const weaknesses = [...sorted].reverse().filter(t => t.mastery < 70).slice(0, 3);
+  return { strengths, weaknesses };
+}
+
+/* ── Recommendation: weakest meaningful topic, avoiding repeating the
+   exact topic the student just practiced if a real alternative exists ── */
+function getRecommendation(topicMasteryList, lastPracticedTopics = []) {
+  const candidates = topicMasteryList.filter(t => t.attempts >= 1 && !t.isMastered);
+  if (candidates.length === 0) return null;
+
+  const sorted = [...candidates].sort((a, b) => a.mastery - b.mastery);
+  const notJustPracticed = sorted.filter(t => !lastPracticedTopics.includes(t.topic));
+
+  return notJustPracticed.length > 0 ? notJustPracticed[0] : sorted[0];
+}
+
+/* ── Study streak: consecutive calendar days (ending today or
+   yesterday) that include at least one quiz ── */
+function computeStreak(quizResults) {
+  if (quizResults.length === 0) return 0;
+  const days = new Set(quizResults.map(r => dateKey(toDate(r.timestamp))));
+  let streak = 0;
+  const cursor = new Date();
+  // Streak still counts if today has no activity yet but yesterday does.
+  if (!days.has(dateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+  while (days.has(dateKey(cursor))) {
+    streak++;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return streak;
+}
+
+/* ── Achievements ──
+   Fully derived from quiz history — nothing is stored, so nothing can
+   drift out of sync or "reset." Pass the full quizResults list (or a
+   prefix of it, to check what was unlocked before the latest quiz). */
+function computeAchievements(quizResults) {
+  const topicList = computeTopicMastery(quizResults);
+  const unlocked = [];
+
+  // First Mastery
+  if (topicList.some(t => t.isMastered)) {
+    unlocked.push({ id: 'first-mastery', icon: '🏅', title: 'First Mastery', desc: 'Mastered your first topic' });
+  }
+
+  // Getting Better (+10% in one topic's running mastery, attempt to attempt)
+  const gotBetter = topicList.some(t => {
+    const hist = masteryHistory(t.events);
+    return hist.some((h, i) => i > 0 && h.mastery - hist[i - 1].mastery >= 10);
+  });
+  if (gotBetter) {
+    unlocked.push({ id: 'getting-better', icon: '📈', title: 'Getting Better', desc: 'Improved a topic by 10% or more' });
+  }
+
+  // Consistency (5-day streak)
+  if (computeStreak(quizResults) >= 5) {
+    unlocked.push({ id: 'consistency', icon: '🔥', title: 'Consistency', desc: '5-day study streak' });
+  }
+
+  // Perfect Score
+  if (quizResults.some(r => r.percentage === 100)) {
+    unlocked.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
+  }
+
+  // Subject Master (90%+ aggregate mastery in a subject, with real attempts)
+  const subjects = [...new Set(quizResults.map(r => r.subject).filter(Boolean))];
+  const subjectMastered = subjects.some(s => {
+    const events = [];
+    quizResults.filter(r => r.subject === s).forEach(r => {
+      const ts = toDate(r.timestamp);
+      Object.values(r.topicBreakdown || {}).forEach(d => events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts }));
+    });
+    const m = calculateMastery(events);
+    return m.attempts >= MASTERED_MIN_ATTEMPTS && m.mastery >= 90;
+  });
+  if (subjectMastered) {
+    unlocked.push({ id: 'subject-master', icon: '🎓', title: 'Subject Master', desc: 'Reached 90% mastery in a subject' });
+  }
+
+  // Comeback (+20% from a topic's lowest point to its current mastery)
+  const comeback = topicList.some(t => {
+    const hist = masteryHistory(t.events);
+    if (hist.length < 2) return false;
+    let low = hist[0].mastery;
+    for (const h of hist) {
+      if (h.mastery - low >= 20 && low < 50) return true;
+      low = Math.min(low, h.mastery);
+    }
+    return false;
+  });
+  if (comeback) {
+    unlocked.push({ id: 'comeback', icon: '🔄', title: 'Comeback', desc: 'Improved a previously weak topic by 20%' });
+  }
+
+  return unlocked;
+}
+
+/* ── Aggregate stats for the "Your Progress" card ── */
+function computeProgressStats(quizResults) {
+  const questionsAnswered = quizResults.reduce((s, r) => s + (r.total || 0), 0);
+  const correctTotal = quizResults.reduce((s, r) => s + (r.score || 0), 0);
+  const accuracy = questionsAnswered > 0 ? Math.round((correctTotal / questionsAnswered) * 100) : null;
+  const topicsPracticed = new Set();
+  quizResults.forEach(r => Object.keys(r.topicBreakdown || {}).forEach(t => topicsPracticed.add(t)));
+  const studySeconds = quizResults.reduce((s, r) => s + (r.timeTakenSeconds || 0), 0);
+  const streak = computeStreak(quizResults);
+  const overall = computeOverallMastery(quizResults);
+
+  return {
+    overallMastery: overall.mastery,
+    questionsAnswered,
+    accuracy,
+    topicsPracticed: topicsPracticed.size,
+    studySeconds,
+    studyTimeLabel: formatDuration(studySeconds),
+    streak,
+  };
+}
+
+/* ── Weekly mastery-over-time series for the Progress page chart ── */
+function computeWeeklyMasterySeries(quizResults) {
+  if (quizResults.length === 0) return [];
+  const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+  const firstDate = toDate(sorted[0].timestamp);
+
+  const weekOf = (d) => Math.floor((d - firstDate) / (7 * 24 * 3600 * 1000));
+  const byWeek = {};
+  sorted.forEach(r => {
+    const w = weekOf(toDate(r.timestamp));
+    if (!byWeek[w]) byWeek[w] = [];
+    byWeek[w].push(r);
+  });
+
+  const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
+  let cumulative = [];
+  return weeks.map(w => {
+    cumulative = cumulative.concat(byWeek[w]);
+    const { mastery } = computeOverallMastery(cumulative);
+    return { week: w + 1, mastery };
+  });
+}
+
+/* ── Badges (from raw quiz activity) ──
+   Separate from topic-mastery achievements: these celebrate showing
+   up and putting in the reps, independent of how hard the topics
+   were. Combined with the mastery-based achievements below into one
+   list for the Achievements section. */
+function computeMilestoneBadges(quizResults) {
+  const badges = [];
+  const totalQuizzes = quizResults.length;
+  const totalQuestions = quizResults.reduce((s, r) => s + (r.total || 0), 0);
+
+  if (totalQuizzes >= 1)  badges.push({ id: 'first-quiz',        icon: '🎬', title: 'First Quiz',   desc: 'Completed your first practice quiz' });
+  if (totalQuizzes >= 5)  badges.push({ id: 'five-quizzes',      icon: '🗂️', title: '5 Quizzes',    desc: 'Completed 5 practice quizzes' });
+  if (totalQuizzes >= 10) badges.push({ id: 'ten-quizzes',       icon: '📚', title: '10 Quizzes',   desc: 'Completed 10 practice quizzes' });
+  if (totalQuizzes >= 25) badges.push({ id: 'twentyfive-quizzes',icon: '🏋️', title: '25 Quizzes',   desc: 'Completed 25 practice quizzes' });
+
+  if (totalQuestions >= 50)  badges.push({ id: 'fifty-questions',    icon: '✏️', title: '50 Questions',  desc: 'Answered 50 questions total' });
+  if (totalQuestions >= 100) badges.push({ id: 'hundred-questions',  icon: '📝', title: '100 Questions', desc: 'Answered 100 questions total' });
+  if (totalQuestions >= 250) badges.push({ id: 'twofifty-questions', icon: '🎖️', title: '250 Questions', desc: 'Answered 250 questions total' });
+
+  if (quizResults.some(r => r.percentage === 100)) {
+    badges.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
+  }
+
+  // Rising accuracy: shows the student is progressing, not just grinding.
+  const sorted = [...quizResults].sort((a, b) => toDate(b.timestamp) - toDate(a.timestamp));
+  if (sorted.length >= 3 && sorted.slice(0, 3).every(r => (r.percentage || 0) >= 80)) {
+    badges.push({ id: 'on-a-roll', icon: '🚀', title: 'On a Roll', desc: '80%+ accuracy on your last 3 quizzes' });
+  }
+
+  return badges;
+}
+
+// Combined badge list for the Achievements section: milestone badges
+// (raw activity) + mastery-based achievements (real understanding).
+// Fully derived from quiz history every time — nothing stored, so
+// nothing can drift or reset.
+function computeAllBadges(quizResults) {
+  const seen = new Set();
+  return [...computeMilestoneBadges(quizResults), ...computeAchievements(quizResults)]
+    .filter(b => (seen.has(b.id) ? false : (seen.add(b.id), true)));
+}
+
+/* ── Grade / Subject completion ──
+   A subject+grade only "finishes" through sustained, accurate practice
+   across real coverage of its topics — never from one lucky session.
+   Three ingredients, all shown to the student:
+     1. Coverage    — how many of the subject's topics have been touched
+     2. Mastery     — how well those topics are actually understood
+     3. Consistency — practice spread across multiple days, not crammed
+   into one sitting the night before a test. */
+const GRADE_COMPLETE_THRESHOLD = 90; // combined coverage+mastery score needed
+const GRADE_COMPLETE_MIN_DAYS  = 3;  // distinct practice days required
+
+function distinctPracticeDays(quizResults, subject, grade) {
+  const days = new Set();
+  quizResults
+    .filter(r => r.subject === subject && String(r.grade) === String(grade))
+    .forEach(r => days.add(toDate(r.timestamp).toISOString().slice(0, 10)));
+  return days.size;
+}
+
+// topicCounts: { "Subject::Grade": totalTopicsInCurriculum } — pass {}
+// if unknown; coverage then falls back to "topics practiced" as its
+// own denominator (100% coverage of what's been seen so far).
+function computeGradeProgress(quizResults, topicCounts = {}) {
+  const combos = [...new Set(quizResults.map(r => `${r.subject}::${r.grade}`))];
+  const topicList = computeTopicMastery(quizResults);
+
+  return combos.map(key => {
+    const [subject, grade] = key.split('::');
+    const practiced = topicList.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0);
+    const masteredCount = practiced.filter(t => t.isMastered).length;
+    const totalTopics = topicCounts[key] || practiced.length || 1;
+    const coveragePct = Math.round((practiced.length / totalTopics) * 100);
+    const { mastery: subjectMastery } = calculateMastery(practiced.flatMap(t => t.events));
+    const days = distinctPracticeDays(quizResults, subject, grade);
+
+    const combined = Math.min(100, Math.round(0.5 * coveragePct + 0.5 * (subjectMastery || 0)));
+    const isComplete    = combined >= GRADE_COMPLETE_THRESHOLD && days >= GRADE_COMPLETE_MIN_DAYS;
+    const needsMoreDays = combined >= GRADE_COMPLETE_THRESHOLD && days < GRADE_COMPLETE_MIN_DAYS;
+
+    return {
+      subject, grade,
+      topicsPracticed: practiced.length, totalTopics, coveragePct,
+      subjectMastery: subjectMastery || 0, masteredCount,
+      distinctDays: days, progressPct: combined,
+      isComplete, needsMoreDays,
+    };
+  });
+}
+
+const Mastery = {
+  toDate,
+  formatDuration,
+  calculateMastery,
+  masteryHistory,
+  buildTopicMap,
+  computeTopicMastery,
+  computeOverallMastery,
+  computeSubjectReadiness,
+  getStrengthsAndWeaknesses,
+  getRecommendation,
+  computeStreak,
+  computeAchievements,
+  computeProgressStats,
+  computeWeeklyMasterySeries,
+  computeMilestoneBadges,
+  computeAllBadges,
+  distinctPracticeDays,
+  computeGradeProgress
+};
+/* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
 const app = initializeApp({
   apiKey:"AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
@@ -690,6 +1131,24 @@ const app = initializeApp({
 const auth = getAuth(app);
 const db   = getFirestore(app);
 let currentUser = null;
+
+/* ── Visible error banner ──
+   If anything throws — a Firestore error, a bug, whatever — it shows
+   up right on the page instead of silently failing. Open DevTools
+   Console for the full stack trace; this banner just makes sure a
+   problem is never invisible. */
+function showDebugError(msg) {
+  let el = document.getElementById('__debugErrorBanner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = '__debugErrorBanner';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#fee2e2;color:#991b1b;padding:10px 16px;font:600 13px/1.4 sans-serif;border-bottom:2px solid #ef4444;white-space:pre-wrap;';
+    document.body.prepend(el);
+  }
+  el.textContent = '⚠️ ' + msg + '  (open DevTools Console for details)';
+}
+window.addEventListener('error', e => showDebugError(e.message));
+window.addEventListener('unhandledrejection', e => showDebugError((e.reason && e.reason.message) || String(e.reason)));
 
 /* ── AUTH GATE ──
    Quiz page now waits for Firebase to resolve auth state before showing
@@ -706,6 +1165,15 @@ onAuthStateChanged(auth, (user) => {
   document.getElementById("authLoading").style.display = "none";
   const root = document.getElementById("appRoot");
   root.style.display = "flex";
+
+  // Prefill subject/grade from a deep link and jump straight in.
+  const dlSubject = deepLink.get('subject');
+  const dlGrade = deepLink.get('grade');
+  if (dlSubject && dlGrade) {
+    $('subject').value = dlSubject;
+    $('grade').value = dlGrade;
+    $('btnStep1Next').click();
+  }
 });
 
 const questionFiles = {
@@ -756,6 +1224,14 @@ let lifelineMax = 2;
 let answeredThisQ = false;
 let selectedTopics = new Set();
 let currentStep = 1;
+
+/* ── Deep-link support ──
+   "Practice This Topic" buttons on the dashboard/progress page link
+   here with ?subject=Science&grade=7&topic=Population%20Growth so the
+   student lands straight in a quiz on their weakest area instead of
+   re-picking subject/grade/topic by hand. */
+const deepLink = new URLSearchParams(window.location.search);
+const deepLinkTopic = deepLink.get('topic');
 
 function setStep(n) {
   currentStep = n;
@@ -837,6 +1313,17 @@ function buildTopicGrid() {
   });
 
   updateTopicCount();
+
+  // If we arrived via a deep link for a specific topic, select it and
+  // skip straight to the settings step.
+  if (deepLinkTopic) {
+    const match = [...grid.querySelectorAll('.topic-btn')].find(b => b.dataset.topic === deepLinkTopic);
+    if (match) {
+      toggleTopic(match, deepLinkTopic);
+      buildSummary();
+      setStep(3);
+    }
+  }
 }
 
 function toggleTopic(btn, topic) {
@@ -1239,6 +1726,23 @@ function confirmEndQuiz() {
   });
 }
 
+/* ── Per-topic tally for this quiz ──
+   Groups the questions the student just saw by topic and tallies
+   correct/total, e.g. { "Food Webs": {correct:3,total:4} }. This is
+   the only new thing quiz.html writes — everything mastery.js does
+   downstream is derived from these tallies, never duplicated. */
+function computeTopicBreakdown() {
+  const breakdown = {};
+  selectedQuestions.forEach((q, i) => {
+    const topic = q.topic || 'General';
+    const a = answers[i] || { result: 'unanswered' };
+    if (!breakdown[topic]) breakdown[topic] = { correct: 0, total: 0 };
+    breakdown[topic].total++;
+    if (a.result === 'correct') breakdown[topic].correct++;
+  });
+  return breakdown;
+}
+
 /* ── Save ──
    Now surfaces failures instead of silently swallowing them. If there's
    no authenticated user (shouldn't happen now that the auth gate redirects
@@ -1256,23 +1760,130 @@ async function saveQuizResult() {
     return;
   }
 
+  const topicBreakdown = computeTopicBreakdown();
+
+  // Grab prior results BEFORE writing this one, so we can show honest
+  // before/after mastery + newly-unlocked achievements.
+  let priorResults = [];
   try {
-    await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), {
-      score:      correctCount,
-      total:      selectedQuestions.length,
-      percentage: Math.round((correctCount / selectedQuestions.length) * 100),
-      subject:    $('subject')?.value ?? 'Unknown',
-      grade:      $('grade')?.value   ?? 'Unknown',
-      topics:     [...selectedTopics],
-      timestamp:  new Date()
-    });
+    const q = query(collection(db, 'users', currentUser.uid, 'quizResults'), orderBy('timestamp', 'desc'));
+    const snap = await getDocs(q);
+    priorResults = snap.docs.map(d => d.data());
+  } catch (e) {
+    console.error('Could not load prior results for improvement comparison:', e);
+  }
+
+  const newResult = {
+    score:      correctCount,
+    total:      selectedQuestions.length,
+    percentage: Math.round((correctCount / selectedQuestions.length) * 100),
+    subject:    $('subject')?.value ?? 'Unknown',
+    grade:      $('grade')?.value   ?? 'Unknown',
+    topics:     [...selectedTopics],
+    topicBreakdown,
+    timeTakenSeconds: Math.round(totalTimeUsed),
+    timestamp:  new Date()
+  };
+
+  try {
+    await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), newResult);
   } catch(e) {
     console.error('Save error:', e);
     if (banner) {
       banner.textContent = "⚠️ This result couldn't be saved to your dashboard (" + (e.code || e.message) + "). Check your Firestore security rules or connection.";
       banner.classList.add('show');
     }
+    return;
   }
+
+  // The save already succeeded at this point — the improvement/achievement
+  // panel is a nice-to-have, so a bug here must never look like a failed save.
+  try {
+    renderImprovementPanel(priorResults, newResult);
+  } catch (e) {
+    console.error('Could not render improvement panel:', e);
+  }
+}
+
+/* ── Show mastery improvement + newly-unlocked achievements ──
+   Compares mastery/achievements computed from history WITHOUT this
+   quiz vs WITH it, so every number shown here is honest — nothing is
+   assumed, everything is recomputed from the same source of truth
+   used by the dashboard. */
+function renderImprovementPanel(priorResults, newResult) {
+  const afterResults = [...priorResults, newResult];
+
+  const beforeTopics = Mastery.computeTopicMastery(priorResults);
+  const afterTopics  = Mastery.computeTopicMastery(afterResults);
+
+  const changedTopics = Object.keys(newResult.topicBreakdown).map(topic => {
+    const before = beforeTopics.find(t => t.topic === topic && t.subject === newResult.subject);
+    const after  = afterTopics.find(t => t.topic === topic && t.subject === newResult.subject);
+    return { topic, before: before ? before.mastery : null, after: after ? after.mastery : null };
+  }).filter(t => t.after !== null);
+
+  const beforeAchievements = new Set(Mastery.computeAllBadges(priorResults).map(a => a.id));
+  const newlyUnlocked = Mastery.computeAllBadges(afterResults).filter(a => !beforeAchievements.has(a.id));
+
+  // Grade progress for the subject/grade just practiced — uses the
+  // curriculum file already loaded for this quiz (allLoadedQuestions),
+  // so coverage is against the real topic count, no extra fetch needed.
+  let progressHTML = '';
+  try {
+    const totalTopicsInCurriculum = new Set(allLoadedQuestions.map(q => q.topic || 'General')).size;
+    const key = `${newResult.subject}::${newResult.grade}`;
+    const progress = Mastery.computeGradeProgress(afterResults, { [key]: totalTopicsInCurriculum })
+      .find(g => g.subject === newResult.subject && String(g.grade) === String(newResult.grade));
+    if (progress) {
+      progressHTML = `
+        <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:${progress.isComplete ? '#dcfce7' : 'var(--panel2, #f0f1f7)'};border:1.5px solid ${progress.isComplete ? '#bbf7d0' : 'var(--border)'};">
+          <div style="display:flex;justify-content:space-between;font-size:.8em;font-weight:800;margin-bottom:4px;">
+            <span>${progress.isComplete ? '✅ Grade Complete' : '🎯 Grade Progress'} — ${newResult.subject} Grade ${newResult.grade}</span>
+            <span style="font-family:'DM Mono',monospace;">${progress.progressPct}%</span>
+          </div>
+          <div style="font-size:.74em;color:var(--muted);">
+            ${progress.topicsPracticed}/${progress.totalTopics} topics covered · ${progress.subjectMastery}% mastery · ${progress.distinctDays} day${progress.distinctDays !== 1 ? 's' : ''} of practice
+          </div>
+          ${progress.needsMoreDays ? `<div style="font-size:.74em;color:#92650a;margin-top:6px;">Keep practicing across a few more days — a grade isn't finished in one sitting.</div>` : ''}
+        </div>`;
+    }
+  } catch (e) { console.error('Grade progress calc failed:', e); }
+
+  if (changedTopics.length === 0 && newlyUnlocked.length === 0 && !progressHTML) return;
+
+  const improvedRows = changedTopics.map(t => {
+    const delta = t.before === null ? null : t.after - t.before;
+    const deltaLabel = delta === null ? 'New topic tracked' : (delta >= 0 ? `+${delta}%` : `${delta}%`);
+    const deltaColor = delta === null ? 'var(--muted)' : delta > 0 ? 'var(--green)' : delta < 0 ? 'var(--red)' : 'var(--muted)';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);">
+      <span style="font-weight:600;font-size:.88em;">${t.topic}</span>
+      <span style="font-family:'DM Mono',monospace;font-size:.85em;">
+        ${t.before === null ? '' : `${t.before}% → `}${t.after}%
+        <span style="color:${deltaColor};font-weight:700;margin-left:6px;">${deltaLabel}</span>
+      </span>
+    </div>`;
+  }).join('');
+
+  const achievementHTML = newlyUnlocked.map(a => `
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;">
+      <span style="font-size:1.4em;">${a.icon}</span>
+      <div>
+        <div style="font-weight:700;font-size:.88em;">${a.title}</div>
+        <div style="font-size:.78em;color:var(--muted);">${a.desc}</div>
+      </div>
+    </div>`).join('');
+
+  const panel = document.createElement('div');
+  panel.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-top:16px;width:100%;max-width:640px;text-align:left;';
+  panel.innerHTML = `
+    ${improvedRows ? `<div style="font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px;">📈 Mastery Update</div>${improvedRows}` : ''}
+    ${achievementHTML ? `<div style="font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:${improvedRows ? '16px' : '0'} 0 4px;">🏆 Achievement Unlocked</div>${achievementHTML}` : ''}
+    ${progressHTML}
+  `;
+
+  const completeCard = document.querySelector('.complete-card');
+  if (completeCard) completeCard.appendChild(panel);
+  else document.body.appendChild(panel);
 }
 
 /* ── Wire buttons ── */
