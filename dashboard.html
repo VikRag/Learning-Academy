@@ -444,6 +444,38 @@
   .grade-progress-top .pct { font-family: 'DM Mono', monospace; font-weight: 800; font-size: 0.95em; }
   .grade-progress-meta { font-size: 0.75em; color: var(--text-muted); font-weight: 600; margin-top: 8px; }
   .grade-progress-note { font-size: 0.76em; color: #92650a; margin-top: 8px; line-height: 1.4; }
+
+  /* ── SHARE CODE WIDGET ── */
+  .share-code-display {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 14px 18px; background: var(--primary-light); border-radius: 10px; margin-bottom: 14px;
+  }
+  .share-code-value {
+    font-family: 'DM Mono', monospace; font-size: 1.5em; font-weight: 700;
+    letter-spacing: 0.12em; color: var(--primary);
+  }
+  .share-code-copy, .share-code-regen {
+    padding: 7px 13px; border-radius: 8px; border: 1.5px solid var(--border);
+    background: var(--surface); font-family: inherit; font-size: 0.78em; font-weight: 700;
+    color: var(--text); cursor: pointer;
+  }
+  .share-code-copy:hover, .share-code-regen:hover { border-color: var(--primary); color: var(--primary); }
+  .viewer-list-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.85em;
+  }
+  .viewer-list-item:last-child { border-bottom: none; }
+  .viewer-revoke { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-size: 0.85em; }
+  .viewer-revoke:hover { color: var(--red); }
+
+  .lang-toggle { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 5px 10px; border-radius: 7px; border: 1.5px solid var(--border);
+    background: var(--surface); font-family: inherit; font-size: 0.75em; font-weight: 700;
+    color: var(--text-muted); cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--primary); }
+  .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 </style>
 </head>
 <body>
@@ -454,16 +486,21 @@
     <div class="logo-chip">🎓 Learning Academy</div>
     <div class="nav-divider"></div>
     <div class="nav-links">
-      <a href="dashboard.html" class="nav-link active">Dashboard</a>
-      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="dashboard.html" class="nav-link active" data-i18n="nav_dashboard">Dashboard</a>
+      <a href="progress.html" class="nav-link" data-i18n="nav_progress">Progress</a>
+      <a href="viewer.html" class="nav-link" data-i18n="nav_viewer">Family &amp; Teacher View</a>
     </div>
   </div>
   <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="window.applyLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="window.applyLanguage('es')">ES</button>
+    </div>
     <div class="user-chip">
       <div class="user-avatar" id="avatarInitial">?</div>
       <span class="user-name" id="navUserName">Loading...</span>
     </div>
-    <a href="quiz.html" class="btn-quiz">✏️ Take Quiz</a>
+    <a href="quiz.html" class="btn-quiz" data-i18n="nav_takequiz">✏️ Take Quiz</a>
     <button class="btn-signout" onclick="signOutUser()">Sign Out</button>
   </div>
 </nav>
@@ -481,7 +518,7 @@
   <!-- Welcome -->
   <div class="welcome-header">
     <h1 id="welcomeHeading">Hello 👋</h1>
-    <p id="welcomeSub">Here's how you're doing across all your quizzes.</p>
+    <p id="welcomeSub" data-i18n="dash_welcome_sub">Here's how you're doing across all your quizzes.</p>
   </div>
 
   <!-- Your Progress (overall mastery) -->
@@ -541,7 +578,7 @@
   <!-- Exam Readiness -->
   <div class="full-section" id="readinessSection" style="display:none;">
     <div class="section-card">
-      <div class="section-head"><h2>📝 Exam Readiness</h2></div>
+      <div class="section-head"><h2 data-i18n="dash_readiness_head">📝 Exam Readiness</h2></div>
       <div class="section-body" id="readinessBody"></div>
     </div>
   </div>
@@ -549,7 +586,7 @@
   <!-- Recommended For You -->
   <div class="full-section" id="recSection" style="display:none;">
     <div class="section-card">
-      <div class="section-head"><h2>🎯 Recommended For You</h2></div>
+      <div class="section-head"><h2 data-i18n="dash_rec_head">🎯 Recommended For You</h2></div>
       <div class="section-body rec-card" id="recBody"></div>
     </div>
   </div>
@@ -557,7 +594,7 @@
   <!-- Topic Mastery -->
   <div class="full-section" id="masterySection" style="display:none;">
     <div class="section-card">
-      <div class="section-head"><h2>🧠 Topic Mastery</h2></div>
+      <div class="section-head"><h2 data-i18n="dash_mastery_head">🧠 Topic Mastery</h2></div>
       <div class="section-body" id="masteryBody"></div>
     </div>
   </div>
@@ -566,7 +603,7 @@
   <div class="full-section" id="achvSection" style="display:none;">
     <div class="section-card">
       <div class="section-head">
-        <h2>🏆 Achievements</h2>
+        <h2 data-i18n="dash_achv_head">🏆 Achievements</h2>
         <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="achvCount"></span>
       </div>
       <div class="section-body" id="achvBody"></div>
@@ -577,11 +614,23 @@
   <div class="full-section">
     <div class="section-card">
       <div class="section-head">
-        <h2>📋 Quiz History</h2>
+        <h2 data-i18n="dash_history_head">📋 Quiz History</h2>
         <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="historyCount"></span>
       </div>
       <div id="historyTableWrap">
         <div class="empty-state"><div class="icon">📝</div>No quizzes taken yet — <a href="quiz.html" style="color:var(--primary);font-weight:600;">take your first quiz!</a></div>
+      </div>
+    </div>
+  </div>
+  <!-- Share With a Teacher or Parent -->
+  <div class="full-section">
+    <div class="section-card">
+      <div class="section-head"><h2 data-i18n="dash_share_head">👨‍👩‍👧 Share With a Teacher or Parent</h2></div>
+      <div class="section-body">
+        <p style="font-size:0.85em;color:var(--text-muted);margin-bottom:14px;line-height:1.5;">
+          <span data-i18n="dash_share_desc">Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).</span>
+        </p>
+        <div id="shareCodeBox"></div>
       </div>
     </div>
   </div>
@@ -609,7 +658,9 @@ import {
   query,
   orderBy,
   doc,
-  getDoc
+  getDoc,
+  setDoc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ════════════════════════════════════════════════════════════════
@@ -1155,6 +1206,8 @@ onAuthStateChanged(auth, async (user) => {
   document.getElementById("avatarInitial").textContent = initial;
   document.getElementById("welcomeHeading").textContent = `Hello, ${name}! 👋`;
 
+  try { initShareCode(user, name); } catch (e) { console.error('initShareCode failed:', e); }
+
 /* ── Curriculum topic counts ──
    Fetches the same JSON question banks quiz.html uses, just to count
    how many distinct topics exist per subject+grade — needed so "grade
@@ -1540,6 +1593,207 @@ function formatTime(date) {
   if (diff < 604800) return Math.floor(diff / 86400) + "d ago";
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
+
+/* ── Share code (for the Family & Teacher View, viewer.html) ──
+   The code is just a random 6-character string stored at
+   viewerCodes/{code} -> { studentUid, studentName }. A teacher/parent
+   redeems it on viewer.html to gain READ-ONLY access to this
+   student's quizResults (see viewer.html's Firestore rules comment
+   block for exactly what to paste into the console). Nothing here
+   grants write access to anyone but the student. */
+function generateShareCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no ambiguous 0/O/1/I
+  let code = '';
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+async function initShareCode(user, studentName) {
+  const box = document.getElementById('shareCodeBox');
+  box.innerHTML = '<div class="spinner" style="margin:10px auto;"></div>';
+
+  let existingCode = null;
+  try {
+    const userDoc = await getDoc(doc(db, 'users', user.uid));
+    existingCode = userDoc.exists() ? (userDoc.data().viewerCode || null) : null;
+  } catch (e) {
+    console.error('Could not load share code:', e);
+  }
+
+  await renderShareCode(user, studentName, existingCode);
+}
+
+async function renderShareCode(user, studentName, code) {
+  const box = document.getElementById('shareCodeBox');
+
+  if (!code) {
+    box.innerHTML = `<button class="share-code-regen" id="genCodeBtn">Generate My Share Code</button>`;
+    document.getElementById('genCodeBtn').addEventListener('click', async () => {
+      const newCode = generateShareCode();
+      try {
+        await setDoc(doc(db, 'viewerCodes', newCode), { studentUid: user.uid, studentName });
+        await setDoc(doc(db, 'users', user.uid), { viewerCode: newCode }, { merge: true });
+        await renderShareCode(user, studentName, newCode);
+      } catch (e) {
+        console.error('Could not generate share code:', e);
+        showDebugError('Could not generate a share code: ' + e.message);
+      }
+    });
+    await renderLinkedViewers(user);
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="share-code-display">
+      <span class="share-code-value">${code}</span>
+      <button class="share-code-copy" id="copyCodeBtn">Copy</button>
+      <button class="share-code-regen" id="regenCodeBtn">Generate New Code</button>
+    </div>
+    <div id="linkedViewersList"></div>`;
+
+  document.getElementById('copyCodeBtn').addEventListener('click', () => {
+    navigator.clipboard?.writeText(code);
+    const btn = document.getElementById('copyCodeBtn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+  });
+
+  document.getElementById('regenCodeBtn').addEventListener('click', async () => {
+    const newCode = generateShareCode();
+    try {
+      await setDoc(doc(db, 'viewerCodes', newCode), { studentUid: user.uid, studentName });
+      await setDoc(doc(db, 'users', user.uid), { viewerCode: newCode }, { merge: true });
+      // Old code is left in place (still resolves to this student) —
+      // simplest to reason about without needing a delete-old-doc step
+      // that could fail partway through. Only the newest code is shown.
+      await renderShareCode(user, studentName, newCode);
+    } catch (e) {
+      console.error('Could not regenerate share code:', e);
+      showDebugError('Could not generate a new code: ' + e.message);
+    }
+  });
+
+  await renderLinkedViewers(user);
+}
+
+async function renderLinkedViewers(user) {
+  const list = document.getElementById('linkedViewersList');
+  if (!list) return;
+  try {
+    const snap = await getDocs(collection(db, 'users', user.uid, 'linkedViewers'));
+    if (snap.empty) {
+      list.innerHTML = `<p style="font-size:0.78em;color:var(--text-muted);margin-top:4px;">No one has linked to your account yet.</p>`;
+      return;
+    }
+    list.innerHTML = snap.docs.map(d => `
+      <div class="viewer-list-item">
+        <span>${d.data().viewerEmail || 'A linked viewer'}</span>
+        <button class="viewer-revoke" onclick="window.__revokeViewer('${d.id}')">Revoke access</button>
+      </div>`).join('');
+  } catch (e) {
+    console.error('Could not load linked viewers:', e);
+  }
+}
+
+window.__revokeViewer = async function (viewerId) {
+  if (!confirm('Revoke this person\'s access to your progress?')) return;
+  try {
+    await deleteDoc(doc(db, 'users', auth.currentUser.uid, 'linkedViewers', viewerId));
+    await renderLinkedViewers(auth.currentUser);
+  } catch (e) {
+    console.error('Could not revoke viewer:', e);
+    showDebugError('Could not revoke access: ' + e.message);
+  }
+};
+</script>
+<script>
+/* ── Language toggle (EN / ES) ──
+   Translates static UI chrome — nav, headings, buttons, labels, empty
+   states. Does NOT translate quiz question content itself: those come
+   from the subject/grade JSON files, and auto-translating educational
+   content risks introducing factual/wording errors into what students
+   are being tested on, so that's intentionally left as a separate,
+   human-reviewed task rather than done here.
+   Preference is stored in localStorage so it's remembered per device
+   without needing a database write. */
+window.I18N = {
+  en: {
+    nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
+    nav_takequiz: "✏️ Take Quiz", nav_home: "Home", nav_myown: "My Own Dashboard", signup_back_home: "← Home",
+    home_subtitle: "Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.",
+    home_login: "Login to Your Account", home_signup: "Create a Free Account",
+    home_footer: "Join students already learning with us ✨", home_or: "or",
+    login_welcome: "Welcome back!", login_sub: "Log in to your account",
+    login_email_ph: "Email", login_password_ph: "Password", login_btn: "Log In →",
+    login_noaccount: "Don't have an account?", login_signup_link: "Sign up",
+    signup_title: "Create your account", signup_sub: "Start tracking your learning journey.",
+    signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
+    signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
+    dash_welcome_sub: "Here's how you're doing across all your quizzes.",
+    dash_progress_head: "📊 Your Progress — Overall Mastery",
+    dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
+    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
+    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
+    dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
+    progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
+    progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
+    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
+    viewer_title: "Family & Teacher View",
+    viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
+    viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
+    viewer_link_hint: "Ask the student to open their dashboard → \"Share With a Teacher or Parent\" to get their code.",
+    viewer_roster_head: "👥 Linked Students",
+  },
+  es: {
+    nav_dashboard: "Panel", nav_progress: "Progreso", nav_viewer: "Vista Familiar y Docente",
+    nav_takequiz: "✏️ Hacer Cuestionario", nav_home: "Inicio", nav_myown: "Mi Propio Panel", signup_back_home: "← Inicio",
+    home_subtitle: "Ponte a prueba en Matemáticas, Ciencias, Inglés y Estudios Sociales — Grados 1–8.",
+    home_login: "Iniciar Sesión", home_signup: "Crear Cuenta Gratis",
+    home_footer: "Únete a los estudiantes que ya aprenden con nosotros ✨", home_or: "o",
+    login_welcome: "¡Bienvenido de nuevo!", login_sub: "Inicia sesión en tu cuenta",
+    login_email_ph: "Correo electrónico", login_password_ph: "Contraseña", login_btn: "Iniciar Sesión →",
+    login_noaccount: "¿No tienes una cuenta?", login_signup_link: "Regístrate",
+    signup_title: "Crea tu cuenta", signup_sub: "Comienza a seguir tu progreso de aprendizaje.",
+    signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
+    signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
+    dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
+    dash_progress_head: "📊 Tu Progreso — Dominio General",
+    dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
+    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
+    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
+    dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
+    progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
+    progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
+    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
+    viewer_title: "Vista Familiar y Docente",
+    viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
+    viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
+    viewer_link_hint: "Pide al estudiante que abra su panel → \"Compartir con un Maestro o Familiar\" para obtener su código.",
+    viewer_roster_head: "👥 Estudiantes Vinculados",
+  }
+};
+
+window.applyLanguage = function (lang) {
+  const dict = window.I18N[lang] || window.I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (dict[key] != null) el.placeholder = dict[key];
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  let saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  window.applyLanguage(saved);
+});
+
 </script>
 </body>
 </html>

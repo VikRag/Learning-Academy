@@ -159,17 +159,31 @@
 
   .footer-text strong { color: var(--text); }
 
-  @media (max-width: 480px) {
+  
+  .lang-toggle { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 5px 10px; border-radius: 7px; border: 1.5px solid var(--border);
+    background: var(--surface); font-family: inherit; font-size: 0.75em; font-weight: 700;
+    color: var(--text-muted); cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--primary); }
+  .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+@media (max-width: 480px) {
     .card { padding: 36px 24px; }
   }
 </style>
 </head>
 <body>
 
+<div class="lang-toggle" style="position:fixed;top:20px;right:20px;z-index:10;">
+  <button class="lang-btn active" data-lang="en" onclick="window.applyLanguage('en')">EN</button>
+  <button class="lang-btn" data-lang="es" onclick="window.applyLanguage('es')">ES</button>
+</div>
+
 <div class="card">
   <div class="logo-mark">🎓</div>
   <h1>Learning <span>Academy</span></h1>
-  <p class="subtitle">Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.</p>
+  <p class="subtitle" data-i18n="home_subtitle">Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.</p>
 
   <div class="subject-pills">
     <span class="pill math">➕ Math</span>
@@ -179,13 +193,102 @@
   </div>
 
   <div class="actions">
-    <a href="login.html" class="btn btn-primary">Login to Your Account</a>
-    <div class="divider">or</div>
-    <a href="signup.html" class="btn btn-outline">Create a Free Account</a>
+    <a href="login.html" class="btn btn-primary" data-i18n="home_login">Login to Your Account</a>
+    <div class="divider" data-i18n="home_or">or</div>
+    <a href="signup.html" class="btn btn-outline" data-i18n="home_signup">Create a Free Account</a>
   </div>
 
-  <p class="footer-text">Join <strong>students</strong> already learning with us ✨</p>
+  <p class="footer-text" data-i18n="home_footer">Join students already learning with us ✨</p>
 </div>
 
+<script>
+/* ── Language toggle (EN / ES) ──
+   Translates static UI chrome — nav, headings, buttons, labels, empty
+   states. Does NOT translate quiz question content itself: those come
+   from the subject/grade JSON files, and auto-translating educational
+   content risks introducing factual/wording errors into what students
+   are being tested on, so that's intentionally left as a separate,
+   human-reviewed task rather than done here.
+   Preference is stored in localStorage so it's remembered per device
+   without needing a database write. */
+window.I18N = {
+  en: {
+    nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
+    nav_takequiz: "✏️ Take Quiz", nav_home: "Home", nav_myown: "My Own Dashboard", signup_back_home: "← Home",
+    home_subtitle: "Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.",
+    home_login: "Login to Your Account", home_signup: "Create a Free Account",
+    home_footer: "Join students already learning with us ✨", home_or: "or",
+    login_welcome: "Welcome back!", login_sub: "Log in to your account",
+    login_email_ph: "Email", login_password_ph: "Password", login_btn: "Log In →",
+    login_noaccount: "Don't have an account?", login_signup_link: "Sign up",
+    signup_title: "Create your account", signup_sub: "Start tracking your learning journey.",
+    signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
+    signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
+    dash_welcome_sub: "Here's how you're doing across all your quizzes.",
+    dash_progress_head: "📊 Your Progress — Overall Mastery",
+    dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
+    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
+    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
+    dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
+    progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
+    progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
+    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
+    viewer_title: "Family & Teacher View",
+    viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
+    viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
+    viewer_link_hint: "Ask the student to open their dashboard → \"Share With a Teacher or Parent\" to get their code.",
+    viewer_roster_head: "👥 Linked Students",
+  },
+  es: {
+    nav_dashboard: "Panel", nav_progress: "Progreso", nav_viewer: "Vista Familiar y Docente",
+    nav_takequiz: "✏️ Hacer Cuestionario", nav_home: "Inicio", nav_myown: "Mi Propio Panel", signup_back_home: "← Inicio",
+    home_subtitle: "Ponte a prueba en Matemáticas, Ciencias, Inglés y Estudios Sociales — Grados 1–8.",
+    home_login: "Iniciar Sesión", home_signup: "Crear Cuenta Gratis",
+    home_footer: "Únete a los estudiantes que ya aprenden con nosotros ✨", home_or: "o",
+    login_welcome: "¡Bienvenido de nuevo!", login_sub: "Inicia sesión en tu cuenta",
+    login_email_ph: "Correo electrónico", login_password_ph: "Contraseña", login_btn: "Iniciar Sesión →",
+    login_noaccount: "¿No tienes una cuenta?", login_signup_link: "Regístrate",
+    signup_title: "Crea tu cuenta", signup_sub: "Comienza a seguir tu progreso de aprendizaje.",
+    signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
+    signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
+    dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
+    dash_progress_head: "📊 Tu Progreso — Dominio General",
+    dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
+    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
+    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
+    dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
+    progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
+    progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
+    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
+    viewer_title: "Vista Familiar y Docente",
+    viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
+    viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
+    viewer_link_hint: "Pide al estudiante que abra su panel → \"Compartir con un Maestro o Familiar\" para obtener su código.",
+    viewer_roster_head: "👥 Estudiantes Vinculados",
+  }
+};
+
+window.applyLanguage = function (lang) {
+  const dict = window.I18N[lang] || window.I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (dict[key] != null) el.placeholder = dict[key];
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  let saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  window.applyLanguage(saved);
+});
+
+</script>
 </body>
 </html>

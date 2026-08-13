@@ -2,236 +2,236 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up – Learning Academy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up – Learning Academy</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
-  <style>
-    :root {
-      --primary: #4f6ef7;
-      --text: #1a1d2e;
-      --text-muted: #7b7f96;
-      --border: #e4e6f0;
-      --surface: #fff;
-      --error: #dc3545;
+<style>
+  :root {
+    --primary: #4f6ef7;
+    --text: #1a1d2e;
+    --text-muted: #7b7f96;
+    --border: #e4e6f0;
+    --surface: #fff;
+    --error: #dc3545;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f5f6fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .back-link {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    transition: all 0.15s;
+    z-index: 10;
+  }
+
+  .back-link:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    padding: 44px 40px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #f5f6fa;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
+  .logo-mark {
+    width: 52px;
+    height: 52px;
+    background: var(--primary);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 14px rgba(79, 110, 247, 0.3);
+  }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.5;
-      pointer-events: none;
+  h1 {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .sub {
+    font-size: 0.88em;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95em;
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .field input.input-error {
+    border-color: var(--error);
+  }
+
+  .btn-main {
+    width: 100%;
+    padding: 13px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: 0.15s;
+  }
+
+  .btn-main:hover {
+    background: #3d5ce5;
+    transform: translateY(-1px);
+  }
+
+  .btn-main:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .message {
+    display: none;
+    margin-top: 15px;
+    padding: 11px 13px;
+    border-radius: 9px;
+    font-size: 0.85em;
+    line-height: 1.4;
+  }
+
+  .message.error {
+    display: block;
+    background: #fff0f1;
+    color: #b42332;
+    border: 1px solid #ffd0d5;
+  }
+
+  .message.success {
+    display: block;
+    background: #eefaf2;
+    color: #187a3d;
+    border: 1px solid #c8efd5;
+  }
+
+  .footer-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875em;
+    color: var(--text-muted);
+  }
+
+  .footer-text a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (max-width: 500px) {
+    .card {
+      padding: 35px 25px;
     }
 
     .back-link {
-      position: fixed;
-      top: 24px;
-      left: 24px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.875em;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 7px 12px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      transition: all 0.15s;
-      z-index: 10;
+      top: 15px;
+      left: 15px;
     }
-
-    .back-link:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-      padding: 44px 40px;
-      max-width: 420px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.4s ease both;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .logo-mark {
-      width: 52px;
-      height: 52px;
-      background: var(--primary);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 14px rgba(79, 110, 247, 0.3);
-    }
-
-    h1 {
-      font-size: 1.5em;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .sub {
-      font-size: 0.88em;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      display: block;
-      font-size: 0.8em;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .field input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.95em;
-      color: var(--text);
-      background: var(--surface);
-    }
-
-    .field input:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .field input.input-error {
-      border-color: var(--error);
-    }
-
-    .btn-main {
-      width: 100%;
-      padding: 13px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 1em;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 6px;
-      transition: 0.15s;
-    }
-
-    .btn-main:hover {
-      background: #3d5ce5;
-      transform: translateY(-1px);
-    }
-
-    .btn-main:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .message {
-      display: none;
-      margin-top: 15px;
-      padding: 11px 13px;
-      border-radius: 9px;
-      font-size: 0.85em;
-      line-height: 1.4;
-    }
-
-    .message.error {
-      display: block;
-      background: #fff0f1;
-      color: #b42332;
-      border: 1px solid #ffd0d5;
-    }
-
-    .message.success {
-      display: block;
-      background: #eefaf2;
-      color: #187a3d;
-      border: 1px solid #c8efd5;
-    }
-
-    .footer-text {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.875em;
-      color: var(--text-muted);
-    }
-
-    .footer-text a {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    @media (max-width: 500px) {
-      .card {
-        padding: 35px 25px;
-      }
-
-      .back-link {
-        top: 15px;
-        left: 15px;
-      }
-    }
-  </style>
+  }
+</style>
 
 </head>
 
@@ -239,7 +239,7 @@
 
 <a href="index.html" class="back-link">← Home</a>
 
-  <div class="card">
+<div class="card">
 
 ```
 <div class="logo-mark">🚀</div>
@@ -249,242 +249,242 @@
 
 <form id="signupForm">
 
-  <div class="field">
-    <label for="name">Full Name</label>
-    <input
-      id="name"
-      type="text"
-      placeholder="John Doe"
-      autocomplete="name"
-      required
-    >
-  </div>
+<div class="field">
+  <label for="name">Full Name</label>
+  <input
+    id="name"
+    type="text"
+    placeholder="John Doe"
+    autocomplete="name"
+    required
+  >
+</div>
 
-  <div class="field">
-    <label for="email">Email</label>
-    <input
-      id="email"
-      type="email"
-      placeholder="you@example.com"
-      autocomplete="email"
-      required
-    >
-  </div>
+<div class="field">
+  <label for="email">Email</label>
+  <input
+    id="email"
+    type="email"
+    placeholder="you@example.com"
+    autocomplete="email"
+    required
+  >
+</div>
 
-  <div class="field">
-    <label for="password">Password</label>
-    <input
-      id="password"
-      type="password"
-      placeholder="At least 6 characters"
-      autocomplete="new-password"
-      minlength="6"
-      required
-    >
-  </div>
+<div class="field">
+  <label for="password">Password</label>
+  <input
+    id="password"
+    type="password"
+    placeholder="At least 6 characters"
+    autocomplete="new-password"
+    minlength="6"
+    required
+  >
+</div>
 
-  <button id="signupButton" class="btn-main" type="submit">
-    Sign Up →
-  </button>
+<button id="signupButton" class="btn-main" type="submit">
+  Sign Up →
+</button>
 
-  <div id="message" class="message"></div>
+<div id="message" class="message"></div>
 
 </form>
 
 <div class="footer-text">
-  Already have an account?
-  <a href="login.html">Login</a>
+Already have an account?
+<a href="login.html">Login</a>
 </div>
 ```
 
-  </div>
+</div>
 
-  <!-- Firebase -->
+<!-- Firebase -->
 
-  <script type="module">
+<script type="module">
 
-    import { initializeApp } from
-      "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    import {
-      getAuth,
-      createUserWithEmailAndPassword
-    } from
-      "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    import {
-      getFirestore,
-      doc,
-      setDoc
-    } from
-      "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-    // Your Firebase project
-    const firebaseConfig = {
-      apiKey: "AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
-      authDomain: "learning-academy-1063f.firebaseapp.com",
-      projectId: "learning-academy-1063f"
-    };
+  import {
+    getFirestore,
+    doc,
+    setDoc
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-
-    const form = document.getElementById("signupForm");
-    const button = document.getElementById("signupButton");
-    const message = document.getElementById("message");
+  // Your Firebase project
+  const firebaseConfig = {
+    apiKey: "AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
+    authDomain: "learning-academy-1063f.firebaseapp.com",
+    projectId: "learning-academy-1063f"
+  };
 
 
-    function showMessage(text, type) {
-      message.textContent = text;
-      message.className = "message " + type;
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+
+  const form = document.getElementById("signupForm");
+  const button = document.getElementById("signupButton");
+  const message = document.getElementById("message");
+
+
+  function showMessage(text, type) {
+    message.textContent = text;
+    message.className = "message " + type;
+  }
+
+
+  function getFirebaseError(errorCode) {
+
+    switch (errorCode) {
+
+      case "auth/email-already-in-use":
+        return "An account with this email already exists. Try logging in instead.";
+
+      case "auth/invalid-email":
+        return "Please enter a valid email address.";
+
+      case "auth/weak-password":
+        return "Your password is too weak. Please use at least 6 characters.";
+
+      case "auth/network-request-failed":
+        return "Network error. Please check your internet connection and try again.";
+
+      case "auth/operation-not-allowed":
+        return "Email/password sign-up is not enabled in your Firebase project.";
+
+      case "auth/too-many-requests":
+        return "Too many attempts. Please wait a little while and try again.";
+
+      case "permission-denied":
+        return "Your account was created, but your profile could not be saved. Check your Firestore rules.";
+
+      default:
+        console.error("Firebase error:", errorCode);
+        return "Something went wrong while creating your account. Please try again.";
+    }
+  }
+
+
+  form.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const fullName =
+      document.getElementById("name").value.trim();
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+
+    // Basic validation
+    if (!fullName) {
+      showMessage("Please enter your full name.", "error");
+      return;
+    }
+
+    if (!email) {
+      showMessage("Please enter your email address.", "error");
+      return;
+    }
+
+    if (password.length < 6) {
+      showMessage(
+        "Your password must be at least 6 characters.",
+        "error"
+      );
+      return;
     }
 
 
-    function getFirebaseError(errorCode) {
+    // Split name
+    const nameParts = fullName.split(/\s+/);
 
-      switch (errorCode) {
+    const firstName = nameParts[0] || "";
 
-        case "auth/email-already-in-use":
-          return "An account with this email already exists. Try logging in instead.";
+    const lastName =
+      nameParts.slice(1).join(" ") || "";
 
-        case "auth/invalid-email":
-          return "Please enter a valid email address.";
 
-        case "auth/weak-password":
-          return "Your password is too weak. Please use at least 6 characters.";
+    // Disable button
+    button.disabled = true;
+    button.textContent = "Creating account...";
 
-        case "auth/network-request-failed":
-          return "Network error. Please check your internet connection and try again.";
+    message.className = "message";
+    message.textContent = "";
 
-        case "auth/operation-not-allowed":
-          return "Email/password sign-up is not enabled in your Firebase project.";
 
-        case "auth/too-many-requests":
-          return "Too many attempts. Please wait a little while and try again.";
+    try {
 
-        case "permission-denied":
-          return "Your account was created, but your profile could not be saved. Check your Firestore rules.";
+      // Create Firebase Authentication account
+      const userCredential =
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-        default:
-          console.error("Firebase error:", errorCode);
-          return "Something went wrong while creating your account. Please try again.";
-      }
+      const user = userCredential.user;
+
+
+      // Save additional user information in Firestore
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          uid: user.uid,
+          firstName: firstName,
+          lastName: lastName,
+          fullName: fullName,
+          email: user.email,
+          createdAt: new Date().toISOString()
+        }
+      );
+
+
+      // Success
+      showMessage(
+        "Account created successfully! Redirecting...",
+        "success"
+      );
+
+
+      // Redirect to dashboard
+      setTimeout(function () {
+        window.location.href = "dashboard.html";
+      }, 1000);
+
+
+    } catch (error) {
+
+      console.error("Sign-up error:", error);
+
+      showMessage(
+        getFirebaseError(error.code),
+        "error"
+      );
+
+      button.disabled = false;
+      button.textContent = "Sign Up →";
     }
 
+  });
 
-    form.addEventListener("submit", async function (event) {
-
-      event.preventDefault();
-
-      const fullName =
-        document.getElementById("name").value.trim();
-
-      const email =
-        document.getElementById("email").value.trim();
-
-      const password =
-        document.getElementById("password").value;
-
-
-      // Basic validation
-      if (!fullName) {
-        showMessage("Please enter your full name.", "error");
-        return;
-      }
-
-      if (!email) {
-        showMessage("Please enter your email address.", "error");
-        return;
-      }
-
-      if (password.length < 6) {
-        showMessage(
-          "Your password must be at least 6 characters.",
-          "error"
-        );
-        return;
-      }
-
-
-      // Split name
-      const nameParts = fullName.split(/\s+/);
-
-      const firstName = nameParts[0] || "";
-
-      const lastName =
-        nameParts.slice(1).join(" ") || "";
-
-
-      // Disable button
-      button.disabled = true;
-      button.textContent = "Creating account...";
-
-      message.className = "message";
-      message.textContent = "";
-
-
-      try {
-
-        // Create Firebase Authentication account
-        const userCredential =
-          await createUserWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
-
-        const user = userCredential.user;
-
-
-        // Save additional user information in Firestore
-        await setDoc(
-          doc(db, "users", user.uid),
-          {
-            uid: user.uid,
-            firstName: firstName,
-            lastName: lastName,
-            fullName: fullName,
-            email: user.email,
-            createdAt: new Date().toISOString()
-          }
-        );
-
-
-        // Success
-        showMessage(
-          "Account created successfully! Redirecting...",
-          "success"
-        );
-
-
-        // Redirect to dashboard
-        setTimeout(function () {
-          window.location.href = "dashboard.html";
-        }, 1000);
-
-
-      } catch (error) {
-
-        console.error("Sign-up error:", error);
-
-        showMessage(
-          getFirebaseError(error.code),
-          "error"
-        );
-
-        button.disabled = false;
-        button.textContent = "Sign Up →";
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>

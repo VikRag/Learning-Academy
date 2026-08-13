@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family & Teacher View – Learning Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f6fa; --surface: #fff; --surface2: #f0f1f7; --border: #e4e6f0;
+    --text: #1a1d2e; --text-muted: #7b7f96; --primary: #4f6ef7; --primary-light: #eef1fe;
+    --green: #22c55e; --green-light: #dcfce7; --red: #ef4444; --red-light: #fee2e2;
+    --amber: #f59e0b; --amber-light: #fef3c7;
+    --radius: 14px; --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 60px; }
+
+  .topnav {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .logo-chip { font-size: 1em; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .user-chip { display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--surface2); border: 1.5px solid var(--border); border-radius: 99px; font-size: 0.85em; font-weight: 600; }
+  .user-avatar { width: 26px; height: 26px; background: var(--primary); border-radius: 99px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; font-weight: 800; color: #fff; }
+  .btn-link { padding: 8px 16px; background: var(--primary); border: none; border-radius: 8px; font-family: inherit; font-size: 0.85em; font-weight: 700; color: #fff; cursor: pointer; }
+  .btn-link:hover { background: #3d5ce5; }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 36px 24px 0; }
+  .page-header h1 { font-size: 1.6em; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .page-header p { font-size: 0.9em; color: var(--text-muted); margin-bottom: 26px; }
+
+  .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 22px; }
+  .section-head { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .section-head h2 { font-size: 0.95em; font-weight: 700; }
+  .section-body { padding: 18px 20px; }
+
+  .link-form { display: flex; gap: 8px; flex-wrap: wrap; }
+  .link-form input {
+    flex: 1; min-width: 160px; padding: 10px 12px; border-radius: 9px;
+    border: 1.5px solid var(--border); font-family: inherit; font-size: 0.9em;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .link-form input:focus { outline: none; border-color: var(--primary); }
+  .link-msg { font-size: 0.82em; margin-top: 10px; padding: 8px 12px; border-radius: 8px; display: none; }
+  .link-msg.error { display: block; background: var(--red-light); color: #b42332; }
+  .link-msg.success { display: block; background: var(--green-light); color: #187a3d; }
+
+  .empty-state { padding: 36px 20px; text-align: center; color: var(--text-muted); font-size: 0.9em; }
+  .empty-state .icon { font-size: 2em; margin-bottom: 8px; }
+
+  .roster-item {
+    display: flex; align-items: center; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid var(--border); cursor: pointer;
+  }
+  .roster-item:last-child { border-bottom: none; }
+  .roster-avatar { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+  .roster-info { flex: 1; min-width: 0; }
+  .roster-name { font-weight: 700; font-size: 0.92em; display: flex; align-items: center; gap: 6px; }
+  .roster-meta { font-size: 0.78em; color: var(--text-muted); margin-top: 2px; }
+  .roster-mastery { text-align: right; font-family: 'DM Mono', monospace; font-weight: 800; font-size: 1.1em; color: var(--primary); flex-shrink: 0; }
+  .declining-badge {
+    display: inline-flex; align-items: center; gap: 3px; font-size: 0.68em; font-weight: 800;
+    background: var(--red-light); color: #b42332; padding: 2px 8px; border-radius: 99px;
+  }
+  .unlink-btn { font-size: 0.72em; color: var(--text-muted); background: none; border: none; cursor: pointer; text-decoration: underline; flex-shrink: 0; }
+  .unlink-btn:hover { color: var(--red); }
+
+  /* Detail panel */
+  .detail-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(26,29,46,0.5);
+    z-index: 100; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto;
+  }
+  .detail-overlay.open { display: flex; }
+  .detail-card {
+    background: var(--surface); border-radius: var(--radius); max-width: 640px; width: 100%;
+    padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  .detail-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+  .detail-head h2 { font-size: 1.2em; font-weight: 800; }
+  .close-btn { background: none; border: none; font-size: 1.4em; cursor: pointer; color: var(--text-muted); line-height: 1; }
+  .detail-mastery-hero { text-align: center; padding: 18px; background: var(--surface2); border-radius: 12px; margin-bottom: 18px; }
+  .detail-mastery-hero .val { font-size: 2.2em; font-weight: 800; font-family: 'DM Mono', monospace; color: var(--primary); }
+  .detail-mastery-hero .label { font-size: 0.78em; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+  .detail-stats-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 10px; font-size: 0.8em; color: var(--text-muted); font-weight: 600; }
+  .detail-stats-row strong { color: var(--text); font-family: 'DM Mono', monospace; }
+  .bar-track { height: 8px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 99px; background: var(--primary); }
+  .subject-detail-block { margin-bottom: 14px; }
+  .subject-detail-top { display: flex; justify-content: space-between; font-size: 0.85em; font-weight: 700; margin-bottom: 5px; }
+  .weak-list { margin-top: 8px; }
+  .weak-item { font-size: 0.78em; color: var(--amber); padding: 2px 0; }
+
+  .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 99px; animation: spin 0.7s linear infinite; margin: 40px auto; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media(max-width: 700px) { .topnav { padding: 0 16px; } .page { padding: 24px 14px 0; } }
+
+  .lang-toggle { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 5px 10px; border-radius: 7px; border: 1.5px solid var(--border);
+    background: var(--surface); font-family: inherit; font-size: 0.75em; font-weight: 700;
+    color: var(--text-muted); cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--primary); }
+  .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="logo-chip">🎓 Learning Academy — Family &amp; Teacher View</div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="window.applyLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="window.applyLanguage('es')">ES</button>
+    </div>
+    <div class="user-chip">
+      <div class="user-avatar" id="avatarInitial">?</div>
+      <span id="navUserName">Loading...</span>
+    </div>
+    <a href="dashboard.html" class="btn-link" style="background:var(--surface2);color:var(--text);" data-i18n="nav_myown">My Own Dashboard</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <h1 data-i18n="viewer_title">Family &amp; Teacher View</h1>
+    <p data-i18n="viewer_sub">Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.</p>
+  </div>
+
+  <!-- Link a student -->
+  <div class="section-card">
+    <div class="section-head"><h2 data-i18n="viewer_link_head">🔗 Link a Student</h2></div>
+    <div class="section-body">
+      <div class="link-form">
+        <input id="codeInput" type="text" maxlength="8" placeholder="Enter share code, e.g. 7F2K9Q">
+        <button class="btn-link" id="linkBtn" data-i18n="viewer_link_btn">Link Student</button>
+      </div>
+      <div class="link-msg" id="linkMsg"></div>
+      <p style="font-size:0.78em;color:var(--text-muted);margin-top:10px;">
+        <span data-i18n="viewer_link_hint">Ask the student to open their dashboard → "Share With a Teacher or Parent" to get their code.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Roster -->
+  <div class="section-card">
+    <div class="section-head"><h2 data-i18n="viewer_roster_head">👥 Linked Students</h2></div>
+    <div class="section-body" id="rosterBody">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Detail overlay -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-card">
+    <div class="detail-head">
+      <h2 id="detailName">Student</h2>
+      <button class="close-btn" id="closeDetail">&times;</button>
+    </div>
+    <div id="detailBody"><div class="spinner"></div></div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, collection, getDocs, query, orderBy, doc, getDoc, setDoc, deleteDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCcIgbm_Qk3w60r6F-Yo-vgUOvp28KBDis",
+  authDomain: "learning-academy-1063f.firebaseapp.com",
+  projectId: "learning-academy-1063f",
+  storageBucket: "learning-academy-1063f.firebasestorage.app",
+  messagingSenderId: "388313798196",
+  appId: "1:388313798196:web:23de2662c83deae6d25c61"
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+function showDebugError(msg) {
+  let el = document.getElementById('__debugErrorBanner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = '__debugErrorBanner';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#fee2e2;color:#991b1b;padding:10px 16px;font:600 13px/1.4 sans-serif;border-bottom:2px solid #ef4444;white-space:pre-wrap;';
+    document.body.prepend(el);
+  }
+  el.textContent = '⚠️ ' + msg + '  (open DevTools Console for details)';
+}
+window.addEventListener('error', e => showDebugError(e.message));
+window.addEventListener('unhandledrejection', e => showDebugError((e.reason && e.reason.message) || String(e.reason)));
+
+/* ════════════════════════════════════════════════════════════════
+   MASTERY ENGINE (inlined) — identical to dashboard.html/progress.html/
+   quiz.html so every page computes the same numbers from the same
+   quiz history. See dashboard.html for the full reasoning comments.
+   ════════════════════════════════════════════════════════════════ */
+const PRIOR_ATTEMPTS = 4, PRIOR_MEAN = 0.5, RECENT_WINDOW = 3, RECENT_WEIGHT = 2;
+const MASTERED_MIN_ATTEMPTS = 8, MASTERED_THRESHOLD = 85, MEANINGFUL_MIN_ATTEMPTS = 3;
+
+function toDate(ts) { if (!ts) return new Date(0); if (typeof ts.toDate === 'function') return ts.toDate(); return new Date(ts); }
+function calculateMastery(events) {
+  if (!events || events.length === 0) return { mastery: null, attempts: 0, isMastered: false };
+  const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
+  let weightedCorrect = 0, weightedTotal = 0, attempts = 0;
+  sorted.forEach((e, i) => {
+    const w = i >= sorted.length - RECENT_WINDOW ? RECENT_WEIGHT : 1;
+    weightedCorrect += e.correct * w; weightedTotal += e.total * w; attempts += e.total;
+  });
+  const mastery = Math.round((weightedCorrect + PRIOR_ATTEMPTS * PRIOR_MEAN) / (weightedTotal + PRIOR_ATTEMPTS) * 100);
+  return { mastery, attempts, isMastered: attempts >= MASTERED_MIN_ATTEMPTS && mastery >= MASTERED_THRESHOLD };
+}
+function buildTopicMap(quizResults) {
+  const map = {};
+  [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp)).forEach(r => {
+    const ts = toDate(r.timestamp);
+    Object.entries(r.topicBreakdown || {}).forEach(([topic, d]) => {
+      const key = `${r.subject || 'Unknown'}::${r.grade || '?'}::${topic}`;
+      if (!map[key]) map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
+      map[key].events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
+    });
+  });
+  return map;
+}
+function computeTopicMastery(quizResults) {
+  return Object.values(buildTopicMap(quizResults)).map(t => ({ ...t, ...calculateMastery(t.events) }));
+}
+function computeOverallMastery(quizResults) {
+  const events = [];
+  quizResults.forEach(r => { const ts = toDate(r.timestamp); Object.values(r.topicBreakdown || {}).forEach(d => events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts })); });
+  return calculateMastery(events);
+}
+function getStrengthsAndWeaknesses(topicMasteryList) {
+  const meaningful = topicMasteryList.filter(t => t.attempts >= MEANINGFUL_MIN_ATTEMPTS && t.mastery !== null);
+  const sorted = [...meaningful].sort((a, b) => b.mastery - a.mastery);
+  return {
+    strengths: sorted.filter(t => t.mastery >= 75).slice(0, 3),
+    weaknesses: [...sorted].reverse().filter(t => t.mastery < 70).slice(0, 3),
+  };
+}
+function computeStreak(quizResults) {
+  if (quizResults.length === 0) return 0;
+  const dateKey = d => d.toISOString().slice(0, 10);
+  const days = new Set(quizResults.map(r => dateKey(toDate(r.timestamp))));
+  let streak = 0; const cursor = new Date();
+  if (!days.has(dateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+  while (days.has(dateKey(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
+  return streak;
+}
+function computeProgressStats(quizResults) {
+  const questionsAnswered = quizResults.reduce((s, r) => s + (r.total || 0), 0);
+  const correctTotal = quizResults.reduce((s, r) => s + (r.score || 0), 0);
+  const topicsPracticed = new Set();
+  quizResults.forEach(r => Object.keys(r.topicBreakdown || {}).forEach(t => topicsPracticed.add(t)));
+  return {
+    overallMastery: computeOverallMastery(quizResults).mastery,
+    questionsAnswered,
+    accuracy: questionsAnswered > 0 ? Math.round((correctTotal / questionsAnswered) * 100) : null,
+    topicsPracticed: topicsPracticed.size,
+    streak: computeStreak(quizResults),
+  };
+}
+function computeWeeklyMasterySeries(quizResults) {
+  if (quizResults.length === 0) return [];
+  const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+  const firstDate = toDate(sorted[0].timestamp);
+  const weekOf = d => Math.floor((d - firstDate) / (7 * 24 * 3600 * 1000));
+  const byWeek = {};
+  sorted.forEach(r => { const w = weekOf(toDate(r.timestamp)); (byWeek[w] ||= []).push(r); });
+  const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
+  let cumulative = [];
+  return weeks.map(w => { cumulative = cumulative.concat(byWeek[w]); return { week: w + 1, mastery: computeOverallMastery(cumulative).mastery }; });
+}
+/* ══════════════════ END MASTERY ENGINE ══════════════════ */
+
+let currentUser = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) { window.location.href = "login.html"; return; }
+  currentUser = user;
+
+  let name = "Viewer", initial = "?";
+  try {
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    if (userDoc.exists()) {
+      const d = userDoc.data();
+      const full = `${d.firstName || ""} ${d.lastName || ""}`.trim();
+      if (full) { name = full; initial = full.charAt(0).toUpperCase(); }
+    }
+    if (name === "Viewer" && user.email) { name = user.email.split("@")[0]; initial = user.email.charAt(0).toUpperCase(); }
+  } catch (e) { console.error(e); }
+  document.getElementById("navUserName").textContent = name;
+  document.getElementById("avatarInitial").textContent = initial;
+
+  await loadRoster();
+});
+
+/* ── Link a student by code ──
+   Data model (see the Firestore rules block in this file's comments
+   for what to paste into the Firebase console):
+     viewerCodes/{code}                        -> { studentUid }
+     users/{studentUid}/linkedViewers/{myUid}   -> grants read access
+     users/{myUid}/linkedStudents/{studentUid}  -> my own roster list */
+document.getElementById('linkBtn').addEventListener('click', linkStudent);
+document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key === 'Enter') linkStudent(); });
+
+async function linkStudent() {
+  const msg = document.getElementById('linkMsg');
+  const codeInput = document.getElementById('codeInput');
+  const code = codeInput.value.trim().toUpperCase();
+  msg.className = 'link-msg';
+
+  if (!code) return;
+
+  try {
+    const codeDoc = await getDoc(doc(db, 'viewerCodes', code));
+    if (!codeDoc.exists()) {
+      msg.textContent = "That code doesn't match any student. Double-check it with them.";
+      msg.classList.add('error', 'show');
+      return;
+    }
+    const { studentUid, studentName } = codeDoc.data();
+    if (studentUid === currentUser.uid) {
+      msg.textContent = "You can't link your own account.";
+      msg.classList.add('error', 'show');
+      return;
+    }
+
+    await setDoc(doc(db, 'users', studentUid, 'linkedViewers', currentUser.uid), {
+      viewerEmail: currentUser.email || '',
+      linkedAt: new Date(),
+    });
+    await setDoc(doc(db, 'users', currentUser.uid, 'linkedStudents', studentUid), {
+      studentUid, studentName: studentName || 'Student',
+      linkedAt: new Date(),
+    });
+
+    msg.textContent = `Linked to ${studentName || 'the student'}!`;
+    msg.classList.add('success', 'show');
+    codeInput.value = '';
+    await loadRoster();
+  } catch (e) {
+    console.error('Link failed:', e);
+    msg.textContent = "Couldn't link that student — this usually means the Firestore security rules haven't been updated yet. See the comment block in viewer.html for the rules to add.";
+    msg.classList.add('error', 'show');
+  }
+}
+
+async function unlinkStudent(studentUid) {
+  if (!confirm('Remove this student from your view? You can re-link anytime with their code.')) return;
+  try {
+    await deleteDoc(doc(db, 'users', currentUser.uid, 'linkedStudents', studentUid));
+    // Best-effort: also try to remove the grant on the student's side.
+    // This will only succeed if rules allow a viewer to delete their own
+    // linkedViewers entry — see the rules block below.
+    try { await deleteDoc(doc(db, 'users', studentUid, 'linkedViewers', currentUser.uid)); } catch (e) { /* non-fatal */ }
+    await loadRoster();
+  } catch (e) {
+    console.error('Unlink failed:', e);
+    showDebugError('Could not unlink: ' + e.message);
+  }
+}
+window.__unlinkStudent = unlinkStudent;
+
+/* ── Roster ── */
+async function loadRoster() {
+  const body = document.getElementById('rosterBody');
+  body.innerHTML = '<div class="spinner"></div>';
+
+  let linked = [];
+  try {
+    const snap = await getDocs(collection(db, 'users', currentUser.uid, 'linkedStudents'));
+    linked = snap.docs.map(d => d.data());
+  } catch (e) {
+    console.error('Could not load roster:', e);
+    body.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div>Couldn't load your linked students. Check your Firestore rules.</div>`;
+    return;
+  }
+
+  if (linked.length === 0) {
+    body.innerHTML = `<div class="empty-state"><div class="icon">👥</div>No students linked yet. Enter a share code above to get started.</div>`;
+    return;
+  }
+
+  const rows = await Promise.all(linked.map(async (l) => {
+    let results = [];
+    try {
+      const q = query(collection(db, 'users', l.studentUid, 'quizResults'), orderBy('timestamp', 'desc'));
+      const snap = await getDocs(q);
+      results = snap.docs.map(d => d.data());
+    } catch (e) {
+      console.error('Could not load results for', l.studentUid, e);
+      return { ...l, error: true };
+    }
+    const stats = computeProgressStats(results);
+    const series = computeWeeklyMasterySeries(results);
+    const declining = series.length >= 2 && series[series.length - 1].mastery < series[series.length - 2].mastery - 5;
+    return { ...l, stats, results, declining };
+  }));
+
+  body.innerHTML = rows.map(r => {
+    if (r.error) {
+      return `<div class="roster-item">
+        <div class="roster-avatar">?</div>
+        <div class="roster-info"><div class="roster-name">${r.studentName}</div><div class="roster-meta">Couldn't load data — access may not be granted yet</div></div>
+        <button class="unlink-btn" onclick="window.__unlinkStudent('${r.studentUid}')">Unlink</button>
+      </div>`;
+    }
+    const hasData = r.results.length > 0;
+    return `<div class="roster-item" onclick="window.__openDetail('${r.studentUid}', '${(r.studentName || 'Student').replace(/'/g, "&#39;")}')">
+      <div class="roster-avatar">${(r.studentName || '?').charAt(0).toUpperCase()}</div>
+      <div class="roster-info">
+        <div class="roster-name">${r.studentName}${r.declining ? '<span class="declining-badge">↓ Declining</span>' : ''}</div>
+        <div class="roster-meta">${hasData ? `${r.stats.questionsAnswered} questions · 🔥 ${r.stats.streak} day streak` : 'No practice yet'}</div>
+      </div>
+      <div class="roster-mastery">${hasData ? (r.stats.overallMastery ?? '—') + '%' : '—'}</div>
+      <button class="unlink-btn" onclick="event.stopPropagation(); window.__unlinkStudent('${r.studentUid}')">Unlink</button>
+    </div>`;
+  }).join('');
+}
+
+/* ── Detail drill-down ── */
+async function openDetail(studentUid, studentName) {
+  document.getElementById('detailName').textContent = studentName;
+  document.getElementById('detailBody').innerHTML = '<div class="spinner"></div>';
+  document.getElementById('detailOverlay').classList.add('open');
+
+  let results = [];
+  try {
+    const q = query(collection(db, 'users', studentUid, 'quizResults'), orderBy('timestamp', 'desc'));
+    const snap = await getDocs(q);
+    results = snap.docs.map(d => d.data());
+  } catch (e) {
+    document.getElementById('detailBody').innerHTML = `<div class="empty-state"><div class="icon">⚠️</div>Couldn't load this student's data.</div>`;
+    return;
+  }
+
+  if (results.length === 0) {
+    document.getElementById('detailBody').innerHTML = `<div class="empty-state"><div class="icon">📊</div>This student hasn't taken any quizzes yet.</div>`;
+    return;
+  }
+
+  const stats = computeProgressStats(results);
+  const topics = computeTopicMastery(results).filter(t => t.attempts > 0);
+  const bySubject = {};
+  topics.forEach(t => { (bySubject[t.subject] ||= []).push(t); });
+
+  const subjectsHTML = Object.entries(bySubject).map(([subject, list]) => {
+    const { mastery } = calculateMastery(list.flatMap(t => t.events));
+    const { weaknesses } = getStrengthsAndWeaknesses(list);
+    return `
+      <div class="subject-detail-block">
+        <div class="subject-detail-top"><span>${subject}</span><span>${mastery}%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${mastery}%;"></div></div>
+        ${weaknesses.length ? `<div class="weak-list">${weaknesses.map(w => `<div class="weak-item">⚠ ${w.topic} — ${w.mastery}%</div>`).join('')}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  document.getElementById('detailBody').innerHTML = `
+    <div class="detail-mastery-hero">
+      <div class="val">${stats.overallMastery ?? '—'}%</div>
+      <div class="label">Overall Mastery</div>
+      <div class="detail-stats-row">
+        <span><strong>${stats.questionsAnswered}</strong> Questions</span>
+        <span><strong>${stats.accuracy ?? '—'}%</strong> Accuracy</span>
+        <span><strong>${stats.topicsPracticed}</strong> Topics</span>
+        <span>🔥 <strong>${stats.streak}</strong> Day Streak</span>
+      </div>
+    </div>
+    <div style="font-size:0.8em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:10px;">Subject Mastery</div>
+    ${subjectsHTML}
+  `;
+}
+window.__openDetail = openDetail;
+document.getElementById('closeDetail').addEventListener('click', () => document.getElementById('detailOverlay').classList.remove('open'));
+document.getElementById('detailOverlay').addEventListener('click', e => { if (e.target.id === 'detailOverlay') e.currentTarget.classList.remove('open'); });
+</script>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  FIRESTORE SECURITY RULES — paste into Firebase Console → Firestore
+  Database → Rules, merging with whatever you already have for
+  users/{uid} and users/{uid}/quizResults.
+  ═══════════════════════════════════════════════════════════════════
+
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+
+      match /users/{userId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+
+        match /quizResults/{resultId} {
+          allow read, write: if request.auth != null && request.auth.uid == userId;
+          // NEW: a linked viewer (teacher/parent) can read this student's results.
+          allow read: if request.auth != null &&
+            exists(/databases/$(database)/documents/users/$(userId)/linkedViewers/$(request.auth.uid));
+        }
+
+        // NEW: linkedViewers — who is allowed to view this student.
+        // The student can manage their own list; a viewer can add/remove
+        // themself (self-service link/unlink using a code the student shared).
+        match /linkedViewers/{viewerId} {
+          allow read, write: if request.auth != null && request.auth.uid == userId;
+          allow create, delete: if request.auth != null && request.auth.uid == viewerId;
+        }
+
+        // NEW: linkedStudents — a viewer's own roster list, stored under
+        // their own account so they can query "who am I linked to".
+        match /linkedStudents/{studentId} {
+          allow read, write: if request.auth != null && request.auth.uid == userId;
+        }
+      }
+
+      // NEW: viewerCodes — public lookup table mapping a short share
+      // code to a student UID. Only the student who owns that UID can
+      // create/update their own code; anyone signed in can read it to
+      // redeem a code (it exposes nothing but the UID + first name).
+      match /viewerCodes/{code} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null && request.auth.uid == request.resource.data.studentUid;
+      }
+    }
+  }
+  ═══════════════════════════════════════════════════════════════════
+-->
+<script>
+/* ── Language toggle (EN / ES) ──
+   Translates static UI chrome — nav, headings, buttons, labels, empty
+   states. Does NOT translate quiz question content itself: those come
+   from the subject/grade JSON files, and auto-translating educational
+   content risks introducing factual/wording errors into what students
+   are being tested on, so that's intentionally left as a separate,
+   human-reviewed task rather than done here.
+   Preference is stored in localStorage so it's remembered per device
+   without needing a database write. */
+window.I18N = {
+  en: {
+    nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
+    nav_takequiz: "✏️ Take Quiz", nav_home: "Home", nav_myown: "My Own Dashboard", signup_back_home: "← Home",
+    home_subtitle: "Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.",
+    home_login: "Login to Your Account", home_signup: "Create a Free Account",
+    home_footer: "Join students already learning with us ✨", home_or: "or",
+    login_welcome: "Welcome back!", login_sub: "Log in to your account",
+    login_email_ph: "Email", login_password_ph: "Password", login_btn: "Log In →",
+    login_noaccount: "Don't have an account?", login_signup_link: "Sign up",
+    signup_title: "Create your account", signup_sub: "Start tracking your learning journey.",
+    signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
+    signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
+    dash_welcome_sub: "Here's how you're doing across all your quizzes.",
+    dash_progress_head: "📊 Your Progress — Overall Mastery",
+    dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
+    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
+    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
+    dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
+    progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
+    progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
+    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
+    viewer_title: "Family & Teacher View",
+    viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
+    viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
+    viewer_link_hint: "Ask the student to open their dashboard → \"Share With a Teacher or Parent\" to get their code.",
+    viewer_roster_head: "👥 Linked Students",
+  },
+  es: {
+    nav_dashboard: "Panel", nav_progress: "Progreso", nav_viewer: "Vista Familiar y Docente",
+    nav_takequiz: "✏️ Hacer Cuestionario", nav_home: "Inicio", nav_myown: "Mi Propio Panel", signup_back_home: "← Inicio",
+    home_subtitle: "Ponte a prueba en Matemáticas, Ciencias, Inglés y Estudios Sociales — Grados 1–8.",
+    home_login: "Iniciar Sesión", home_signup: "Crear Cuenta Gratis",
+    home_footer: "Únete a los estudiantes que ya aprenden con nosotros ✨", home_or: "o",
+    login_welcome: "¡Bienvenido de nuevo!", login_sub: "Inicia sesión en tu cuenta",
+    login_email_ph: "Correo electrónico", login_password_ph: "Contraseña", login_btn: "Iniciar Sesión →",
+    login_noaccount: "¿No tienes una cuenta?", login_signup_link: "Regístrate",
+    signup_title: "Crea tu cuenta", signup_sub: "Comienza a seguir tu progreso de aprendizaje.",
+    signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
+    signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
+    dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
+    dash_progress_head: "📊 Tu Progreso — Dominio General",
+    dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
+    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
+    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
+    dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
+    progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
+    progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
+    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
+    viewer_title: "Vista Familiar y Docente",
+    viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
+    viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
+    viewer_link_hint: "Pide al estudiante que abra su panel → \"Compartir con un Maestro o Familiar\" para obtener su código.",
+    viewer_roster_head: "👥 Estudiantes Vinculados",
+  }
+};
+
+window.applyLanguage = function (lang) {
+  const dict = window.I18N[lang] || window.I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (dict[key] != null) el.placeholder = dict[key];
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  let saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  window.applyLanguage(saved);
+});
+
+</script>
+</body>
+</html>
