@@ -445,6 +445,20 @@
   .grade-progress-meta { font-size: 0.75em; color: var(--text-muted); font-weight: 600; margin-top: 8px; }
   .grade-progress-note { font-size: 0.76em; color: #92650a; margin-top: 8px; line-height: 1.4; }
 
+  /* ── QUIZ HISTORY FILTER ── */
+  .history-filters {
+    display: flex; gap: 6px; overflow-x: auto; margin-bottom: 14px;
+    padding-bottom: 2px; -webkit-overflow-scrolling: touch;
+  }
+  .history-filter-btn {
+    flex-shrink: 0; padding: 6px 13px; border-radius: 99px;
+    border: 1.5px solid var(--border); background: var(--surface);
+    font-family: inherit; font-size: 0.8em; font-weight: 700;
+    color: var(--text-muted); cursor: pointer; transition: all .15s;
+  }
+  .history-filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .history-filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
   /* ── SHARE CODE WIDGET ── */
   .share-code-display {
     display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -583,14 +597,6 @@
     </div>
   </div>
 
-  <!-- Recommended For You -->
-  <div class="full-section" id="recSection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head"><h2 data-i18n="dash_rec_head">🎯 Recommended For You</h2></div>
-      <div class="section-body rec-card" id="recBody"></div>
-    </div>
-  </div>
-
   <!-- Topic Mastery -->
   <div class="full-section" id="masterySection" style="display:none;">
     <div class="section-card">
@@ -617,8 +623,9 @@
         <h2 data-i18n="dash_history_head">📋 Quiz History</h2>
         <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="historyCount"></span>
       </div>
+      <div id="historyFilters" class="history-filters"></div>
       <div id="historyTableWrap">
-        <div class="empty-state"><div class="icon">📝</div>No quizzes taken yet — <a href="quiz.html" style="color:var(--primary);font-weight:600;">take your first quiz!</a></div>
+        <div class="empty-state"><div class="icon">📝</div>No quizzes taken yet — <a href="quiz.html" style="color:var(--primary);font-weight:600;">Take your first quiz!</a></div>
       </div>
     </div>
   </div>
@@ -663,40 +670,6 @@ import {
   deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-/* ════════════════════════════════════════════════════════════════
-   MASTERY ENGINE (inlined) — see comments below for the reasoning
-   behind the algorithm. Kept identical across dashboard.html,
-   progress.html, and quiz.html so every page computes the exact
-   same numbers from the exact same quiz history.
-   ════════════════════════════════════════════════════════════════ */
-/* ════════════════════════════════════════════════════════════════════
-   mastery.js — AR Learning Academy shared analytics engine
-   ════════════════════════════════════════════════════════════════════
-   Every dashboard / progress-page / post-quiz number in the app is
-   derived from this one module, from the SAME raw source: the
-   student's `quizResults` documents in Firestore. Nothing here is
-   hardcoded and nothing is stored twice — mastery, readiness,
-   recommendations, and achievements are all recomputed from quiz
-   history each time they're needed. That keeps the numbers honest
-   and avoids two copies of "the truth" drifting apart.
-
-   WHERE THE DATA COMES FROM
-   Each quizResult document (already saved by quiz.html) now also
-   carries a `topicBreakdown` field:
-       topicBreakdown: { "Food Webs": { correct: 3, total: 4 }, ... }
-   That's simply a tally of the questions the student saw in THAT
-   quiz, grouped by topic. Nothing new to store per-question — we
-   already know each question's topic and whether it was answered
-   correctly, so we can group it at save time for free.
-   ════════════════════════════════════════════════════════════════════ */
-
-/* ── Tunable constants (kept in one place, with reasoning) ── */
-
-// Bayesian smoothing: every topic starts with 4 "phantom" attempts at
-// 50%. This is what stops a single lucky/unlucky answer from swinging
-// a topic to 100% or 0% mastery — the more real attempts a student
-// has, the less the phantom attempts matter, and the score converges
-// on their true accuracy.
 const PRIOR_ATTEMPTS = 4;
 const PRIOR_MEAN = 0.5;
 
@@ -1404,38 +1377,12 @@ function renderDashboard(results, topicCounts = {}) {
 
   document.getElementById("recentActivity").innerHTML = activityHTML || '<div class="empty-state"><div class="icon">🕐</div>No recent activity</div>';
 
-  /* ── Full history table ── */
-  document.getElementById("historyCount").textContent = `${total} total`;
-
-  const rows = results.map((r, i) => {
-    const pct = r.percentage || 0;
-    const badgeCls = pct >= 90 ? "pct-great" : pct >= 70 ? "pct-pass" : pct >= 50 ? "pct-ok" : "pct-low";
-    const timeStr = r.timestamp ? (r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
-    return `
-      <tr>
-        <td style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:0.78em;">#${total - i}</td>
-        <td><span class="subject-pill">${r.subject || "—"}</span></td>
-        <td>Grade ${r.grade || "—"}</td>
-        <td>${r.score || 0} / ${r.total || "—"}</td>
-        <td><span class="pct-badge ${badgeCls}">${pct}%</span></td>
-        <td style="color:var(--text-muted);font-size:0.82em;">${timeStr}</td>
-      </tr>`;
-  }).join('');
-
-  document.getElementById("historyTableWrap").innerHTML = `
-    <table class="quiz-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Subject</th>
-          <th>Grade</th>
-          <th>Score</th>
-          <th>Percentage</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+  /* ── Full history table ──
+     Filterable by subject; always shows only the most recent 10 quizzes
+     for whichever subject (or "All") is selected — results are already
+     sorted newest-first by the Firestore query, so this is just a slice. */
+  renderHistoryFilters(results);
+  renderHistoryTable(results, 'all');
 
   /* ── New: mastery-driven sections ──
      Each wrapped independently so a bug in one section (say, exam
@@ -1699,6 +1646,83 @@ function renderAchievements(results) {
           <div class="desc">${a.desc}</div>
         </div>`).join('')}
     </div>`;
+}
+
+/* ── Quiz History: subject filter + "last 10" cap ──
+   results is already sorted newest-first (Firestore query orders by
+   timestamp desc), so "last 10" for any given filter is just the
+   first 10 entries after filtering — no re-sort needed. */
+const HISTORY_PAGE_SIZE = 10;
+let historyResultsCache = [];
+
+function renderHistoryFilters(results) {
+  historyResultsCache = results;
+  const subjects = [...new Set(results.map(r => r.subject).filter(Boolean))];
+  const filterBar = document.getElementById('historyFilters');
+
+  if (subjects.length <= 1) {
+    // Nothing meaningful to filter — one subject or none — skip the pills.
+    filterBar.innerHTML = '';
+    return;
+  }
+
+  const pills = ['all', ...subjects];
+  filterBar.innerHTML = pills.map(s => `
+    <button class="history-filter-btn${s === 'all' ? ' active' : ''}" data-subject="${s}" onclick="window.__filterHistory('${s.replace(/'/g, "\\'")}')">
+      ${s === 'all' ? 'All Subjects' : s}
+    </button>`).join('');
+}
+
+window.__filterHistory = function (subject) {
+  document.querySelectorAll('.history-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.subject === subject));
+  renderHistoryTable(historyResultsCache, subject);
+};
+
+function renderHistoryTable(results, subjectFilter) {
+  const filtered = subjectFilter === 'all' ? results : results.filter(r => r.subject === subjectFilter);
+  const shown = filtered.slice(0, HISTORY_PAGE_SIZE);
+
+  const label = subjectFilter === 'all' ? 'quizzes' : `${subjectFilter} quizzes`;
+  document.getElementById("historyCount").textContent =
+    filtered.length > HISTORY_PAGE_SIZE
+      ? `showing last ${HISTORY_PAGE_SIZE} of ${filtered.length} ${label}`
+      : `${filtered.length} ${label}`;
+
+  if (shown.length === 0) {
+    document.getElementById("historyTableWrap").innerHTML =
+      `<div class="empty-state"><div class="icon">📝</div>No ${subjectFilter === 'all' ? '' : subjectFilter + ' '}quizzes yet.</div>`;
+    return;
+  }
+
+  const rows = shown.map((r, i) => {
+    const pct = r.percentage || 0;
+    const badgeCls = pct >= 90 ? "pct-great" : pct >= 70 ? "pct-pass" : pct >= 50 ? "pct-ok" : "pct-low";
+    const timeStr = r.timestamp ? (r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
+    return `
+      <tr>
+        <td style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:0.78em;">#${filtered.length - i}</td>
+        <td><span class="subject-pill">${r.subject || "—"}</span></td>
+        <td>Grade ${r.grade || "—"}</td>
+        <td>${r.score || 0} / ${r.total || "—"}</td>
+        <td><span class="pct-badge ${badgeCls}">${pct}%</span></td>
+        <td style="color:var(--text-muted);font-size:0.82em;">${timeStr}</td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById("historyTableWrap").innerHTML = `
+    <table class="quiz-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Subject</th>
+          <th>Grade</th>
+          <th>Score</th>
+          <th>Percentage</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
 }
 
 /* ── Time formatter ── */
