@@ -233,9 +233,17 @@ const RECENT_WEIGHT = 2;
 const MASTERED_MIN_ATTEMPTS = 8;
 const MASTERED_THRESHOLD = 85;
 
-// A topic only counts as "meaningful" for strengths/weaknesses and
-// recommendations once it has at least this many answered questions.
-const MEANINGFUL_MIN_ATTEMPTS = 3;
+// A topic only counts as "meaningful" for strengths/weaknesses,
+// recommendations, and exam-readiness opportunities once it has at
+// least this many answered questions — one lucky/unlucky guess can't
+// label (or clear) a topic as weak. This is the SAME threshold used
+// by every feature that identifies a "weak topic" anywhere in the
+// app (see getWeakTopics below) — that consistency is what prevents
+// one section saying "Geometry needs practice" while another says
+// "no weak topics" for the exact same underlying data.
+const NEEDS_PRACTICE_MIN_ATTEMPTS = 3;
+const NEEDS_PRACTICE_THRESHOLD = 70;   // mastery below this = "needs practice"
+const STRENGTH_THRESHOLD = 75;         // mastery at/above this = "strength"
 
 /* ── Helpers ── */
 
@@ -365,25 +373,76 @@ function computeSubjectReadiness(quizResults, subject, grade) {
   return calculateMastery(events);
 }
 
-/* ── Strengths / weaknesses ── */
+/* ══════════════════════════════════════════════════════════════════
+   LEARNING NEEDS ENGINE — the single source of truth for "is this
+   topic something the student should work on?"
+
+   Every feature that surfaces a weak topic — Topic Mastery's "Needs
+   Practice", the dashboard's "Recommended For You", Exam Readiness's
+   "Biggest Opportunity" and "Needs Improvement" list — calls
+   getWeakTopics() (directly or through getStrengthsAndWeaknesses /
+   getRecommendation, which are now just thin wrappers around it).
+   Before this, each of those three features had its OWN minimum-
+   attempts threshold, which meant a topic like a 33%-mastery topic
+   with only 1-2 attempts could show up as an "opportunity" in one
+   place while "Needs Practice" elsewhere said "None" for the exact
+   same account — that contradiction is now structurally impossible,
+   because there's only one definition of "weak" left in the app.
+   ══════════════════════════════════════════════════════════════════ */
+
+// A topic is "actionable" once there's enough real data to trust the
+// number — fewer than NEEDS_PRACTICE_MIN_ATTEMPTS real questions and
+// we simply don't know enough yet, which is a different situation
+// from "the student has proven they understand it."
+function isActionable(topic) {
+  return topic && topic.mastery !== null && topic.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS;
+}
+
+// The one and only definition of "weak topic" in the app: enough
+// data to trust the number, not already mastered, mastery below the
+// needs-practice line. Sorted weakest-first.
+function getWeakTopics(topicMasteryList) {
+  return topicMasteryList
+    .filter(t => isActionable(t) && !t.isMastered && t.mastery < NEEDS_PRACTICE_THRESHOLD)
+    .sort((a, b) => a.mastery - b.mastery);
+}
+
+// Distinguishes "genuinely no weak spots" from "not enough data to
+// tell yet" — two very different messages that were being conflated
+// before. UI code should check hasEnoughData before claiming a clean
+// bill of health.
+function getLearningNeedsSummary(topicMasteryList) {
+  const actionable = topicMasteryList.filter(isActionable);
+  const weakTopics = getWeakTopics(topicMasteryList);
+  return {
+    weakTopics,
+    hasEnoughData: actionable.length > 0,
+    allStrong: actionable.length > 0 && weakTopics.length === 0,
+  };
+}
+
+/* ── Strengths / weaknesses (now built on getWeakTopics) ── */
 function getStrengthsAndWeaknesses(topicMasteryList) {
-  const meaningful = topicMasteryList.filter(t => t.attempts >= MEANINGFUL_MIN_ATTEMPTS && t.mastery !== null);
-  const sorted = [...meaningful].sort((a, b) => b.mastery - a.mastery);
-  const strengths = sorted.filter(t => t.mastery >= 75).slice(0, 3);
-  const weaknesses = [...sorted].reverse().filter(t => t.mastery < 70).slice(0, 3);
+  const actionable = topicMasteryList.filter(isActionable);
+  const strengths = actionable
+    .filter(t => t.mastery >= STRENGTH_THRESHOLD)
+    .sort((a, b) => b.mastery - a.mastery)
+    .slice(0, 3);
+  const weaknesses = getWeakTopics(topicMasteryList).slice(0, 3);
   return { strengths, weaknesses };
 }
 
-/* ── Recommendation: weakest meaningful topic, avoiding repeating the
-   exact topic the student just practiced if a real alternative exists ── */
+/* ── Recommendation: weakest actionable topic, avoiding repeating the
+   exact topic the student just practiced if a real alternative exists.
+   Now uses the SAME getWeakTopics() list as Needs Practice and Exam
+   Readiness — never a topic that Needs Practice would consider
+   "insufficient data." ── */
 function getRecommendation(topicMasteryList, lastPracticedTopics = []) {
-  const candidates = topicMasteryList.filter(t => t.attempts >= 1 && !t.isMastered);
-  if (candidates.length === 0) return null;
+  const weak = getWeakTopics(topicMasteryList);
+  if (weak.length === 0) return null;
 
-  const sorted = [...candidates].sort((a, b) => a.mastery - b.mastery);
-  const notJustPracticed = sorted.filter(t => !lastPracticedTopics.includes(t.topic));
-
-  return notJustPracticed.length > 0 ? notJustPracticed[0] : sorted[0];
+  const notJustPracticed = weak.filter(t => !lastPracticedTopics.includes(t.topic));
+  return notJustPracticed.length > 0 ? notJustPracticed[0] : weak[0];
 }
 
 /* ── Study streak: consecutive calendar days (ending today or
@@ -612,6 +671,9 @@ const Mastery = {
   computeTopicMastery,
   computeOverallMastery,
   computeSubjectReadiness,
+  isActionable,
+  getWeakTopics,
+  getLearningNeedsSummary,
   getStrengthsAndWeaknesses,
   getRecommendation,
   computeStreak,

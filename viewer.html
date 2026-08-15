@@ -205,7 +205,8 @@ window.addEventListener('unhandledrejection', e => showDebugError((e.reason && e
    quiz history. See dashboard.html for the full reasoning comments.
    ════════════════════════════════════════════════════════════════ */
 const PRIOR_ATTEMPTS = 4, PRIOR_MEAN = 0.5, RECENT_WINDOW = 3, RECENT_WEIGHT = 2;
-const MASTERED_MIN_ATTEMPTS = 8, MASTERED_THRESHOLD = 85, MEANINGFUL_MIN_ATTEMPTS = 3;
+const MASTERED_MIN_ATTEMPTS = 8, MASTERED_THRESHOLD = 85;
+const NEEDS_PRACTICE_MIN_ATTEMPTS = 3, NEEDS_PRACTICE_THRESHOLD = 70, STRENGTH_THRESHOLD = 75;
 
 function toDate(ts) { if (!ts) return new Date(0); if (typeof ts.toDate === 'function') return ts.toDate(); return new Date(ts); }
 function calculateMastery(events) {
@@ -239,12 +240,18 @@ function computeOverallMastery(quizResults) {
   quizResults.forEach(r => { const ts = toDate(r.timestamp); Object.values(r.topicBreakdown || {}).forEach(d => events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts })); });
   return calculateMastery(events);
 }
+// Same Learning Needs Engine as dashboard.html/progress.html/quiz.html —
+// one definition of "weak topic" everywhere, so a subject shown here
+// never contradicts what the student's own dashboard says.
+function isActionable(t) { return t && t.mastery !== null && t.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS; }
+function getWeakTopics(topicMasteryList) {
+  return topicMasteryList.filter(t => isActionable(t) && !t.isMastered && t.mastery < NEEDS_PRACTICE_THRESHOLD).sort((a, b) => a.mastery - b.mastery);
+}
 function getStrengthsAndWeaknesses(topicMasteryList) {
-  const meaningful = topicMasteryList.filter(t => t.attempts >= MEANINGFUL_MIN_ATTEMPTS && t.mastery !== null);
-  const sorted = [...meaningful].sort((a, b) => b.mastery - a.mastery);
+  const actionable = topicMasteryList.filter(isActionable);
   return {
-    strengths: sorted.filter(t => t.mastery >= 75).slice(0, 3),
-    weaknesses: [...sorted].reverse().filter(t => t.mastery < 70).slice(0, 3),
+    strengths: actionable.filter(t => t.mastery >= STRENGTH_THRESHOLD).sort((a, b) => b.mastery - a.mastery).slice(0, 3),
+    weaknesses: getWeakTopics(topicMasteryList).slice(0, 3),
   };
 }
 function computeStreak(quizResults) {
