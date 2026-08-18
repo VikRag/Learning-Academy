@@ -18,6 +18,7 @@
     --green: #22c55e;
     --green-light: #dcfce7;
     --red: #ef4444;
+    --red-light: #fee2e2;
     --amber: #f59e0b;
     --amber-light: #fef3c7;
     --radius: 14px;
@@ -25,6 +26,8 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 0 60px; }
+
+  a:focus-visible, button:focus-visible, select:focus-visible { outline: 2.5px solid var(--primary); outline-offset: 2px; }
 
   .topnav {
     background: var(--surface); border-bottom: 1px solid var(--border);
@@ -89,17 +92,30 @@
   .chart-wrap { padding: 6px 4px 0; }
   .chart-svg { width: 100%; height: 180px; }
 
-  /* Activity feed */
-  .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
-  .activity-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .activity-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1em; flex-shrink: 0; }
-  .activity-icon.green { background: var(--green-light); }
-  .activity-icon.blue  { background: var(--primary-light); }
-  .activity-icon.amber { background: var(--amber-light); }
-  .activity-text { flex: 1; }
-  .activity-text .title { font-size: 0.875em; font-weight: 600; margin-bottom: 2px; }
-  .activity-text .meta  { font-size: 0.78em; color: var(--text-muted); }
-  .activity-time { font-size: 0.75em; color: var(--text-muted); font-family: 'DM Mono', monospace; white-space: nowrap; }
+  /* ── Quiz History table (moved here from dashboard.html) ── */
+  .quiz-table { width: 100%; border-collapse: collapse; }
+  .quiz-table th {
+    font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); padding: 0 12px 10px; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .quiz-table td { padding: 12px; font-size: 0.875em; font-weight: 500; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .quiz-table th:first-child, .quiz-table td:first-child { padding-left: 20px; }
+  .quiz-table th:last-child, .quiz-table td:last-child { padding-right: 20px; }
+  .quiz-table tr:last-child td { border-bottom: none; }
+  .quiz-table tr:hover td { background: var(--surface2); }
+  .pct-badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 99px; font-family: 'DM Mono', monospace; font-size: 0.82em; font-weight: 700; }
+  .pct-great { background: var(--green-light); color: var(--green); }
+  .pct-ok    { background: var(--amber-light); color: var(--amber); }
+  .pct-low   { background: var(--red-light); color: var(--red); }
+  .pct-pass  { background: var(--primary-light); color: var(--primary); }
+  .subject-pill { display: inline-flex; padding: 2px 9px; border-radius: 99px; font-size: 0.78em; font-weight: 700; background: var(--primary-light); color: var(--primary); }
+  .history-filters { display: flex; gap: 6px; overflow-x: auto; margin: 14px 0; padding: 0 20px 2px; -webkit-overflow-scrolling: touch; }
+  .history-filter-btn {
+    flex-shrink: 0; padding: 6px 13px; border-radius: 99px; border: 1.5px solid var(--border); background: var(--surface);
+    font-family: inherit; font-size: 0.8em; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all .15s;
+  }
+  .history-filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .history-filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
   @media(max-width: 700px) {
     .topnav { padding: 0 16px; }
@@ -166,10 +182,14 @@
     <div class="section-body chart-wrap" id="chartBody"></div>
   </div>
 
-  <!-- Recent activity -->
-  <div class="section-card" id="activityCard" style="display:none;">
-    <div class="section-head"><h2 data-i18n="progress_activity">⚡ Recent Activity</h2></div>
-    <div class="section-body" id="activityBody"></div>
+  <!-- Quiz History (moved here from Dashboard) -->
+  <div class="section-card" id="historyCard" style="display:none;">
+    <div class="section-head">
+      <h2 data-i18n="progress_history">📋 Quiz History</h2>
+      <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="historyCount"></span>
+    </div>
+    <div id="historyFilters" class="history-filters"></div>
+    <div id="historyTableWrap"></div>
   </div>
 
 </div>
@@ -185,67 +205,19 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 import { getFirestore, collection, getDocs, query, orderBy, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ════════════════════════════════════════════════════════════════
-   MASTERY ENGINE (inlined) — see comments below for the reasoning
-   behind the algorithm. Kept identical across dashboard.html,
+   MASTERY ENGINE (inlined) — identical across dashboard.html,
    progress.html, and quiz.html so every page computes the exact
    same numbers from the exact same quiz history.
    ════════════════════════════════════════════════════════════════ */
-/* ════════════════════════════════════════════════════════════════════
-   mastery.js — AR Learning Academy shared analytics engine
-   ════════════════════════════════════════════════════════════════════
-   Every dashboard / progress-page / post-quiz number in the app is
-   derived from this one module, from the SAME raw source: the
-   student's `quizResults` documents in Firestore. Nothing here is
-   hardcoded and nothing is stored twice — mastery, readiness,
-   recommendations, and achievements are all recomputed from quiz
-   history each time they're needed. That keeps the numbers honest
-   and avoids two copies of "the truth" drifting apart.
-
-   WHERE THE DATA COMES FROM
-   Each quizResult document (already saved by quiz.html) now also
-   carries a `topicBreakdown` field:
-       topicBreakdown: { "Food Webs": { correct: 3, total: 4 }, ... }
-   That's simply a tally of the questions the student saw in THAT
-   quiz, grouped by topic. Nothing new to store per-question — we
-   already know each question's topic and whether it was answered
-   correctly, so we can group it at save time for free.
-   ════════════════════════════════════════════════════════════════════ */
-
-/* ── Tunable constants (kept in one place, with reasoning) ── */
-
-// Bayesian smoothing: every topic starts with 4 "phantom" attempts at
-// 50%. This is what stops a single lucky/unlucky answer from swinging
-// a topic to 100% or 0% mastery — the more real attempts a student
-// has, the less the phantom attempts matter, and the score converges
-// on their true accuracy.
 const PRIOR_ATTEMPTS = 4;
 const PRIOR_MEAN = 0.5;
-
-// Recency weighting: a student's last few quiz attempts on a topic
-// matter more than attempts from a month ago, because mastery changes
-// as they learn. The most recent RECENT_WINDOW quiz-attempts on a
-// topic count RECENT_WEIGHT times as much as older ones.
 const RECENT_WINDOW = 3;
 const RECENT_WEIGHT = 2;
-
-// A topic can't be labeled "Mastered" just because the last couple of
-// answers were lucky — it needs a real track record.
 const MASTERED_MIN_ATTEMPTS = 8;
 const MASTERED_THRESHOLD = 85;
-
-// A topic only counts as "meaningful" for strengths/weaknesses,
-// recommendations, and exam-readiness opportunities once it has at
-// least this many answered questions — one lucky/unlucky guess can't
-// label (or clear) a topic as weak. This is the SAME threshold used
-// by every feature that identifies a "weak topic" anywhere in the
-// app (see getWeakTopics below) — that consistency is what prevents
-// one section saying "Geometry needs practice" while another says
-// "no weak topics" for the exact same underlying data.
 const NEEDS_PRACTICE_MIN_ATTEMPTS = 3;
-const NEEDS_PRACTICE_THRESHOLD = 70;   // mastery below this = "needs practice"
-const STRENGTH_THRESHOLD = 75;         // mastery at/above this = "strength"
-
-/* ── Helpers ── */
+const NEEDS_PRACTICE_THRESHOLD = 70;
+const STRENGTH_THRESHOLD = 75;
 
 function toDate(ts) {
   if (!ts) return new Date(0);
@@ -262,42 +234,24 @@ function formatDuration(totalSeconds) {
   return `${s}s`;
 }
 
-function dateKey(d) {
-  return d.toISOString().slice(0, 10); // YYYY-MM-DD
-}
+function dateKey(d) { return d.toISOString().slice(0, 10); }
 
-/* ── Core mastery calculation ──
-   events: [{ correct, total, timestamp }], one entry per quiz attempt
-   that touched this topic. Order does not need to be sorted — we sort
-   internally. Returns null mastery if there is no data at all. */
 function calculateMastery(events) {
-  if (!events || events.length === 0) {
-    return { mastery: null, attempts: 0, isMastered: false };
-  }
+  if (!events || events.length === 0) return { mastery: null, attempts: 0, isMastered: false };
   const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
-
-  let weightedCorrect = 0;
-  let weightedTotal = 0;
-  let attempts = 0;
-
+  let weightedCorrect = 0, weightedTotal = 0, attempts = 0;
   sorted.forEach((e, i) => {
     const isRecent = i >= sorted.length - RECENT_WINDOW;
     const w = isRecent ? RECENT_WEIGHT : 1;
-    weightedCorrect += e.correct * w;
-    weightedTotal += e.total * w;
-    attempts += e.total;
+    weightedCorrect += e.correct * w; weightedTotal += e.total * w; attempts += e.total;
   });
-
   const smoothedCorrect = weightedCorrect + PRIOR_ATTEMPTS * PRIOR_MEAN;
   const smoothedTotal = weightedTotal + PRIOR_ATTEMPTS;
   const mastery = Math.round((smoothedCorrect / smoothedTotal) * 100);
   const isMastered = attempts >= MASTERED_MIN_ATTEMPTS && mastery >= MASTERED_THRESHOLD;
-
   return { mastery, attempts, isMastered };
 }
 
-/* Mastery as it evolved attempt-by-attempt — powers the "68% → 76%"
-   improvement callouts and the mastery-over-time chart. */
 function masteryHistory(events) {
   const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
   const history = [];
@@ -309,191 +263,88 @@ function masteryHistory(events) {
   return history;
 }
 
-/* ── Build topic-level event map from raw quizResults ── */
 function buildTopicMap(quizResults) {
-  // key -> { topic, subject, grade, events: [] }
   const map = {};
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
-
   sorted.forEach(r => {
     const ts = toDate(r.timestamp);
     const breakdown = r.topicBreakdown || {};
     Object.entries(breakdown).forEach(([topic, d]) => {
       const key = `${r.subject || 'Unknown'}::${r.grade || '?'}::${topic}`;
-      if (!map[key]) {
-        map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
-      }
+      if (!map[key]) map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
       map[key].events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
     });
   });
-
   return map;
 }
 
-/* Topic mastery, one row per topic (subject+grade+topic), with mastery
-   computed. Sorted by subject then mastery ascending isn't forced here
-   — callers sort as needed. */
 function computeTopicMastery(quizResults) {
   const map = buildTopicMap(quizResults);
-  return Object.values(map).map(t => ({
-    ...t,
-    ...calculateMastery(t.events),
-  }));
+  return Object.values(map).map(t => ({ ...t, ...calculateMastery(t.events) }));
 }
 
-/* Overall mastery across everything the student has ever done. Uses
-   the same smoothing/recency logic, just applied to every event from
-   every topic at once, so a student with lots of practice earns a
-   confident number and a brand-new student doesn't get 0%. */
 function computeOverallMastery(quizResults) {
   const allEvents = [];
   quizResults.forEach(r => {
     const ts = toDate(r.timestamp);
-    Object.values(r.topicBreakdown || {}).forEach(d => {
-      allEvents.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
-    });
+    Object.values(r.topicBreakdown || {}).forEach(d => allEvents.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts }));
   });
   return calculateMastery(allEvents);
 }
 
-/* Exam readiness for one subject+grade = mastery aggregated over just
-   that subject's events. Same honest math — a student who has only
-   answered a handful of questions will not see a high number, because
-   the Bayesian prior pulls a low-attempt score toward 50%. */
 function computeSubjectReadiness(quizResults, subject, grade) {
   const events = [];
-  quizResults
-    .filter(r => r.subject === subject && String(r.grade) === String(grade))
-    .forEach(r => {
-      const ts = toDate(r.timestamp);
-      Object.values(r.topicBreakdown || {}).forEach(d => {
-        events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
-      });
-    });
+  quizResults.filter(r => r.subject === subject && String(r.grade) === String(grade)).forEach(r => {
+    const ts = toDate(r.timestamp);
+    Object.values(r.topicBreakdown || {}).forEach(d => events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts }));
+  });
   return calculateMastery(events);
 }
 
-/* ══════════════════════════════════════════════════════════════════
-   LEARNING NEEDS ENGINE — the single source of truth for "is this
-   topic something the student should work on?"
+function isActionable(topic) { return topic && topic.mastery !== null && topic.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS; }
 
-   Every feature that surfaces a weak topic — Topic Mastery's "Needs
-   Practice", the dashboard's "Recommended For You", Exam Readiness's
-   "Biggest Opportunity" and "Needs Improvement" list — calls
-   getWeakTopics() (directly or through getStrengthsAndWeaknesses /
-   getRecommendation, which are now just thin wrappers around it).
-   Before this, each of those three features had its OWN minimum-
-   attempts threshold, which meant a topic like a 33%-mastery topic
-   with only 1-2 attempts could show up as an "opportunity" in one
-   place while "Needs Practice" elsewhere said "None" for the exact
-   same account — that contradiction is now structurally impossible,
-   because there's only one definition of "weak" left in the app.
-   ══════════════════════════════════════════════════════════════════ */
-
-// A topic is "actionable" once there's enough real data to trust the
-// number — fewer than NEEDS_PRACTICE_MIN_ATTEMPTS real questions and
-// we simply don't know enough yet, which is a different situation
-// from "the student has proven they understand it."
-function isActionable(topic) {
-  return topic && topic.mastery !== null && topic.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS;
-}
-
-// The one and only definition of "weak topic" in the app: enough
-// data to trust the number, not already mastered, mastery below the
-// needs-practice line. Sorted weakest-first.
 function getWeakTopics(topicMasteryList) {
-  return topicMasteryList
-    .filter(t => isActionable(t) && !t.isMastered && t.mastery < NEEDS_PRACTICE_THRESHOLD)
-    .sort((a, b) => a.mastery - b.mastery);
+  return topicMasteryList.filter(t => isActionable(t) && !t.isMastered && t.mastery < NEEDS_PRACTICE_THRESHOLD).sort((a, b) => a.mastery - b.mastery);
 }
 
-// Distinguishes "genuinely no weak spots" from "not enough data to
-// tell yet" — two very different messages that were being conflated
-// before. UI code should check hasEnoughData before claiming a clean
-// bill of health.
 function getLearningNeedsSummary(topicMasteryList) {
   const actionable = topicMasteryList.filter(isActionable);
   const weakTopics = getWeakTopics(topicMasteryList);
-  return {
-    weakTopics,
-    hasEnoughData: actionable.length > 0,
-    allStrong: actionable.length > 0 && weakTopics.length === 0,
-  };
+  return { weakTopics, hasEnoughData: actionable.length > 0, allStrong: actionable.length > 0 && weakTopics.length === 0 };
 }
 
-/* ── Strengths / weaknesses (now built on getWeakTopics) ── */
 function getStrengthsAndWeaknesses(topicMasteryList) {
   const actionable = topicMasteryList.filter(isActionable);
-  const strengths = actionable
-    .filter(t => t.mastery >= STRENGTH_THRESHOLD)
-    .sort((a, b) => b.mastery - a.mastery)
-    .slice(0, 3);
+  const strengths = actionable.filter(t => t.mastery >= STRENGTH_THRESHOLD).sort((a, b) => b.mastery - a.mastery).slice(0, 3);
   const weaknesses = getWeakTopics(topicMasteryList).slice(0, 3);
   return { strengths, weaknesses };
 }
 
-/* ── Recommendation: weakest actionable topic, avoiding repeating the
-   exact topic the student just practiced if a real alternative exists.
-   Now uses the SAME getWeakTopics() list as Needs Practice and Exam
-   Readiness — never a topic that Needs Practice would consider
-   "insufficient data." ── */
 function getRecommendation(topicMasteryList, lastPracticedTopics = []) {
   const weak = getWeakTopics(topicMasteryList);
   if (weak.length === 0) return null;
-
   const notJustPracticed = weak.filter(t => !lastPracticedTopics.includes(t.topic));
   return notJustPracticed.length > 0 ? notJustPracticed[0] : weak[0];
 }
 
-/* ── Study streak: consecutive calendar days (ending today or
-   yesterday) that include at least one quiz ── */
 function computeStreak(quizResults) {
   if (quizResults.length === 0) return 0;
   const days = new Set(quizResults.map(r => dateKey(toDate(r.timestamp))));
   let streak = 0;
   const cursor = new Date();
-  // Streak still counts if today has no activity yet but yesterday does.
   if (!days.has(dateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
-  while (days.has(dateKey(cursor))) {
-    streak++;
-    cursor.setDate(cursor.getDate() - 1);
-  }
+  while (days.has(dateKey(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
   return streak;
 }
 
-/* ── Achievements ──
-   Fully derived from quiz history — nothing is stored, so nothing can
-   drift out of sync or "reset." Pass the full quizResults list (or a
-   prefix of it, to check what was unlocked before the latest quiz). */
 function computeAchievements(quizResults) {
   const topicList = computeTopicMastery(quizResults);
   const unlocked = [];
-
-  // First Mastery
-  if (topicList.some(t => t.isMastered)) {
-    unlocked.push({ id: 'first-mastery', icon: '🏅', title: 'First Mastery', desc: 'Mastered your first topic' });
-  }
-
-  // Getting Better (+10% in one topic's running mastery, attempt to attempt)
-  const gotBetter = topicList.some(t => {
-    const hist = masteryHistory(t.events);
-    return hist.some((h, i) => i > 0 && h.mastery - hist[i - 1].mastery >= 10);
-  });
-  if (gotBetter) {
-    unlocked.push({ id: 'getting-better', icon: '📈', title: 'Getting Better', desc: 'Improved a topic by 10% or more' });
-  }
-
-  // Consistency (5-day streak)
-  if (computeStreak(quizResults) >= 5) {
-    unlocked.push({ id: 'consistency', icon: '🔥', title: 'Consistency', desc: '5-day study streak' });
-  }
-
-  // Perfect Score
-  if (quizResults.some(r => r.percentage === 100)) {
-    unlocked.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
-  }
-
-  // Subject Master (90%+ aggregate mastery in a subject, with real attempts)
+  if (topicList.some(t => t.isMastered)) unlocked.push({ id: 'first-mastery', icon: '🏅', title: 'First Mastery', desc: 'Mastered your first topic' });
+  const gotBetter = topicList.some(t => { const hist = masteryHistory(t.events); return hist.some((h, i) => i > 0 && h.mastery - hist[i - 1].mastery >= 10); });
+  if (gotBetter) unlocked.push({ id: 'getting-better', icon: '📈', title: 'Getting Better', desc: 'Improved a topic by 10% or more' });
+  if (computeStreak(quizResults) >= 5) unlocked.push({ id: 'consistency', icon: '🔥', title: 'Consistency', desc: '5-day study streak' });
+  if (quizResults.some(r => r.percentage === 100)) unlocked.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
   const subjects = [...new Set(quizResults.map(r => r.subject).filter(Boolean))];
   const subjectMastered = subjects.some(s => {
     const events = [];
@@ -504,29 +355,18 @@ function computeAchievements(quizResults) {
     const m = calculateMastery(events);
     return m.attempts >= MASTERED_MIN_ATTEMPTS && m.mastery >= 90;
   });
-  if (subjectMastered) {
-    unlocked.push({ id: 'subject-master', icon: '🎓', title: 'Subject Master', desc: 'Reached 90% mastery in a subject' });
-  }
-
-  // Comeback (+20% from a topic's lowest point to its current mastery)
+  if (subjectMastered) unlocked.push({ id: 'subject-master', icon: '🎓', title: 'Subject Master', desc: 'Reached 90% mastery in a subject' });
   const comeback = topicList.some(t => {
     const hist = masteryHistory(t.events);
     if (hist.length < 2) return false;
     let low = hist[0].mastery;
-    for (const h of hist) {
-      if (h.mastery - low >= 20 && low < 50) return true;
-      low = Math.min(low, h.mastery);
-    }
+    for (const h of hist) { if (h.mastery - low >= 20 && low < 50) return true; low = Math.min(low, h.mastery); }
     return false;
   });
-  if (comeback) {
-    unlocked.push({ id: 'comeback', icon: '🔄', title: 'Comeback', desc: 'Improved a previously weak topic by 20%' });
-  }
-
+  if (comeback) unlocked.push({ id: 'comeback', icon: '🔄', title: 'Comeback', desc: 'Improved a previously weak topic by 20%' });
   return unlocked;
 }
 
-/* ── Aggregate stats for the "Your Progress" card ── */
 function computeProgressStats(quizResults) {
   const questionsAnswered = quizResults.reduce((s, r) => s + (r.total || 0), 0);
   const correctTotal = quizResults.reduce((s, r) => s + (r.score || 0), 0);
@@ -536,154 +376,26 @@ function computeProgressStats(quizResults) {
   const studySeconds = quizResults.reduce((s, r) => s + (r.timeTakenSeconds || 0), 0);
   const streak = computeStreak(quizResults);
   const overall = computeOverallMastery(quizResults);
-
-  return {
-    overallMastery: overall.mastery,
-    questionsAnswered,
-    accuracy,
-    topicsPracticed: topicsPracticed.size,
-    studySeconds,
-    studyTimeLabel: formatDuration(studySeconds),
-    streak,
-  };
+  return { overallMastery: overall.mastery, questionsAnswered, accuracy, topicsPracticed: topicsPracticed.size, studySeconds, studyTimeLabel: formatDuration(studySeconds), streak };
 }
 
-/* ── Weekly mastery-over-time series for the Progress page chart ── */
 function computeWeeklyMasterySeries(quizResults) {
   if (quizResults.length === 0) return [];
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
   const firstDate = toDate(sorted[0].timestamp);
-
   const weekOf = (d) => Math.floor((d - firstDate) / (7 * 24 * 3600 * 1000));
   const byWeek = {};
-  sorted.forEach(r => {
-    const w = weekOf(toDate(r.timestamp));
-    if (!byWeek[w]) byWeek[w] = [];
-    byWeek[w].push(r);
-  });
-
+  sorted.forEach(r => { const w = weekOf(toDate(r.timestamp)); if (!byWeek[w]) byWeek[w] = []; byWeek[w].push(r); });
   const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
   let cumulative = [];
-  return weeks.map(w => {
-    cumulative = cumulative.concat(byWeek[w]);
-    const { mastery } = computeOverallMastery(cumulative);
-    return { week: w + 1, mastery };
-  });
-}
-
-/* ── Badges (from raw quiz activity) ──
-   Separate from topic-mastery achievements: these celebrate showing
-   up and putting in the reps, independent of how hard the topics
-   were. Combined with the mastery-based achievements below into one
-   list for the Achievements section. */
-function computeMilestoneBadges(quizResults) {
-  const badges = [];
-  const totalQuizzes = quizResults.length;
-  const totalQuestions = quizResults.reduce((s, r) => s + (r.total || 0), 0);
-
-  if (totalQuizzes >= 1)  badges.push({ id: 'first-quiz',        icon: '🎬', title: 'First Quiz',   desc: 'Completed your first practice quiz' });
-  if (totalQuizzes >= 5)  badges.push({ id: 'five-quizzes',      icon: '🗂️', title: '5 Quizzes',    desc: 'Completed 5 practice quizzes' });
-  if (totalQuizzes >= 10) badges.push({ id: 'ten-quizzes',       icon: '📚', title: '10 Quizzes',   desc: 'Completed 10 practice quizzes' });
-  if (totalQuizzes >= 25) badges.push({ id: 'twentyfive-quizzes',icon: '🏋️', title: '25 Quizzes',   desc: 'Completed 25 practice quizzes' });
-
-  if (totalQuestions >= 50)  badges.push({ id: 'fifty-questions',    icon: '✏️', title: '50 Questions',  desc: 'Answered 50 questions total' });
-  if (totalQuestions >= 100) badges.push({ id: 'hundred-questions',  icon: '📝', title: '100 Questions', desc: 'Answered 100 questions total' });
-  if (totalQuestions >= 250) badges.push({ id: 'twofifty-questions', icon: '🎖️', title: '250 Questions', desc: 'Answered 250 questions total' });
-
-  if (quizResults.some(r => r.percentage === 100)) {
-    badges.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
-  }
-
-  // Rising accuracy: shows the student is progressing, not just grinding.
-  const sorted = [...quizResults].sort((a, b) => toDate(b.timestamp) - toDate(a.timestamp));
-  if (sorted.length >= 3 && sorted.slice(0, 3).every(r => (r.percentage || 0) >= 80)) {
-    badges.push({ id: 'on-a-roll', icon: '🚀', title: 'On a Roll', desc: '80%+ accuracy on your last 3 quizzes' });
-  }
-
-  return badges;
-}
-
-// Combined badge list for the Achievements section: milestone badges
-// (raw activity) + mastery-based achievements (real understanding).
-// Fully derived from quiz history every time — nothing stored, so
-// nothing can drift or reset.
-function computeAllBadges(quizResults) {
-  const seen = new Set();
-  return [...computeMilestoneBadges(quizResults), ...computeAchievements(quizResults)]
-    .filter(b => (seen.has(b.id) ? false : (seen.add(b.id), true)));
-}
-
-/* ── Grade / Subject completion ──
-   A subject+grade only "finishes" through sustained, accurate practice
-   across real coverage of its topics — never from one lucky session.
-   Three ingredients, all shown to the student:
-     1. Coverage    — how many of the subject's topics have been touched
-     2. Mastery     — how well those topics are actually understood
-     3. Consistency — practice spread across multiple days, not crammed
-   into one sitting the night before a test. */
-const GRADE_COMPLETE_THRESHOLD = 90; // combined coverage+mastery score needed
-const GRADE_COMPLETE_MIN_DAYS  = 3;  // distinct practice days required
-
-function distinctPracticeDays(quizResults, subject, grade) {
-  const days = new Set();
-  quizResults
-    .filter(r => r.subject === subject && String(r.grade) === String(grade))
-    .forEach(r => days.add(toDate(r.timestamp).toISOString().slice(0, 10)));
-  return days.size;
-}
-
-// topicCounts: { "Subject::Grade": totalTopicsInCurriculum } — pass {}
-// if unknown; coverage then falls back to "topics practiced" as its
-// own denominator (100% coverage of what's been seen so far).
-function computeGradeProgress(quizResults, topicCounts = {}) {
-  const combos = [...new Set(quizResults.map(r => `${r.subject}::${r.grade}`))];
-  const topicList = computeTopicMastery(quizResults);
-
-  return combos.map(key => {
-    const [subject, grade] = key.split('::');
-    const practiced = topicList.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0);
-    const masteredCount = practiced.filter(t => t.isMastered).length;
-    const totalTopics = topicCounts[key] || practiced.length || 1;
-    const coveragePct = Math.round((practiced.length / totalTopics) * 100);
-    const { mastery: subjectMastery } = calculateMastery(practiced.flatMap(t => t.events));
-    const days = distinctPracticeDays(quizResults, subject, grade);
-
-    const combined = Math.min(100, Math.round(0.5 * coveragePct + 0.5 * (subjectMastery || 0)));
-    const isComplete    = combined >= GRADE_COMPLETE_THRESHOLD && days >= GRADE_COMPLETE_MIN_DAYS;
-    const needsMoreDays = combined >= GRADE_COMPLETE_THRESHOLD && days < GRADE_COMPLETE_MIN_DAYS;
-
-    return {
-      subject, grade,
-      topicsPracticed: practiced.length, totalTopics, coveragePct,
-      subjectMastery: subjectMastery || 0, masteredCount,
-      distinctDays: days, progressPct: combined,
-      isComplete, needsMoreDays,
-    };
-  });
+  return weeks.map(w => { cumulative = cumulative.concat(byWeek[w]); const { mastery } = computeOverallMastery(cumulative); return { week: w + 1, mastery }; });
 }
 
 const Mastery = {
-  toDate,
-  formatDuration,
-  calculateMastery,
-  masteryHistory,
-  buildTopicMap,
-  computeTopicMastery,
-  computeOverallMastery,
-  computeSubjectReadiness,
-  isActionable,
-  getWeakTopics,
-  getLearningNeedsSummary,
-  getStrengthsAndWeaknesses,
-  getRecommendation,
-  computeStreak,
-  computeAchievements,
-  computeProgressStats,
-  computeWeeklyMasterySeries,
-  computeMilestoneBadges,
-  computeAllBadges,
-  distinctPracticeDays,
-  computeGradeProgress
+  toDate, formatDuration, calculateMastery, masteryHistory, buildTopicMap, computeTopicMastery,
+  computeOverallMastery, computeSubjectReadiness, isActionable, getWeakTopics, getLearningNeedsSummary,
+  getStrengthsAndWeaknesses, getRecommendation, computeStreak, computeAchievements, computeProgressStats,
+  computeWeeklyMasterySeries
 };
 /* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
@@ -734,7 +446,7 @@ function render(results) {
   renderOverall(results);
   renderSubjects(results);
   renderChart(results);
-  renderActivity(results);
+  renderQuizHistory(results);
 }
 
 function renderOverall(results) {
@@ -768,10 +480,7 @@ function renderSubjects(results) {
   card.style.display = "block";
 
   const bySubject = {};
-  topics.forEach(t => {
-    if (!bySubject[t.subject]) bySubject[t.subject] = [];
-    bySubject[t.subject].push(t);
-  });
+  topics.forEach(t => { if (!bySubject[t.subject]) bySubject[t.subject] = []; bySubject[t.subject].push(t); });
 
   const html = Object.entries(bySubject).map(([subject, list], idx) => {
     const { mastery } = Mastery.calculateMastery(list.flatMap(t => t.events));
@@ -804,8 +513,6 @@ function renderChart(results) {
   const card = document.getElementById("chartCard");
   const series = Mastery.computeWeeklyMasterySeries(results);
   if (series.length < 2) {
-    // Not enough history to draw a trend yet — honest empty state instead
-    // of inventing data points.
     card.style.display = "block";
     document.getElementById("chartBody").innerHTML = `
       <div class="empty-state"><div class="icon">📈</div>Keep practicing across a few more sessions to see your mastery trend over time.</div>`;
@@ -834,43 +541,89 @@ function renderChart(results) {
     </svg>`;
 }
 
-function renderActivity(results) {
-  const card = document.getElementById("activityCard");
-  if (results.length === 0) { card.style.display = "none"; return; }
-  card.style.display = "block";
+/* ── Quiz History (moved here from dashboard.html) ──
+   Subject-filterable table of every quiz result, capped at the last
+   10 for whichever filter is active. results is already sorted
+   newest-first by the Firestore query, so "last 10" is just a slice
+   after filtering — no re-sort needed. */
+const HISTORY_PAGE_SIZE = 10;
+let historyResultsCache = [];
 
-  const sorted = [...results].sort((a, b) => Mastery.toDate(b.timestamp) - Mastery.toDate(a.timestamp)).slice(0, 10);
-  const html = sorted.map(r => {
+function renderQuizHistory(results) {
+  const card = document.getElementById('historyCard');
+  if (results.length === 0) { card.style.display = 'none'; return; }
+  card.style.display = 'block';
+
+  historyResultsCache = results;
+  const subjects = [...new Set(results.map(r => r.subject).filter(Boolean))];
+  const filterBar = document.getElementById('historyFilters');
+
+  if (subjects.length <= 1) {
+    filterBar.innerHTML = '';
+  } else {
+    const pills = ['all', ...subjects];
+    filterBar.innerHTML = pills.map(s => `
+      <button class="history-filter-btn${s === 'all' ? ' active' : ''}" data-subject="${s}" onclick="window.__filterHistory('${s.replace(/'/g, "\\'")}')">
+        ${s === 'all' ? 'All Subjects' : s}
+      </button>`).join('');
+  }
+
+  renderHistoryTable(results, 'all');
+}
+
+window.__filterHistory = function (subject) {
+  document.querySelectorAll('.history-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.subject === subject));
+  renderHistoryTable(historyResultsCache, subject);
+};
+
+function renderHistoryTable(results, subjectFilter) {
+  const filtered = subjectFilter === 'all' ? results : results.filter(r => r.subject === subjectFilter);
+  const shown = filtered.slice(0, HISTORY_PAGE_SIZE);
+
+  const label = subjectFilter === 'all' ? 'quizzes' : `${subjectFilter} quizzes`;
+  document.getElementById("historyCount").textContent =
+    filtered.length > HISTORY_PAGE_SIZE
+      ? `Showing last ${HISTORY_PAGE_SIZE} of ${filtered.length} ${label}`
+      : `${filtered.length} ${label}`;
+
+  if (shown.length === 0) {
+    document.getElementById("historyTableWrap").innerHTML =
+      `<div class="empty-state"><div class="icon">📝</div>No ${subjectFilter === 'all' ? '' : subjectFilter + ' '}quizzes yet.</div>`;
+    return;
+  }
+
+  const rows = shown.map((r, i) => {
     const pct = r.percentage || 0;
-    const icon = pct >= 70 ? "🏆" : pct >= 50 ? "✅" : "📝";
-    const iconClass = pct >= 70 ? "green" : pct >= 50 ? "blue" : "amber";
-    const d = Mastery.toDate(r.timestamp);
-    const timeStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    const topics = Object.keys(r.topicBreakdown || {}).join(', ') || '—';
+    const badgeCls = pct >= 90 ? "pct-great" : pct >= 70 ? "pct-pass" : pct >= 50 ? "pct-ok" : "pct-low";
+    const timeStr = r.timestamp ? (r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
     return `
-      <div class="activity-item">
-        <div class="activity-icon ${iconClass}">${icon}</div>
-        <div class="activity-text">
-          <div class="title">${r.subject || "Quiz"} · Grade ${r.grade || "?"} — ${r.score || 0}/${r.total || "?"} correct</div>
-          <div class="meta">${topics}</div>
-        </div>
-        <div class="activity-time">${timeStr}</div>
-      </div>`;
+      <tr>
+        <td style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:0.78em;">#${filtered.length - i}</td>
+        <td><span class="subject-pill">${r.subject || "—"}</span></td>
+        <td>Grade ${r.grade || "—"}</td>
+        <td>${r.score || 0} / ${r.total || "—"}</td>
+        <td><span class="pct-badge ${badgeCls}">${pct}%</span></td>
+        <td style="color:var(--text-muted);font-size:0.82em;">${timeStr}</td>
+      </tr>`;
   }).join('');
 
-  document.getElementById("activityBody").innerHTML = html;
+  document.getElementById("historyTableWrap").innerHTML = `
+    <table class="quiz-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Subject</th>
+          <th>Grade</th>
+          <th>Score</th>
+          <th>Percentage</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
 }
 </script>
 <script>
-/* ── Language toggle (EN / ES) ──
-   Translates static UI chrome — nav, headings, buttons, labels, empty
-   states. Does NOT translate quiz question content itself: those come
-   from the subject/grade JSON files, and auto-translating educational
-   content risks introducing factual/wording errors into what students
-   are being tested on, so that's intentionally left as a separate,
-   human-reviewed task rather than done here.
-   Preference is stored in localStorage so it's remembered per device
-   without needing a database write. */
 window.I18N = {
   en: {
     nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
@@ -888,11 +641,11 @@ window.I18N = {
     dash_progress_head: "📊 Your Progress — Overall Mastery",
     dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
     dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
-    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
+    dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
     dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
     progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
     progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
-    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
+    progress_chart: "📈 Improvement Over Time", progress_history: "📋 Quiz History",
     viewer_title: "Family & Teacher View",
     viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
     viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
@@ -915,11 +668,11 @@ window.I18N = {
     dash_progress_head: "📊 Tu Progreso — Dominio General",
     dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
     dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
-    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
+    dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
     dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
     progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
     progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
-    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
+    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_history: "📋 Historial de Cuestionarios",
     viewer_title: "Vista Familiar y Docente",
     viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
     viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
@@ -948,7 +701,6 @@ document.addEventListener('DOMContentLoaded', function () {
   try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
   window.applyLanguage(saved);
 });
-
 </script>
 </body>
 </html>

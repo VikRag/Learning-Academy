@@ -274,50 +274,6 @@
     transition: width 1s cubic-bezier(.4,0,.2,1);
   }
 
-  /* ── RECENT QUIZZES TABLE ── */
-  .quiz-table { width: 100%; border-collapse: collapse; }
-
-  .quiz-table th {
-    font-size: 0.72em; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--text-muted);
-    padding: 0 12px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .quiz-table td {
-    padding: 12px;
-    font-size: 0.875em; font-weight: 500;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-
-  .quiz-table th:first-child, .quiz-table td:first-child { padding-left: 20px; }
-  .quiz-table th:last-child, .quiz-table td:last-child { padding-right: 20px; }
-
-  .quiz-table tr:last-child td { border-bottom: none; }
-
-  .quiz-table tr:hover td { background: var(--surface2); }
-
-  .pct-badge {
-    display: inline-flex; align-items: center;
-    padding: 3px 10px; border-radius: 99px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.82em; font-weight: 700;
-  }
-  .pct-great  { background: var(--green-light);  color: var(--green); }
-  .pct-ok     { background: var(--amber-light);  color: var(--amber); }
-  .pct-low    { background: var(--red-light);    color: var(--red); }
-  .pct-pass   { background: var(--primary-light);color: var(--primary); }
-
-  .subject-pill {
-    display: inline-flex;
-    padding: 2px 9px; border-radius: 99px;
-    font-size: 0.78em; font-weight: 700;
-    background: var(--primary-light); color: var(--primary);
-  }
-
   .empty-state {
     padding: 36px 20px; text-align: center;
     color: var(--text-muted); font-size: 0.9em;
@@ -344,7 +300,7 @@
   .activity-text .meta  { font-size: 0.78em; color: var(--text-muted); }
   .activity-time { font-size: 0.75em; color: var(--text-muted); font-family: 'DM Mono', monospace; white-space: nowrap; }
 
-  /* ── FULL HISTORY TABLE (wide) ── */
+  /* ── FULL-WIDTH SECTIONS ── */
   .full-section { margin-bottom: 28px; }
 
   @media(max-width: 700px) {
@@ -412,8 +368,6 @@
   .btn-practice:hover { background: #3d5ce5; transform: translateY(-1px); }
 
   /* ── EXAM READINESS ── */
-  .readiness-block { margin-bottom: 20px; }
-  .readiness-block:last-child { margin-bottom: 0; }
   .readiness-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
   .readiness-subject { font-weight: 700; font-size: 0.95em; }
   .readiness-pct { font-family: 'DM Mono', monospace; font-weight: 800; font-size: 1.1em; color: var(--primary); }
@@ -446,13 +400,8 @@
   }
 
   /* ── EXAM READINESS FILTERS (subject + grade dropdowns) ── */
-  .readiness-filters {
-    display: flex; gap: 12px; flex-wrap: wrap;
-    margin-bottom: 18px;
-  }
-  .readiness-filter-group {
-    display: flex; flex-direction: column; gap: 4px;
-  }
+  .readiness-filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .readiness-filter-group { display: flex; flex-direction: column; gap: 4px; }
   .readiness-filter-group label {
     font-size: 0.68em; font-weight: 800; text-transform: uppercase;
     letter-spacing: .05em; color: var(--text-muted);
@@ -468,10 +417,6 @@
   }
   .readiness-select:hover { border-color: var(--primary); }
   .readiness-select:focus { outline: none; border-color: var(--primary); }
-  .readiness-select option:disabled { color: var(--text-muted); }
-  .readiness-empty-combo {
-    padding: 24px 4px; text-align: center; color: var(--text-muted); font-size: 0.85em;
-  }
 
   .readiness-pane { display: none; }
   .readiness-pane.active { display: block; }
@@ -487,22 +432,6 @@
   .grade-progress-top .pct { font-family: 'DM Mono', monospace; font-weight: 800; font-size: 0.95em; }
   .grade-progress-meta { font-size: 0.75em; color: var(--text-muted); font-weight: 600; margin-top: 8px; }
   .grade-progress-note { font-size: 0.76em; color: #92650a; margin-top: 8px; line-height: 1.4; }
-
-  /* ── QUIZ HISTORY FILTER ── */
-  .history-filters {
-    display: flex; gap: 6px; overflow-x: auto;
-    margin: 14px 0;
-    padding: 0 20px 2px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .history-filter-btn {
-    flex-shrink: 0; padding: 6px 13px; border-radius: 99px;
-    border: 1.5px solid var(--border); background: var(--surface);
-    font-family: inherit; font-size: 0.8em; font-weight: 700;
-    color: var(--text-muted); cursor: pointer; transition: all .15s;
-  }
-  .history-filter-btn:hover { border-color: var(--primary); color: var(--primary); }
-  .history-filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
   /* ── SHARE CODE WIDGET ── */
   .share-code-display {
@@ -612,7 +541,7 @@
     </div>
   </div>
 
-  <!-- Two-col: Subject breakdown + Activity -->
+  <!-- Two-col: Subject breakdown + Recent Activity -->
   <div class="two-col">
 
     <!-- Subject breakdown -->
@@ -645,6 +574,14 @@
     </div>
   </div>
 
+  <!-- Recommended For You -->
+  <div class="full-section" id="recSection" style="display:none;">
+    <div class="section-card">
+      <div class="section-head"><h2 data-i18n="dash_rec_head">🎯 Recommended For You</h2></div>
+      <div class="section-body rec-card" id="recBody"></div>
+    </div>
+  </div>
+
   <!-- Topic Mastery -->
   <div class="full-section" id="masterySection" style="display:none;">
     <div class="section-card">
@@ -664,19 +601,6 @@
     </div>
   </div>
 
-  <!-- Full Quiz History -->
-  <div class="full-section">
-    <div class="section-card">
-      <div class="section-head">
-        <h2 data-i18n="dash_history_head">📋 Quiz History</h2>
-        <span style="font-size:0.78em;color:var(--text-muted);font-weight:600;" id="historyCount"></span>
-      </div>
-      <div id="historyFilters" class="history-filters"></div>
-      <div id="historyTableWrap">
-        <div class="empty-state"><div class="icon">📝</div>No quizzes taken yet — <a href="quiz.html" style="color:var(--primary);font-weight:600;">Take your first quiz!</a></div>
-      </div>
-    </div>
-  </div>
   <!-- Share With a Teacher or Parent -->
   <div class="full-section">
     <div class="section-card">
@@ -720,32 +644,13 @@ import {
 
 const PRIOR_ATTEMPTS = 4;
 const PRIOR_MEAN = 0.5;
-
-// Recency weighting: a student's last few quiz attempts on a topic
-// matter more than attempts from a month ago, because mastery changes
-// as they learn. The most recent RECENT_WINDOW quiz-attempts on a
-// topic count RECENT_WEIGHT times as much as older ones.
 const RECENT_WINDOW = 3;
 const RECENT_WEIGHT = 2;
-
-// A topic can't be labeled "Mastered" just because the last couple of
-// answers were lucky — it needs a real track record.
 const MASTERED_MIN_ATTEMPTS = 8;
 const MASTERED_THRESHOLD = 85;
-
-// A topic only counts as "meaningful" for strengths/weaknesses,
-// recommendations, and exam-readiness opportunities once it has at
-// least this many answered questions — one lucky/unlucky guess can't
-// label (or clear) a topic as weak. This is the SAME threshold used
-// by every feature that identifies a "weak topic" anywhere in the
-// app (see getWeakTopics below) — that consistency is what prevents
-// one section saying "Geometry needs practice" while another says
-// "no weak topics" for the exact same underlying data.
 const NEEDS_PRACTICE_MIN_ATTEMPTS = 3;
-const NEEDS_PRACTICE_THRESHOLD = 70;   // mastery below this = "needs practice"
-const STRENGTH_THRESHOLD = 75;         // mastery at/above this = "strength"
-
-/* ── Helpers ── */
+const NEEDS_PRACTICE_THRESHOLD = 70;
+const STRENGTH_THRESHOLD = 75;
 
 function toDate(ts) {
   if (!ts) return new Date(0);
@@ -762,42 +667,24 @@ function formatDuration(totalSeconds) {
   return `${s}s`;
 }
 
-function dateKey(d) {
-  return d.toISOString().slice(0, 10); // YYYY-MM-DD
-}
+function dateKey(d) { return d.toISOString().slice(0, 10); }
 
-/* ── Core mastery calculation ──
-   events: [{ correct, total, timestamp }], one entry per quiz attempt
-   that touched this topic. Order does not need to be sorted — we sort
-   internally. Returns null mastery if there is no data at all. */
 function calculateMastery(events) {
-  if (!events || events.length === 0) {
-    return { mastery: null, attempts: 0, isMastered: false };
-  }
+  if (!events || events.length === 0) return { mastery: null, attempts: 0, isMastered: false };
   const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
-
-  let weightedCorrect = 0;
-  let weightedTotal = 0;
-  let attempts = 0;
-
+  let weightedCorrect = 0, weightedTotal = 0, attempts = 0;
   sorted.forEach((e, i) => {
     const isRecent = i >= sorted.length - RECENT_WINDOW;
     const w = isRecent ? RECENT_WEIGHT : 1;
-    weightedCorrect += e.correct * w;
-    weightedTotal += e.total * w;
-    attempts += e.total;
+    weightedCorrect += e.correct * w; weightedTotal += e.total * w; attempts += e.total;
   });
-
   const smoothedCorrect = weightedCorrect + PRIOR_ATTEMPTS * PRIOR_MEAN;
   const smoothedTotal = weightedTotal + PRIOR_ATTEMPTS;
   const mastery = Math.round((smoothedCorrect / smoothedTotal) * 100);
   const isMastered = attempts >= MASTERED_MIN_ATTEMPTS && mastery >= MASTERED_THRESHOLD;
-
   return { mastery, attempts, isMastered };
 }
 
-/* Mastery as it evolved attempt-by-attempt — powers the "68% → 76%"
-   improvement callouts and the mastery-over-time chart. */
 function masteryHistory(events) {
   const sorted = [...events].sort((a, b) => a.timestamp - b.timestamp);
   const history = [];
@@ -809,87 +696,45 @@ function masteryHistory(events) {
   return history;
 }
 
-/* ── Build topic-level event map from raw quizResults ── */
 function buildTopicMap(quizResults) {
-  // key -> { topic, subject, grade, events: [] }
   const map = {};
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
-
   sorted.forEach(r => {
     const ts = toDate(r.timestamp);
     const breakdown = r.topicBreakdown || {};
     Object.entries(breakdown).forEach(([topic, d]) => {
       const key = `${r.subject || 'Unknown'}::${r.grade || '?'}::${topic}`;
-      if (!map[key]) {
-        map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
-      }
+      if (!map[key]) map[key] = { topic, subject: r.subject || 'Unknown', grade: r.grade || '?', events: [] };
       map[key].events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
     });
   });
-
   return map;
 }
 
-/* Topic mastery, one row per topic (subject+grade+topic), with mastery
-   computed. Sorted by subject then mastery ascending isn't forced here
-   — callers sort as needed. */
 function computeTopicMastery(quizResults) {
   const map = buildTopicMap(quizResults);
-  return Object.values(map).map(t => ({
-    ...t,
-    ...calculateMastery(t.events),
-  }));
+  return Object.values(map).map(t => ({ ...t, ...calculateMastery(t.events) }));
 }
 
-/* Overall mastery across everything the student has ever done. Uses
-   the same smoothing/recency logic, just applied to every event from
-   every topic at once, so a student with lots of practice earns a
-   confident number and a brand-new student doesn't get 0%. */
 function computeOverallMastery(quizResults) {
   const allEvents = [];
   quizResults.forEach(r => {
     const ts = toDate(r.timestamp);
-    Object.values(r.topicBreakdown || {}).forEach(d => {
-      allEvents.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
-    });
+    Object.values(r.topicBreakdown || {}).forEach(d => allEvents.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts }));
   });
   return calculateMastery(allEvents);
 }
 
-/* Exam readiness for one subject+grade = mastery aggregated over just
-   that subject's events. Same honest math — a student who has only
-   answered a handful of questions will not see a high number, because
-   the Bayesian prior pulls a low-attempt score toward 50%. */
 function computeSubjectReadiness(quizResults, subject, grade) {
   const events = [];
-  quizResults
-    .filter(r => r.subject === subject && String(r.grade) === String(grade))
-    .forEach(r => {
-      const ts = toDate(r.timestamp);
-      Object.values(r.topicBreakdown || {}).forEach(d => {
-        events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts });
-      });
-    });
+  quizResults.filter(r => r.subject === subject && String(r.grade) === String(grade)).forEach(r => {
+    const ts = toDate(r.timestamp);
+    Object.values(r.topicBreakdown || {}).forEach(d => events.push({ correct: d.correct || 0, total: d.total || 0, timestamp: ts }));
+  });
   return calculateMastery(events);
 }
 
-/* ══════════════════════════════════════════════════════════════════
-   LEARNING NEEDS ENGINE — the single source of truth for "is this
-   topic something the student should work on?"
-
-   Every feature that surfaces a weak topic — Topic Mastery's "Needs
-   Practice", the dashboard's "Recommended For You", Exam Readiness's
-   "Biggest Opportunity" and "Needs Improvement" list — calls
-   getWeakTopics() (directly or through getStrengthsAndWeaknesses /
-   getRecommendation, which are now just thin wrappers around it).
-   One definition of "weak" in the app — that's what prevents one
-   section saying "Geometry needs practice" while another says
-   "no weak topics" for the exact same underlying data.
-   ══════════════════════════════════════════════════════════════════ */
-
-function isActionable(topic) {
-  return topic && topic.mastery !== null && topic.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS;
-}
+function isActionable(topic) { return topic && topic.mastery !== null && topic.attempts >= NEEDS_PRACTICE_MIN_ATTEMPTS; }
 
 function getWeakTopics(topicMasteryList) {
   return topicMasteryList
@@ -900,19 +745,12 @@ function getWeakTopics(topicMasteryList) {
 function getLearningNeedsSummary(topicMasteryList) {
   const actionable = topicMasteryList.filter(isActionable);
   const weakTopics = getWeakTopics(topicMasteryList);
-  return {
-    weakTopics,
-    hasEnoughData: actionable.length > 0,
-    allStrong: actionable.length > 0 && weakTopics.length === 0,
-  };
+  return { weakTopics, hasEnoughData: actionable.length > 0, allStrong: actionable.length > 0 && weakTopics.length === 0 };
 }
 
 function getStrengthsAndWeaknesses(topicMasteryList) {
   const actionable = topicMasteryList.filter(isActionable);
-  const strengths = actionable
-    .filter(t => t.mastery >= STRENGTH_THRESHOLD)
-    .sort((a, b) => b.mastery - a.mastery)
-    .slice(0, 3);
+  const strengths = actionable.filter(t => t.mastery >= STRENGTH_THRESHOLD).sort((a, b) => b.mastery - a.mastery).slice(0, 3);
   const weaknesses = getWeakTopics(topicMasteryList).slice(0, 3);
   return { strengths, weaknesses };
 }
@@ -920,7 +758,6 @@ function getStrengthsAndWeaknesses(topicMasteryList) {
 function getRecommendation(topicMasteryList, lastPracticedTopics = []) {
   const weak = getWeakTopics(topicMasteryList);
   if (weak.length === 0) return null;
-
   const notJustPracticed = weak.filter(t => !lastPracticedTopics.includes(t.topic));
   return notJustPracticed.length > 0 ? notJustPracticed[0] : weak[0];
 }
@@ -931,37 +768,18 @@ function computeStreak(quizResults) {
   let streak = 0;
   const cursor = new Date();
   if (!days.has(dateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
-  while (days.has(dateKey(cursor))) {
-    streak++;
-    cursor.setDate(cursor.getDate() - 1);
-  }
+  while (days.has(dateKey(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
   return streak;
 }
 
 function computeAchievements(quizResults) {
   const topicList = computeTopicMastery(quizResults);
   const unlocked = [];
-
-  if (topicList.some(t => t.isMastered)) {
-    unlocked.push({ id: 'first-mastery', icon: '🏅', title: 'First Mastery', desc: 'Mastered your first topic' });
-  }
-
-  const gotBetter = topicList.some(t => {
-    const hist = masteryHistory(t.events);
-    return hist.some((h, i) => i > 0 && h.mastery - hist[i - 1].mastery >= 10);
-  });
-  if (gotBetter) {
-    unlocked.push({ id: 'getting-better', icon: '📈', title: 'Getting Better', desc: 'Improved a topic by 10% or more' });
-  }
-
-  if (computeStreak(quizResults) >= 5) {
-    unlocked.push({ id: 'consistency', icon: '🔥', title: 'Consistency', desc: '5-day study streak' });
-  }
-
-  if (quizResults.some(r => r.percentage === 100)) {
-    unlocked.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
-  }
-
+  if (topicList.some(t => t.isMastered)) unlocked.push({ id: 'first-mastery', icon: '🏅', title: 'First Mastery', desc: 'Mastered your first topic' });
+  const gotBetter = topicList.some(t => { const hist = masteryHistory(t.events); return hist.some((h, i) => i > 0 && h.mastery - hist[i - 1].mastery >= 10); });
+  if (gotBetter) unlocked.push({ id: 'getting-better', icon: '📈', title: 'Getting Better', desc: 'Improved a topic by 10% or more' });
+  if (computeStreak(quizResults) >= 5) unlocked.push({ id: 'consistency', icon: '🔥', title: 'Consistency', desc: '5-day study streak' });
+  if (quizResults.some(r => r.percentage === 100)) unlocked.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
   const subjects = [...new Set(quizResults.map(r => r.subject).filter(Boolean))];
   const subjectMastered = subjects.some(s => {
     const events = [];
@@ -972,24 +790,15 @@ function computeAchievements(quizResults) {
     const m = calculateMastery(events);
     return m.attempts >= MASTERED_MIN_ATTEMPTS && m.mastery >= 90;
   });
-  if (subjectMastered) {
-    unlocked.push({ id: 'subject-master', icon: '🎓', title: 'Subject Master', desc: 'Reached 90% mastery in a subject' });
-  }
-
+  if (subjectMastered) unlocked.push({ id: 'subject-master', icon: '🎓', title: 'Subject Master', desc: 'Reached 90% mastery in a subject' });
   const comeback = topicList.some(t => {
     const hist = masteryHistory(t.events);
     if (hist.length < 2) return false;
     let low = hist[0].mastery;
-    for (const h of hist) {
-      if (h.mastery - low >= 20 && low < 50) return true;
-      low = Math.min(low, h.mastery);
-    }
+    for (const h of hist) { if (h.mastery - low >= 20 && low < 50) return true; low = Math.min(low, h.mastery); }
     return false;
   });
-  if (comeback) {
-    unlocked.push({ id: 'comeback', icon: '🔄', title: 'Comeback', desc: 'Improved a previously weak topic by 20%' });
-  }
-
+  if (comeback) unlocked.push({ id: 'comeback', icon: '🔄', title: 'Comeback', desc: 'Improved a previously weak topic by 20%' });
   return unlocked;
 }
 
@@ -1002,70 +811,41 @@ function computeProgressStats(quizResults) {
   const studySeconds = quizResults.reduce((s, r) => s + (r.timeTakenSeconds || 0), 0);
   const streak = computeStreak(quizResults);
   const overall = computeOverallMastery(quizResults);
-
-  return {
-    overallMastery: overall.mastery,
-    questionsAnswered,
-    accuracy,
-    topicsPracticed: topicsPracticed.size,
-    studySeconds,
-    studyTimeLabel: formatDuration(studySeconds),
-    streak,
-  };
+  return { overallMastery: overall.mastery, questionsAnswered, accuracy, topicsPracticed: topicsPracticed.size, studySeconds, studyTimeLabel: formatDuration(studySeconds), streak };
 }
 
 function computeWeeklyMasterySeries(quizResults) {
   if (quizResults.length === 0) return [];
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
   const firstDate = toDate(sorted[0].timestamp);
-
   const weekOf = (d) => Math.floor((d - firstDate) / (7 * 24 * 3600 * 1000));
   const byWeek = {};
-  sorted.forEach(r => {
-    const w = weekOf(toDate(r.timestamp));
-    if (!byWeek[w]) byWeek[w] = [];
-    byWeek[w].push(r);
-  });
-
+  sorted.forEach(r => { const w = weekOf(toDate(r.timestamp)); if (!byWeek[w]) byWeek[w] = []; byWeek[w].push(r); });
   const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
   let cumulative = [];
-  return weeks.map(w => {
-    cumulative = cumulative.concat(byWeek[w]);
-    const { mastery } = computeOverallMastery(cumulative);
-    return { week: w + 1, mastery };
-  });
+  return weeks.map(w => { cumulative = cumulative.concat(byWeek[w]); const { mastery } = computeOverallMastery(cumulative); return { week: w + 1, mastery }; });
 }
 
 function computeMilestoneBadges(quizResults) {
   const badges = [];
   const totalQuizzes = quizResults.length;
   const totalQuestions = quizResults.reduce((s, r) => s + (r.total || 0), 0);
-
   if (totalQuizzes >= 1)  badges.push({ id: 'first-quiz',        icon: '🎬', title: 'First Quiz',   desc: 'Completed your first practice quiz' });
   if (totalQuizzes >= 5)  badges.push({ id: 'five-quizzes',      icon: '🗂️', title: '5 Quizzes',    desc: 'Completed 5 practice quizzes' });
   if (totalQuizzes >= 10) badges.push({ id: 'ten-quizzes',       icon: '📚', title: '10 Quizzes',   desc: 'Completed 10 practice quizzes' });
   if (totalQuizzes >= 25) badges.push({ id: 'twentyfive-quizzes',icon: '🏋️', title: '25 Quizzes',   desc: 'Completed 25 practice quizzes' });
-
   if (totalQuestions >= 50)  badges.push({ id: 'fifty-questions',    icon: '✏️', title: '50 Questions',  desc: 'Answered 50 questions total' });
   if (totalQuestions >= 100) badges.push({ id: 'hundred-questions',  icon: '📝', title: '100 Questions', desc: 'Answered 100 questions total' });
   if (totalQuestions >= 250) badges.push({ id: 'twofifty-questions', icon: '🎖️', title: '250 Questions', desc: 'Answered 250 questions total' });
-
-  if (quizResults.some(r => r.percentage === 100)) {
-    badges.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
-  }
-
+  if (quizResults.some(r => r.percentage === 100)) badges.push({ id: 'perfect-score', icon: '💯', title: 'Perfect Score', desc: '100% on a practice session' });
   const sorted = [...quizResults].sort((a, b) => toDate(b.timestamp) - toDate(a.timestamp));
-  if (sorted.length >= 3 && sorted.slice(0, 3).every(r => (r.percentage || 0) >= 80)) {
-    badges.push({ id: 'on-a-roll', icon: '🚀', title: 'On a Roll', desc: '80%+ accuracy on your last 3 quizzes' });
-  }
-
+  if (sorted.length >= 3 && sorted.slice(0, 3).every(r => (r.percentage || 0) >= 80)) badges.push({ id: 'on-a-roll', icon: '🚀', title: 'On a Roll', desc: '80%+ accuracy on your last 3 quizzes' });
   return badges;
 }
 
 function computeAllBadges(quizResults) {
   const seen = new Set();
-  return [...computeMilestoneBadges(quizResults), ...computeAchievements(quizResults)]
-    .filter(b => (seen.has(b.id) ? false : (seen.add(b.id), true)));
+  return [...computeMilestoneBadges(quizResults), ...computeAchievements(quizResults)].filter(b => (seen.has(b.id) ? false : (seen.add(b.id), true)));
 }
 
 const GRADE_COMPLETE_THRESHOLD = 90;
@@ -1073,16 +853,13 @@ const GRADE_COMPLETE_MIN_DAYS  = 3;
 
 function distinctPracticeDays(quizResults, subject, grade) {
   const days = new Set();
-  quizResults
-    .filter(r => r.subject === subject && String(r.grade) === String(grade))
-    .forEach(r => days.add(toDate(r.timestamp).toISOString().slice(0, 10)));
+  quizResults.filter(r => r.subject === subject && String(r.grade) === String(grade)).forEach(r => days.add(toDate(r.timestamp).toISOString().slice(0, 10)));
   return days.size;
 }
 
 function computeGradeProgress(quizResults, topicCounts = {}) {
   const combos = [...new Set(quizResults.map(r => `${r.subject}::${r.grade}`))];
   const topicList = computeTopicMastery(quizResults);
-
   return combos.map(key => {
     const [subject, grade] = key.split('::');
     const practiced = topicList.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0);
@@ -1091,43 +868,18 @@ function computeGradeProgress(quizResults, topicCounts = {}) {
     const coveragePct = Math.round((practiced.length / totalTopics) * 100);
     const { mastery: subjectMastery } = calculateMastery(practiced.flatMap(t => t.events));
     const days = distinctPracticeDays(quizResults, subject, grade);
-
     const combined = Math.min(100, Math.round(0.5 * coveragePct + 0.5 * (subjectMastery || 0)));
     const isComplete    = combined >= GRADE_COMPLETE_THRESHOLD && days >= GRADE_COMPLETE_MIN_DAYS;
     const needsMoreDays = combined >= GRADE_COMPLETE_THRESHOLD && days < GRADE_COMPLETE_MIN_DAYS;
-
-    return {
-      subject, grade,
-      topicsPracticed: practiced.length, totalTopics, coveragePct,
-      subjectMastery: subjectMastery || 0, masteredCount,
-      distinctDays: days, progressPct: combined,
-      isComplete, needsMoreDays,
-    };
+    return { subject, grade, topicsPracticed: practiced.length, totalTopics, coveragePct, subjectMastery: subjectMastery || 0, masteredCount, distinctDays: days, progressPct: combined, isComplete, needsMoreDays };
   });
 }
 
 const Mastery = {
-  toDate,
-  formatDuration,
-  calculateMastery,
-  masteryHistory,
-  buildTopicMap,
-  computeTopicMastery,
-  computeOverallMastery,
-  computeSubjectReadiness,
-  isActionable,
-  getWeakTopics,
-  getLearningNeedsSummary,
-  getStrengthsAndWeaknesses,
-  getRecommendation,
-  computeStreak,
-  computeAchievements,
-  computeProgressStats,
-  computeWeeklyMasterySeries,
-  computeMilestoneBadges,
-  computeAllBadges,
-  distinctPracticeDays,
-  computeGradeProgress
+  toDate, formatDuration, calculateMastery, masteryHistory, buildTopicMap, computeTopicMastery,
+  computeOverallMastery, computeSubjectReadiness, isActionable, getWeakTopics, getLearningNeedsSummary,
+  getStrengthsAndWeaknesses, getRecommendation, computeStreak, computeAchievements, computeProgressStats,
+  computeWeeklyMasterySeries, computeMilestoneBadges, computeAllBadges, distinctPracticeDays, computeGradeProgress
 };
 /* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
@@ -1144,7 +896,6 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getFirestore(app);
 
-/* ── Visible error banner ── */
 function showDebugError(msg) {
   let el = document.getElementById('__debugErrorBanner');
   if (!el) {
@@ -1163,24 +914,16 @@ window.signOutUser = async () => {
   window.location.href = "login.html";
 };
 
-document.getElementById("retryBtn").addEventListener("click", () => {
-  window.location.reload();
-});
+document.getElementById("retryBtn").addEventListener("click", () => window.location.reload());
 
 function showErrorBanner(message) {
   document.getElementById("errorBannerText").textContent = message;
   document.getElementById("errorBanner").classList.add("show");
 }
-function hideErrorBanner() {
-  document.getElementById("errorBanner").classList.remove("show");
-}
+function hideErrorBanner() { document.getElementById("errorBanner").classList.remove("show"); }
 
-/* Auth gate */
 onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    window.location.href = "login.html";
-    return;
-  }
+  if (!user) { window.location.href = "login.html"; return; }
 
   hideErrorBanner();
   let name = "Student";
@@ -1189,35 +932,21 @@ onAuthStateChanged(auth, async (user) => {
 
   try {
     const userDoc = await getDoc(doc(db, "users", user.uid));
-
     if (userDoc.exists()) {
       const data = userDoc.data();
       const first = data.firstName || "";
       const last  = data.lastName || "";
       const fullName = `${first} ${last}`.trim();
-
-      if (fullName) {
-        name = fullName;
-        initial = (first.charAt(0) || last.charAt(0)).toUpperCase();
-      }
+      if (fullName) { name = fullName; initial = (first.charAt(0) || last.charAt(0)).toUpperCase(); }
     }
-
     if (name === "Student") {
-      if (user.displayName) {
-        name = user.displayName;
-        initial = user.displayName.charAt(0).toUpperCase();
-      } else if (user.email) {
-        name = user.email.split("@")[0];
-        initial = user.email.charAt(0).toUpperCase();
-      }
+      if (user.displayName) { name = user.displayName; initial = user.displayName.charAt(0).toUpperCase(); }
+      else if (user.email) { name = user.email.split("@")[0]; initial = user.email.charAt(0).toUpperCase(); }
     }
   } catch (err) {
     console.error("Error loading user profile:", err);
     profileLoadFailed = true;
-    if (user.email) {
-      name = user.email.split("@")[0];
-      initial = user.email.charAt(0).toUpperCase();
-    }
+    if (user.email) { name = user.email.split("@")[0]; initial = user.email.charAt(0).toUpperCase(); }
   }
 
   document.getElementById("navUserName").textContent = name;
@@ -1240,9 +969,7 @@ onAuthStateChanged(auth, async (user) => {
         if (!res.ok) return;
         const data = await res.json();
         counts[key] = new Set(data.map(q => q.topic || 'General')).size;
-      } catch (e) {
-        console.error('Could not load curriculum file for', key, e);
-      }
+      } catch (e) { console.error('Could not load curriculum file for', key, e); }
     }));
     return counts;
   }
@@ -1251,10 +978,7 @@ onAuthStateChanged(auth, async (user) => {
   let results = [];
   let topicCounts = {};
   try {
-    const q = query(
-      collection(db, "users", user.uid, "quizResults"),
-      orderBy("timestamp", "desc")
-    );
+    const q = query(collection(db, "users", user.uid, "quizResults"), orderBy("timestamp", "desc"));
     const snap = await getDocs(q);
     results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     window.__lastLoadedResults = results; // dev-only, for ?debug=1 validation
@@ -1264,17 +988,11 @@ onAuthStateChanged(auth, async (user) => {
     resultsLoadFailed = true;
   }
 
-  try {
-    renderDashboard(results, topicCounts);
-  } catch (e) {
-    console.error('renderDashboard failed:', e);
-    showDebugError('Dashboard failed to render: ' + e.message);
-  }
+  try { renderDashboard(results, topicCounts); }
+  catch (e) { console.error('renderDashboard failed:', e); showDebugError('Dashboard failed to render: ' + e.message); }
 
   if (profileLoadFailed || resultsLoadFailed) {
-    showErrorBanner(
-      "Couldn't load your saved data from Firestore — this usually means your Firestore security rules aren't allowing this read. Your progress may still be safe; check the rules and hit Retry."
-    );
+    showErrorBanner("Couldn't load your saved data from Firestore — this usually means your Firestore security rules aren't allowing this read. Your progress may still be safe; check the rules and hit Retry.");
   }
 
   document.getElementById("loadingScreen").style.display = "none";
@@ -1285,7 +1003,6 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-/* ── Render everything ── */
 function renderDashboard(results, topicCounts = {}) {
   if (results.length === 0) {
     renderProgressHeroEmpty();
@@ -1331,9 +1048,7 @@ function renderDashboard(results, topicCounts = {}) {
   document.getElementById("subjectBreakdown").innerHTML = subjectHTML || '<div class="empty-state"><div class="icon">📊</div>No data yet</div>';
 
   requestAnimationFrame(() => setTimeout(() => {
-    document.querySelectorAll(".bar-fill[data-target]").forEach(el => {
-      el.style.width = el.dataset.target + "%";
-    });
+    document.querySelectorAll(".bar-fill[data-target]").forEach(el => { el.style.width = el.dataset.target + "%"; });
   }, 100));
 
   const recent = results.slice(0, 5);
@@ -1355,9 +1070,6 @@ function renderDashboard(results, topicCounts = {}) {
 
   document.getElementById("recentActivity").innerHTML = activityHTML || '<div class="empty-state"><div class="icon">🕐</div>No recent activity</div>';
 
-  renderHistoryFilters(results);
-  renderHistoryTable(results, 'all');
-
   try { renderHeroTrio(results); } catch (e) { console.error('renderHeroTrio failed:', e); }
   try { renderProgressHero(results); } catch (e) { console.error('renderProgressHero failed:', e); }
   try { renderTopicMastery(results); } catch (e) { console.error('renderTopicMastery failed:', e); }
@@ -1366,12 +1078,6 @@ function renderDashboard(results, topicCounts = {}) {
   try { renderAchievements(results); } catch (e) { console.error('renderAchievements failed:', e); }
 }
 
-/* ── Hero trio: How am I doing? / Next best step? / Am I improving? ──
-   Every value here is read from a Mastery.* function that already
-   powers the sections below it — this is a summary VIEW, not a
-   second source of truth. If this trio and the sections below it
-   ever disagree, that's a rendering bug, not a data bug, because
-   they call the exact same functions on the exact same array. */
 function renderHeroTrio(results) {
   const trio = document.getElementById('heroTrio');
   if (results.length === 0) { trio.style.display = 'none'; return; }
@@ -1452,15 +1158,10 @@ function renderTopicMastery(results) {
   section.style.display = "block";
 
   const bySubject = {};
-  topics.forEach(t => {
-    if (!bySubject[t.subject]) bySubject[t.subject] = [];
-    bySubject[t.subject].push(t);
-  });
+  topics.forEach(t => { if (!bySubject[t.subject]) bySubject[t.subject] = []; bySubject[t.subject].push(t); });
 
   const html = Object.entries(bySubject).map(([subject, list]) => {
-    const { mastery: subjMastery } = Mastery.calculateMastery(
-      list.flatMap(t => t.events)
-    );
+    const { mastery: subjMastery } = Mastery.calculateMastery(list.flatMap(t => t.events));
     const { strengths, weaknesses } = Mastery.getStrengthsAndWeaknesses(list);
     const needs = Mastery.getLearningNeedsSummary(list);
 
@@ -1523,14 +1224,6 @@ function renderRecommendation(results) {
     <a class="btn-practice" href="quiz.html?subject=${encodeURIComponent(rec.subject)}&grade=${encodeURIComponent(rec.grade)}&topic=${encodeURIComponent(rec.topic)}">Practice This Topic →</a>`;
 }
 
-/* ── Exam Readiness: independent Subject + Grade dropdowns ──
-   Panes for every subject::grade combo the student has data for are
-   built once (same as before). Instead of a single row of combined
-   "Subject · Grade" pill tabs, the Subject and Grade are now two
-   separate <select> dropdowns so a parent/student can change either
-   one on its own. The Grade dropdown always repopulates to only the
-   grades that exist for the selected Subject, so every combination
-   you can reach from the dropdowns is guaranteed to have a pane. */
 let __readinessCombos = [];
 
 function renderExamReadiness(results, topicCounts = {}) {
@@ -1547,8 +1240,7 @@ function renderExamReadiness(results, topicCounts = {}) {
     const [subject, grade] = key.split('::');
     const readiness = Mastery.computeSubjectReadiness(results, subject, grade);
     const progress = gradeProgress.find(g => g.subject === subject && String(g.grade) === String(grade));
-    const unitList = topics.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0)
-      .sort((a, b) => a.mastery - b.mastery);
+    const unitList = topics.filter(t => t.subject === subject && String(t.grade) === String(grade) && t.attempts > 0).sort((a, b) => a.mastery - b.mastery);
 
     const weakUnits = Mastery.getWeakTopics(unitList);
     const weakTopicNames = new Set(weakUnits.map(t => t.topic));
@@ -1636,7 +1328,6 @@ function renderExamReadiness(results, topicCounts = {}) {
     </div>
     <div class="readiness-panes">${panesHTML}</div>`;
 
-  // Populate the two selects and wire them up, independent of each other.
   const subjectSelect = document.getElementById('readinessSubjectSelect');
   const gradeSelect = document.getElementById('readinessGradeSelect');
   const subjects = [...new Set(combos.map(k => k.split('::')[0]))];
@@ -1655,8 +1346,6 @@ function renderExamReadiness(results, topicCounts = {}) {
   window.__selectReadinessTab(combos[0]);
 }
 
-/* Grade options are always scoped to the currently selected subject,
-   since those are the only subject+grade combos with a rendered pane. */
 function populateReadinessGrades(subject, gradeSelect) {
   const grades = __readinessCombos
     .filter(k => k.split('::')[0] === subject)
@@ -1693,78 +1382,6 @@ function renderAchievements(results) {
     </div>`;
 }
 
-const HISTORY_PAGE_SIZE = 10;
-let historyResultsCache = [];
-
-function renderHistoryFilters(results) {
-  historyResultsCache = results;
-  const subjects = [...new Set(results.map(r => r.subject).filter(Boolean))];
-  const filterBar = document.getElementById('historyFilters');
-
-  if (subjects.length <= 1) {
-    filterBar.innerHTML = '';
-    return;
-  }
-
-  const pills = ['all', ...subjects];
-  filterBar.innerHTML = pills.map(s => `
-    <button class="history-filter-btn${s === 'all' ? ' active' : ''}" data-subject="${s}" onclick="window.__filterHistory('${s.replace(/'/g, "\\'")}')">
-      ${s === 'all' ? 'All Subjects' : s}
-    </button>`).join('');
-}
-
-window.__filterHistory = function (subject) {
-  document.querySelectorAll('.history-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.subject === subject));
-  renderHistoryTable(historyResultsCache, subject);
-};
-
-function renderHistoryTable(results, subjectFilter) {
-  const filtered = subjectFilter === 'all' ? results : results.filter(r => r.subject === subjectFilter);
-  const shown = filtered.slice(0, HISTORY_PAGE_SIZE);
-
-  const label = subjectFilter === 'all' ? 'quizzes' : `${subjectFilter} quizzes`;
-  document.getElementById("historyCount").textContent =
-    filtered.length > HISTORY_PAGE_SIZE
-      ? `Showing last ${HISTORY_PAGE_SIZE} of ${filtered.length} ${label}`
-      : `${filtered.length} ${label}`;
-
-  if (shown.length === 0) {
-    document.getElementById("historyTableWrap").innerHTML =
-      `<div class="empty-state"><div class="icon">📝</div>No ${subjectFilter === 'all' ? '' : subjectFilter + ' '}quizzes yet.</div>`;
-    return;
-  }
-
-  const rows = shown.map((r, i) => {
-    const pct = r.percentage || 0;
-    const badgeCls = pct >= 90 ? "pct-great" : pct >= 70 ? "pct-pass" : pct >= 50 ? "pct-ok" : "pct-low";
-    const timeStr = r.timestamp ? (r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
-    return `
-      <tr>
-        <td style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:0.78em;">#${filtered.length - i}</td>
-        <td><span class="subject-pill">${r.subject || "—"}</span></td>
-        <td>Grade ${r.grade || "—"}</td>
-        <td>${r.score || 0} / ${r.total || "—"}</td>
-        <td><span class="pct-badge ${badgeCls}">${pct}%</span></td>
-        <td style="color:var(--text-muted);font-size:0.82em;">${timeStr}</td>
-      </tr>`;
-  }).join('');
-
-  document.getElementById("historyTableWrap").innerHTML = `
-    <table class="quiz-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Subject</th>
-          <th>Grade</th>
-          <th>Score</th>
-          <th>Percentage</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
-}
-
 function formatTime(date) {
   const now = new Date();
   const diff = Math.floor((now - date) / 1000);
@@ -1786,15 +1403,11 @@ function generateShareCode() {
 async function initShareCode(user, studentName) {
   const box = document.getElementById('shareCodeBox');
   box.innerHTML = '<div class="spinner" style="margin:10px auto;"></div>';
-
   let existingCode = null;
   try {
     const userDoc = await getDoc(doc(db, 'users', user.uid));
     existingCode = userDoc.exists() ? (userDoc.data().viewerCode || null) : null;
-  } catch (e) {
-    console.error('Could not load share code:', e);
-  }
-
+  } catch (e) { console.error('Could not load share code:', e); }
   await renderShareCode(user, studentName, existingCode);
 }
 
@@ -1809,10 +1422,7 @@ async function renderShareCode(user, studentName, code) {
         await setDoc(doc(db, 'viewerCodes', newCode), { studentUid: user.uid, studentName });
         await setDoc(doc(db, 'users', user.uid), { viewerCode: newCode }, { merge: true });
         await renderShareCode(user, studentName, newCode);
-      } catch (e) {
-        console.error('Could not generate share code:', e);
-        showDebugError('Could not generate a share code: ' + e.message);
-      }
+      } catch (e) { console.error('Could not generate share code:', e); showDebugError('Could not generate a share code: ' + e.message); }
     });
     await renderLinkedViewers(user);
     return;
@@ -1839,10 +1449,7 @@ async function renderShareCode(user, studentName, code) {
       await setDoc(doc(db, 'viewerCodes', newCode), { studentUid: user.uid, studentName });
       await setDoc(doc(db, 'users', user.uid), { viewerCode: newCode }, { merge: true });
       await renderShareCode(user, studentName, newCode);
-    } catch (e) {
-      console.error('Could not regenerate share code:', e);
-      showDebugError('Could not generate a new code: ' + e.message);
-    }
+    } catch (e) { console.error('Could not regenerate share code:', e); showDebugError('Could not generate a new code: ' + e.message); }
   });
 
   await renderLinkedViewers(user);
@@ -1862,9 +1469,7 @@ async function renderLinkedViewers(user) {
         <span>${d.data().viewerEmail || 'A linked viewer'}</span>
         <button class="viewer-revoke" onclick="window.__revokeViewer('${d.id}')">Revoke access</button>
       </div>`).join('');
-  } catch (e) {
-    console.error('Could not load linked viewers:', e);
-  }
+  } catch (e) { console.error('Could not load linked viewers:', e); }
 }
 
 window.__revokeViewer = async function (viewerId) {
@@ -1872,19 +1477,10 @@ window.__revokeViewer = async function (viewerId) {
   try {
     await deleteDoc(doc(db, 'users', auth.currentUser.uid, 'linkedViewers', viewerId));
     await renderLinkedViewers(auth.currentUser);
-  } catch (e) {
-    console.error('Could not revoke viewer:', e);
-    showDebugError('Could not revoke access: ' + e.message);
-  }
+  } catch (e) { console.error('Could not revoke viewer:', e); showDebugError('Could not revoke access: ' + e.message); }
 };
 
-/* ── Dev-only analytics validation (spec §4G) ──
-   Checks internal consistency of this page's own data — e.g. that the
-   dashboard's weakest topic (from getWeakTopics) is the same topic the
-   Recommended-For-You card is pointing at, and that no topic below the
-   minimum-attempts threshold is being treated as classified. Never
-   shown to normal users; only runs when ?debug=1 is in the URL, or when
-   called manually from the console as window.__validateAnalytics(results). */
+/* ── Dev-only analytics validation (spec §4G) ── */
 window.__validateAnalytics = function (results) {
   const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
   const weak = Mastery.getWeakTopics(topics);
@@ -1893,33 +1489,16 @@ window.__validateAnalytics = function (results) {
   const rec = Mastery.getRecommendation(topics, lastTopics);
 
   const rows = [
-    {
-      Check: 'Recommendation is a weak topic',
-      Result: (!rec || weak.some(w => w.topic === rec.topic)) ? '✓ MATCH' : '✗ MISMATCH',
-      Detail: rec ? `rec="${rec.topic}"` : 'no recommendation',
-    },
-    {
-      Check: 'No under-sampled topic classified as weak',
-      Result: weak.every(t => t.attempts >= 3) ? '✓ VALID' : '✗ INVALID',
-      Detail: `min attempts among weak topics: ${weak.length ? Math.min(...weak.map(t => t.attempts)) : 'n/a'}`,
-    },
-    {
-      Check: 'Overall mastery in range',
-      Result: (() => { const m = Mastery.computeOverallMastery(results).mastery; return (m === null || (m >= 0 && m <= 100)) ? '✓ VALID' : '✗ INVALID'; })(),
-      Detail: `${Mastery.computeOverallMastery(results).mastery}%`,
-    },
-    {
-      Check: 'Question totals non-negative',
-      Result: results.every(r => (r.score || 0) <= (r.total || 0)) ? '✓ VALID' : '✗ INVALID',
-      Detail: `${results.length} quiz records checked`,
-    },
+    { Check: 'Recommendation is a weak topic', Result: (!rec || weak.some(w => w.topic === rec.topic)) ? '✓ MATCH' : '✗ MISMATCH', Detail: rec ? `rec="${rec.topic}"` : 'no recommendation' },
+    { Check: 'No under-sampled topic classified as weak', Result: weak.every(t => t.attempts >= 3) ? '✓ VALID' : '✗ INVALID', Detail: `min attempts among weak topics: ${weak.length ? Math.min(...weak.map(t => t.attempts)) : 'n/a'}` },
+    { Check: 'Overall mastery in range', Result: (() => { const m = Mastery.computeOverallMastery(results).mastery; return (m === null || (m >= 0 && m <= 100)) ? '✓ VALID' : '✗ INVALID'; })(), Detail: `${Mastery.computeOverallMastery(results).mastery}%` },
+    { Check: 'Question totals non-negative', Result: results.every(r => (r.score || 0) <= (r.total || 0)) ? '✓ VALID' : '✗ INVALID', Detail: `${results.length} quiz records checked` },
   ];
   console.table(rows);
   return rows;
 };
 </script>
 <script>
-/* ── Language toggle (EN / ES) ── */
 window.I18N = {
   en: {
     nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
@@ -1937,11 +1516,11 @@ window.I18N = {
     dash_progress_head: "📊 Your Progress — Overall Mastery",
     dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
     dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
-    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
+    dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
     dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
     progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
     progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
-    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
+    progress_chart: "📈 Improvement Over Time", progress_history: "📋 Quiz History",
     viewer_title: "Family & Teacher View",
     viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
     viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
@@ -1964,11 +1543,11 @@ window.I18N = {
     dash_progress_head: "📊 Tu Progreso — Dominio General",
     dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
     dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
-    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
+    dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
     dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
     progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
     progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
-    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
+    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_history: "📋 Historial de Cuestionarios",
     viewer_title: "Vista Familiar y Docente",
     viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
     viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
