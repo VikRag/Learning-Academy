@@ -164,7 +164,7 @@
   .welcome-header p { font-size: 0.9em; color: var(--text-muted); }
 
   /* ── HERO TRIO (How am I doing? / What next? / Am I improving?) ── */
-  .hero-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+  .hero-trio { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:28px; }
   .hero-card {
     background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
     box-shadow:var(--shadow); padding:20px 20px 22px;
@@ -509,13 +509,13 @@
     <p id="welcomeSub" data-i18n="dash_welcome_sub">Here's how you're doing across all your quizzes.</p>
   </div>
 
-  <!-- At-a-glance: How am I doing? / What should I practice? / Am I improving? -->
-  <div class="hero-trio" id="heroTrio" style="display:none;"></div>
-
   <!-- Your Progress (overall mastery) -->
   <div class="mastery-hero" id="progressHero">
     <!-- Filled by JS: either the mastery bar, or a first-quiz empty state -->
   </div>
+
+  <!-- At-a-glance: What next? / Am I improving? -->
+  <div class="hero-trio" id="heroTrio" style="display:none;"></div>
 
   <!-- Stats Row -->
   <div class="stats-row">
@@ -574,11 +574,11 @@
     </div>
   </div>
 
-  <!-- Topic Mastery -->
-  <div class="full-section" id="masterySection" style="display:none;">
+  <!-- Recommended For You -->
+  <div class="full-section" id="recSection" style="display:none;">
     <div class="section-card">
-      <div class="section-head"><h2 data-i18n="dash_mastery_head">🧠 Topic Mastery</h2></div>
-      <div class="section-body" id="masteryBody"></div>
+      <div class="section-head"><h2 data-i18n="dash_rec_head">🎯 Recommended For You</h2></div>
+      <div class="section-body rec-card" id="recBody"></div>
     </div>
   </div>
 
@@ -849,13 +849,6 @@ function distinctPracticeDays(quizResults, subject, grade) {
   return days.size;
 }
 
-// progressPct is now literally "topics mastered ÷ total topics in the
-// curriculum" — the SAME ratio Exam Readiness shows as its headline
-// number. Before, this used a separate 50/50 coverage+mastery blend,
-// which is what produced numbers like "92% ready" next to "50% grade
-// progress" for the identical subject+grade — an honest-looking but
-// confusing contradiction. Now there is exactly one definition of
-// "how far through this grade are you," used everywhere it's shown.
 function computeGradeProgress(quizResults, topicCounts = {}) {
   const combos = [...new Set(quizResults.map(r => `${r.subject}::${r.grade}`))];
   const topicList = computeTopicMastery(quizResults);
@@ -874,37 +867,48 @@ function computeGradeProgress(quizResults, topicCounts = {}) {
   });
 }
 
-// "Your Mastery" is shown as topics-mastered / total-topics rather
-// than a single blended percentage — a fraction like "3/12" is more
-// concrete and harder to misread than "24%", and it's the same unit
-// Exam Readiness and Grade Progress already use, so every mastery
-// number on the dashboard now shares one definition.
-function computeMasteryRatio(quizResults, topicCounts = {}) {
+// Fixed size of the full Learning Academy curriculum (all subjects,
+// all grades): Math 94 + English 81 + Social 43 + Science 46 = 264
+// topics. "Your Progress" and "Overall Mastery" are always shown as
+// topics-mastered / 264 — the same fixed whole for every student —
+// rather than a total scoped to only the subjects/grades a given
+// student happens to have practiced.
+const TOTAL_CURRICULUM_TOPICS = 264;
+const SUBJECT_TOPIC_TOTALS = { Math: 94, English: 81, Social: 43, Science: 46 };
+
+// "Your Progress" is shown as topics-mastered / 264 (the full
+// curriculum), not a blended percentage and not a total scoped to
+// only the subjects this student has practiced — a fraction like
+// "3/264" says plainly "here's how much of everything there is to
+// learn you've mastered so far," which a subject-scoped total can't.
+function computeMasteryRatio(quizResults) {
   const topics = computeTopicMastery(quizResults).filter(t => t.attempts > 0);
   const masteredCount = topics.filter(t => t.isMastered).length;
-  const gradeProgress = computeGradeProgress(quizResults, topicCounts);
-  const totalTopics = gradeProgress.reduce((s, g) => s + g.totalTopics, 0);
-  return { masteredCount, totalTopics: Math.max(totalTopics, masteredCount) };
+  return { masteredCount, totalTopics: TOTAL_CURRICULUM_TOPICS };
 }
 
-// Finds the most recent quiz that actually pushed overall mastery up,
-// and by how much — "when did I last get better" is a different,
-// more motivating question than "what's my trend," and unlike the
-// weekly chart it points to a specific, real event (an actual quiz on
-// an actual day), so it can never be a plausible-looking guess.
-function computeLastMasteryIncrease(quizResults) {
+// Finds the most recent quiz that pushed the COUNT OF TOPICS MASTERED
+// up (not a blended percentage) — i.e. the last time a specific topic
+// crossed the mastered threshold — and how many topics that was, plus
+// the date. This directly answers "when did I last actually master
+// something new," rather than a fuzzier "when did my overall number
+// move," and it can never disagree with the "Your Progress" fraction
+// above since both count the exact same thing: topics with
+// isMastered === true.
+function computeLastTopicMasteryGain(quizResults) {
   if (quizResults.length === 0) return null;
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
   let cumulative = [];
-  let prevMastery = null;
+  let prevMasteredCount = 0;
   let last = null;
   sorted.forEach(r => {
     cumulative.push(r);
-    const { mastery } = computeOverallMastery(cumulative);
-    if (prevMastery !== null && mastery !== null && mastery > prevMastery) {
-      last = { date: toDate(r.timestamp), gain: mastery - prevMastery };
+    const topics = computeTopicMastery(cumulative).filter(t => t.attempts > 0);
+    const masteredCount = topics.filter(t => t.isMastered).length;
+    if (masteredCount > prevMasteredCount) {
+      last = { date: toDate(r.timestamp), gained: masteredCount - prevMasteredCount, totalMastered: masteredCount };
     }
-    if (mastery !== null) prevMastery = mastery;
+    prevMasteredCount = masteredCount;
   });
   return last;
 }
@@ -914,7 +918,7 @@ const Mastery = {
   computeOverallMastery, computeSubjectReadiness, isActionable, getWeakTopics, getLearningNeedsSummary,
   getStrengthsAndWeaknesses, getRecommendation, computeStreak, computeAchievements, computeProgressStats,
   computeWeeklyMasterySeries, computeMilestoneBadges, computeAllBadges, distinctPracticeDays, computeGradeProgress,
-  computeMasteryRatio, computeLastMasteryIncrease
+  computeMasteryRatio, computeLastTopicMasteryGain
 };
 /* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
@@ -1109,15 +1113,14 @@ function renderDashboard(results, topicCounts = {}) {
 
   document.getElementById("recentActivity").innerHTML = activityHTML || '<div class="empty-state"><div class="icon">🕐</div>No recent activity</div>';
 
-  try { renderHeroTrio(results, topicCounts); } catch (e) { console.error('renderHeroTrio failed:', e); }
-  try { renderProgressHero(results, topicCounts); } catch (e) { console.error('renderProgressHero failed:', e); }
-  try { renderTopicMastery(results); } catch (e) { console.error('renderTopicMastery failed:', e); }
+  try { renderHeroTrio(results); } catch (e) { console.error('renderHeroTrio failed:', e); }
+  try { renderProgressHero(results); } catch (e) { console.error('renderProgressHero failed:', e); }
   try { renderRecommendation(results); } catch (e) { console.error('renderRecommendation failed:', e); }
   try { renderExamReadiness(results, topicCounts); } catch (e) { console.error('renderExamReadiness failed:', e); }
   try { renderAchievements(results); } catch (e) { console.error('renderAchievements failed:', e); }
 }
 
-function renderHeroTrio(results, topicCounts = {}) {
+function renderHeroTrio(results) {
   const trio = document.getElementById('heroTrio');
   if (results.length === 0) { trio.style.display = 'none'; return; }
   trio.style.display = 'grid';
@@ -1126,33 +1129,18 @@ function renderHeroTrio(results, topicCounts = {}) {
   const sortedResults = [...results].sort((a, b) => Mastery.toDate(b.timestamp) - Mastery.toDate(a.timestamp));
   const lastTopics = sortedResults.length ? Object.keys(sortedResults[0].topicBreakdown || {}) : [];
   const rec = Mastery.getRecommendation(topics, lastTopics);
-  const ratio = Mastery.computeMasteryRatio(results, topicCounts);
 
-  // Improvement: how much overall mastery has moved since the first
-  // data point, plus WHEN it last actually went up — a specific date
-  // is more concrete (and harder to fake-seem-positive) than a bare
-  // trend line.
-  const series = Mastery.computeWeeklyMasterySeries(results);
-  const lastIncrease = Mastery.computeLastMasteryIncrease(results);
-  let deltaLine = `Not enough data yet to measure change.`;
-  let deltaClass = '';
-  if (series.length >= 2 && series[0].mastery !== null) {
-    const current = Mastery.computeOverallMastery(results).mastery;
-    const delta = current - series[0].mastery;
-    if (delta >= 5) { deltaLine = `↑ +${delta} pts since you started`; deltaClass = 'up'; }
-    else if (delta <= -5) { deltaLine = `↓ ${delta} pts since you started`; deltaClass = 'down'; }
-    else { deltaLine = `→ No significant change yet`; }
-  }
-  const lastIncreaseLine = lastIncrease
-    ? `Last increase: +${lastIncrease.gain} pts on ${lastIncrease.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
-    : `No mastery increase recorded yet`;
+  // Improvement: the last time the COUNT of mastered topics actually
+  // went up, how many topics that covered, and when — a concrete,
+  // countable event rather than a fuzzy percentage trend, and it uses
+  // the exact same isMastered flag "Your Progress" is built from, so
+  // the two cards can never tell contradictory stories.
+  const lastGain = Mastery.computeLastTopicMasteryGain(results);
+  const lastGainLine = lastGain
+    ? `+${lastGain.gained} topic${lastGain.gained !== 1 ? 's' : ''} mastered on ${lastGain.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
+    : `No topics mastered yet`;
 
   trio.innerHTML = `
-    <div class="hero-card">
-      <div class="hc-label">Your Mastery</div>
-      <div class="hc-value">${ratio.totalTopics > 0 ? `${ratio.masteredCount}/${ratio.totalTopics}` : '—'}</div>
-      <div class="hc-sub">Topics mastered</div>
-    </div>
     <div class="hero-card">
       <div class="hc-label">Your Next Best Step</div>
       ${rec
@@ -1162,8 +1150,8 @@ function renderHeroTrio(results, topicCounts = {}) {
     </div>
     <div class="hero-card">
       <div class="hc-label">Your Improvement</div>
-      <div class="hc-sub ${deltaClass}" style="font-size:0.95em;font-weight:700;margin-top:0;">${deltaLine}</div>
-      <div class="hc-sub" style="margin-top:6px;">${lastIncreaseLine}</div>
+      <div class="hc-value" style="font-size:1.3em;">${lastGain ? `+${lastGain.gained}` : '—'}</div>
+      <div class="hc-sub ${lastGain ? 'up' : ''}">${lastGainLine}</div>
     </div>`;
 }
 
@@ -1176,16 +1164,17 @@ function renderProgressHeroEmpty() {
     <a href="quiz.html" class="btn-practice">Start Your First Quiz →</a>`;
 }
 
-function renderProgressHero(results, topicCounts = {}) {
+function renderProgressHero(results) {
   const stats = Mastery.computeProgressStats(results);
-  const ratio = Mastery.computeMasteryRatio(results, topicCounts);
-  const barPct = ratio.totalTopics > 0 ? Math.round((ratio.masteredCount / ratio.totalTopics) * 100) : 0;
+  const ratio = Mastery.computeMasteryRatio(results);
+  const ratioDecimal = (ratio.masteredCount / ratio.totalTopics * 100).toFixed(2);
+  const barPct = ratio.masteredCount / ratio.totalTopics * 100;
   const hero = document.getElementById("progressHero");
   hero.innerHTML = `
     <div class="mastery-hero-top">
       <div>
         <div class="mastery-hero-label" data-i18n="dash_progress_head">📊 Your Progress — Topics Mastered</div>
-        <div class="mastery-hero-value">${ratio.totalTopics > 0 ? `${ratio.masteredCount}/${ratio.totalTopics}` : '—'}</div>
+        <div class="mastery-hero-value">${ratio.masteredCount}/${ratio.totalTopics} <span style="font-size:.4em;font-weight:700;color:var(--text-muted);">(${ratioDecimal}%)</span></div>
       </div>
     </div>
     <div class="mastery-bar-track"><div class="mastery-bar-fill" id="heroBarFill" data-target="${barPct}"></div></div>
@@ -1200,48 +1189,6 @@ function renderProgressHero(results, topicCounts = {}) {
     const el = document.getElementById("heroBarFill");
     if (el) el.style.width = el.dataset.target + "%";
   }, 100));
-}
-
-function renderTopicMastery(results) {
-  const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
-  const section = document.getElementById("masterySection");
-  if (topics.length === 0) { section.style.display = "none"; return; }
-  section.style.display = "block";
-
-  const bySubject = {};
-  topics.forEach(t => { if (!bySubject[t.subject]) bySubject[t.subject] = []; bySubject[t.subject].push(t); });
-
-  const html = Object.entries(bySubject).map(([subject, list]) => {
-    const { mastery: subjMastery } = Mastery.calculateMastery(list.flatMap(t => t.events));
-    const { strengths, weaknesses } = Mastery.getStrengthsAndWeaknesses(list);
-    const needs = Mastery.getLearningNeedsSummary(list);
-
-    const swHTML = !needs.hasEnoughData
-      ? `<p style="font-size:0.8em;color:var(--text-muted);margin-top:6px;">Answer a few more questions per topic (at least 3) to unlock strengths and weaknesses here.</p>`
-      : `
-      <div class="sw-columns">
-        <div>
-          <div class="sw-col-label">Strengths</div>
-          ${strengths.map(t => `<div class="sw-item good">✓ ${t.topic} — ${t.mastery}%</div>`).join('') || '<div class="sw-item" style="color:var(--text-muted);">None at 75%+ yet — keep practicing</div>'}
-        </div>
-        <div>
-          <div class="sw-col-label">Needs Practice</div>
-          ${weaknesses.map(t => `<div class="sw-item bad">⚠ ${t.topic} — ${t.mastery}%</div>`).join('') || '<div class="sw-item" style="color:var(--text-muted);">None right now — everything measured is 70%+ 🎉</div>'}
-        </div>
-      </div>`;
-
-    return `
-      <div class="subject-mastery-block">
-        <div class="subject-mastery-head">
-          <span class="name">${subject}</span>
-          <span class="pct">${subjMastery}%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="width:${subjMastery}%;"></div></div>
-        ${swHTML}
-      </div>`;
-  }).join('<div style="height:1px;background:var(--border);margin:16px 0;"></div>');
-
-  document.getElementById("masteryBody").innerHTML = html;
 }
 
 function renderRecommendation(results) {
@@ -1568,9 +1515,9 @@ window.I18N = {
     signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
     signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
     dash_welcome_sub: "Here's how you're doing across all your quizzes.",
-    dash_progress_head: "📊 Your Progress — Overall Mastery",
+    dash_progress_head: "📊 Your Progress — Topics Mastered",
     dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
-    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
+    dash_achv_head: "🏆 Achievements",
     dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
     dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
     progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
@@ -1595,9 +1542,9 @@ window.I18N = {
     signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
     signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
     dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
-    dash_progress_head: "📊 Tu Progreso — Dominio General",
+    dash_progress_head: "📊 Tu Progreso — Temas Dominados",
     dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
-    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
+    dash_achv_head: "🏆 Logros",
     dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
     dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
     progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",

@@ -379,7 +379,30 @@ function computeProgressStats(quizResults) {
   return { overallMastery: overall.mastery, questionsAnswered, accuracy, topicsPracticed: topicsPracticed.size, studySeconds, studyTimeLabel: formatDuration(studySeconds), streak };
 }
 
-function computeWeeklyMasterySeries(quizResults) {
+// Fixed size of the full Learning Academy curriculum (all subjects,
+// all grades): Math 94 + English 81 + Social 43 + Science 46 = 264
+// topics. "Overall Mastery" and "Subject Mastery" are always shown
+// against these fixed, real totals — not a total scoped to only the
+// subjects/grades a given student has practiced — so every student's
+// numbers are comparable apples-to-apples and can never contradict
+// the fraction shown on the Dashboard.
+const TOTAL_CURRICULUM_TOPICS = 264;
+const SUBJECT_TOPIC_TOTALS = { Math: 94, English: 81, Social: 43, Science: 46 };
+
+// "Overall Mastery" is topics-mastered / 264 (the full curriculum),
+// not a blended percentage and not a total scoped to only the
+// subjects this student has practiced.
+function computeMasteryRatio(quizResults) {
+  const topics = computeTopicMastery(quizResults).filter(t => t.attempts > 0);
+  const masteredCount = topics.filter(t => t.isMastered).length;
+  return { masteredCount, totalTopics: TOTAL_CURRICULUM_TOPICS };
+}
+
+// Weekly series of the SAME ratio shown as "Overall Mastery" —
+// cumulative topics mastered (across every subject) divided by the
+// fixed 264-topic curriculum, as a percentage — so the trend line
+// can never disagree with the headline number it is charting.
+function computeWeeklyMasteryRatioSeries(quizResults, totalTopics) {
   if (quizResults.length === 0) return [];
   const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
   const firstDate = toDate(sorted[0].timestamp);
@@ -388,14 +411,21 @@ function computeWeeklyMasterySeries(quizResults) {
   sorted.forEach(r => { const w = weekOf(toDate(r.timestamp)); if (!byWeek[w]) byWeek[w] = []; byWeek[w].push(r); });
   const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
   let cumulative = [];
-  return weeks.map(w => { cumulative = cumulative.concat(byWeek[w]); const { mastery } = computeOverallMastery(cumulative); return { week: w + 1, mastery }; });
+  return weeks.map(w => {
+    cumulative = cumulative.concat(byWeek[w]);
+    const topics = computeTopicMastery(cumulative).filter(t => t.attempts > 0);
+    const masteredCount = topics.filter(t => t.isMastered).length;
+    const pct = totalTopics > 0 ? Math.round((masteredCount / totalTopics) * 100) : 0;
+    return { week: w + 1, mastery: pct };
+  });
 }
 
 const Mastery = {
   toDate, formatDuration, calculateMastery, masteryHistory, buildTopicMap, computeTopicMastery,
   computeOverallMastery, computeSubjectReadiness, isActionable, getWeakTopics, getLearningNeedsSummary,
   getStrengthsAndWeaknesses, getRecommendation, computeStreak, computeAchievements, computeProgressStats,
-  computeWeeklyMasterySeries
+  computeMasteryRatio, computeWeeklyMasteryRatioSeries,
+  TOTAL_CURRICULUM_TOPICS, SUBJECT_TOPIC_TOTALS
 };
 /* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
@@ -457,9 +487,12 @@ function renderOverall(results) {
     return;
   }
   const stats = Mastery.computeProgressStats(results);
+  const ratio = Mastery.computeMasteryRatio(results);
+  const ratioPct = ratio.totalTopics > 0 ? (ratio.masteredCount / ratio.totalTopics * 100) : 0;
+  const ratioDecimal = ratioPct.toFixed(2);
   document.getElementById("overallBody").innerHTML = `
-    <div class="mastery-hero-value">${stats.overallMastery ?? '—'}%</div>
-    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="ovBar" data-target="${stats.overallMastery ?? 0}"></div></div>
+    <div class="mastery-hero-value">${ratioDecimal}% <span style="font-size:.4em;font-weight:700;color:var(--text-muted);">(${ratio.masteredCount}/${ratio.totalTopics} topics mastered)</span></div>
+    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="ovBar" data-target="${ratioPct}"></div></div>
     <div style="display:flex;flex-wrap:wrap;gap:16px;font-size:0.85em;color:var(--text-muted);font-weight:600;margin-top:14px;">
       <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.questionsAnswered}</strong> Questions</span>
       <span><strong style="color:var(--text);font-family:'DM Mono',monospace;">${stats.accuracy ?? '—'}%</strong> Accuracy</span>
@@ -483,7 +516,12 @@ function renderSubjects(results) {
   topics.forEach(t => { if (!bySubject[t.subject]) bySubject[t.subject] = []; bySubject[t.subject].push(t); });
 
   const html = Object.entries(bySubject).map(([subject, list], idx) => {
-    const { mastery } = Mastery.calculateMastery(list.flatMap(t => t.events));
+    // Subject Mastery = (# topics mastered in this subject) / (total
+    // # topics that exist in this subject's curriculum), as a
+    // percentage — not a weighted average of practiced-topic scores.
+    const masteredCount = list.filter(t => t.isMastered).length;
+    const subjectTotal = Mastery.SUBJECT_TOPIC_TOTALS[subject] || list.length;
+    const mastery = subjectTotal > 0 ? Math.round((masteredCount / subjectTotal) * 100) : 0;
     const sortedList = [...list].sort((a, b) => a.mastery - b.mastery);
     const detailId = `detail-${idx}`;
     const detailHTML = sortedList.map(t => `
@@ -499,7 +537,7 @@ function renderSubjects(results) {
       <div class="subject-row-block" onclick="document.getElementById('${detailId}').classList.toggle('open'); this.querySelector('.chevron').classList.toggle('open');">
         <div class="subject-row-top">
           <span class="name"><span class="chevron">▶</span> ${subject}</span>
-          <span class="pct">${mastery}%</span>
+          <span class="pct">${masteredCount}/${subjectTotal} · ${mastery}%</span>
         </div>
         <div class="bar-track"><div class="bar-fill" style="width:${mastery}%;"></div></div>
         <div class="topic-detail" id="${detailId}">${detailHTML}</div>
@@ -511,7 +549,7 @@ function renderSubjects(results) {
 
 function renderChart(results) {
   const card = document.getElementById("chartCard");
-  const series = Mastery.computeWeeklyMasterySeries(results);
+  const series = Mastery.computeWeeklyMasteryRatioSeries(results, Mastery.TOTAL_CURRICULUM_TOPICS);
   if (series.length < 2) {
     card.style.display = "block";
     document.getElementById("chartBody").innerHTML = `
@@ -638,9 +676,9 @@ window.I18N = {
     signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
     signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
     dash_welcome_sub: "Here's how you're doing across all your quizzes.",
-    dash_progress_head: "📊 Your Progress — Overall Mastery",
+    dash_progress_head: "📊 Your Progress — Topics Mastered",
     dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
-    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
+    dash_achv_head: "🏆 Achievements",
     dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
     dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
     progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
@@ -665,9 +703,9 @@ window.I18N = {
     signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
     signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
     dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
-    dash_progress_head: "📊 Tu Progreso — Dominio General",
+    dash_progress_head: "📊 Tu Progreso — Temas Dominados",
     dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
-    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
+    dash_achv_head: "🏆 Logros",
     dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
     dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
     progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
