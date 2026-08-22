@@ -4,267 +4,363 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learning Academy</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #4f6ef7;
+    --primary: #3b5bfd;
+    --primary-dark: #2f4de0;
     --primary-light: #eef1fe;
-    --text: #1a1d2e;
-    --text-muted: #7b7f96;
-    --border: #e4e6f0;
+    --text: #12142b;
+    --text-muted: #6b7085;
+    --border: #e7e9f2;
     --surface: #fff;
+    --bg: #f6f7fb;
+    --purple: #7c5cff;
+    --purple-light: #f3effe;
+    --amber: #f5a623;
+    --amber-light: #fff6e6;
+    --green: #1fa971;
+    --green-light: #e9faf1;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --shadow: 0 12px 40px rgba(20,25,60,0.08);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2.5px solid var(--primary); outline-offset: 2px; }
+  img, svg { display: block; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #f5f6fa;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+  /* ── Minimal top bar: logo + lang toggle only ── */
+  .topbar {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 24px 0;
   }
-
-  /* Subtle grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-    padding: 52px 48px;
-    max-width: 520px;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    animation: fadeUp 0.5s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15em; }
   .logo-mark {
-    width: 72px; height: 72px;
-    background: var(--primary);
-    border-radius: 20px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px;
-    margin: 0 auto 24px;
-    box-shadow: 0 6px 20px rgba(79,110,247,0.3);
+    width: 34px; height: 34px; border-radius: 9px; background: var(--primary);
+    display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
   }
-
-  h1 {
-    font-size: 2em;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-  }
-
-  h1 span { color: var(--primary); }
-
-  .subtitle {
-    font-size: 1em;
-    color: var(--text-muted);
-    margin-bottom: 36px;
-    line-height: 1.5;
-  }
-
-  .subject-pills {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-
-  .pill {
-    padding: 6px 14px;
-    border-radius: 99px;
-    font-size: 0.82em;
-    font-weight: 600;
-    border: 1.5px solid var(--border);
-    color: var(--text-muted);
-  }
-
-  .pill.math    { background: #eef1fe; border-color: #eef1fe; color: #4f6ef7; }
-  .pill.science { background: #dcfce7; border-color: #dcfce7; color: #16a34a; }
-  .pill.english { background: #fef3c7; border-color: #fef3c7; color: #d97706; }
-  .pill.social  { background: #f3e8ff; border-color: #f3e8ff; color: #9333ea; }
-
-  .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn {
-    padding: 14px;
-    border-radius: 11px;
-    font-family: inherit;
-    font-size: 1em;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    transition: all 0.15s;
-    text-decoration: none;
-    display: block;
-  }
-
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-primary:hover { background: #3d5ce5; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(79,110,247,0.35); }
-
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid var(--border);
-    color: var(--text);
-  }
-  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-  .divider {
-    display: flex; align-items: center; gap: 12px;
-    margin: 4px 0;
-    color: var(--text-muted);
-    font-size: 0.8em;
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .footer-text {
-    margin-top: 28px;
-    font-size: 0.8em;
-    color: var(--text-muted);
-  }
-
-  .footer-text strong { color: var(--text); }
-
-  
+  .logo .accent { color: var(--primary); }
   .lang-toggle { display: flex; gap: 4px; }
   .lang-btn {
-    padding: 5px 10px; border-radius: 7px; border: 1.5px solid var(--border);
-    background: var(--surface); font-family: inherit; font-size: 0.75em; font-weight: 700;
+    padding: 6px 11px; border-radius: 7px; border: 1.5px solid var(--border);
+    background: var(--surface); font-family: inherit; font-size: 0.78em; font-weight: 700;
     color: var(--text-muted); cursor: pointer;
   }
   .lang-btn:hover { border-color: var(--primary); }
   .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
-@media (max-width: 480px) {
-    .card { padding: 36px 24px; }
+
+  /* ── HERO ── */
+  .hero-wrap { background: var(--surface); }
+  .hero {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px; align-items: center;
+    padding: 56px 24px 64px;
   }
+  @media (max-width: 940px) { .hero { grid-template-columns: 1fr; padding-top: 32px; } }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--primary-light); color: var(--primary);
+    font-weight: 700; font-size: 0.82em;
+    padding: 7px 14px; border-radius: 99px; margin-bottom: 22px;
+  }
+
+  .headline {
+    font-size: 2.6em; font-weight: 900; line-height: 1.08; letter-spacing: -0.02em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .headline .accent { color: var(--primary); display: block; }
+  @media (max-width: 560px) { .headline { font-size: 2em; } }
+
+  .hero-sub {
+    font-size: 1.05em; color: var(--text-muted); line-height: 1.6;
+    max-width: 480px; margin-bottom: 30px;
+  }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 12px;
+    font-family: inherit; font-size: 0.95em; font-weight: 700;
+    cursor: pointer; border: none; text-decoration: none; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(59,91,253,0.3); }
+  .btn-outline { background: var(--surface); color: var(--text); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+  .trust-row { display: grid; grid-template-columns: repeat(4, auto); gap: 26px; }
+  @media (max-width: 700px) { .trust-row { grid-template-columns: repeat(2, 1fr); } }
+  .trust-item { display: flex; align-items: flex-start; gap: 9px; }
+  .trust-icon { font-size: 1.2em; line-height: 1; margin-top: 1px; }
+  .trust-title { font-weight: 700; font-size: 0.85em; }
+  .trust-sub { font-size: 0.78em; color: var(--text-muted); }
+
+  /* ── RIGHT: auth card (replaces the "Your Progress" preview) ── */
+  .auth-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    padding: 40px 36px; text-align: center;
+  }
+  .auth-card h2 { font-size: 1.35em; font-weight: 800; margin-bottom: 6px; }
+  .auth-card p.sub { font-size: 0.88em; color: var(--text-muted); margin-bottom: 26px; line-height: 1.5; }
+  .auth-actions { display: flex; flex-direction: column; gap: 10px; }
+  .divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 2px 0; color: var(--text-muted); font-size: 0.78em;
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .auth-foot { margin-top: 22px; font-size: 0.8em; color: var(--text-muted); }
+  .auth-foot strong { color: var(--text); }
+
+  /* ── PRACTICE LOOP ── */
+  .loop-wrap { background: var(--bg); padding: 60px 24px; }
+  .loop-inner { max-width: 1200px; margin: 0 auto; }
+  .loop-head { text-align: center; margin-bottom: 34px; }
+  .loop-head h2 { font-size: 1.7em; font-weight: 800; margin-bottom: 8px; }
+  .loop-head h2 .accent { color: var(--primary); }
+  .loop-head p { font-size: 0.95em; color: var(--text-muted); }
+
+  .loop-row { display: flex; align-items: stretch; gap: 0; }
+  @media (max-width: 900px) { .loop-row { flex-direction: column; gap: 14px; } }
+
+  .loop-step {
+    flex: 1; border-radius: var(--radius-md); padding: 24px 20px;
+    text-decoration: none; color: inherit; transition: transform 0.15s;
+  }
+  .loop-step:hover { transform: translateY(-3px); }
+  .loop-step.c1 { background: var(--primary-light); }
+  .loop-step.c2 { background: var(--purple-light); }
+  .loop-step.c3 { background: var(--amber-light); }
+  .loop-step.c4 { background: var(--green-light); }
+  .loop-step.c5 { background: var(--primary-light); }
+
+  .loop-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: rgba(255,255,255,0.7); margin-bottom: 16px;
+  }
+  .loop-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%; color: #fff;
+    font-size: 0.7em; font-weight: 800; margin-right: 8px;
+  }
+  .loop-step.c1 .loop-num, .loop-step.c5 .loop-num { background: var(--primary); }
+  .loop-step.c2 .loop-num { background: var(--purple); }
+  .loop-step.c3 .loop-num { background: var(--amber); }
+  .loop-step.c4 .loop-num { background: var(--green); }
+
+  .loop-title-row { display: flex; align-items: center; margin-bottom: 8px; }
+  .loop-title { font-weight: 800; font-size: 1em; }
+  .loop-desc { font-size: 0.83em; color: var(--text-muted); line-height: 1.5; }
+
+  .loop-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: #c3c7dc; font-size: 1.3em; font-weight: 700; padding: 0 10px; flex-shrink: 0;
+  }
+  @media (max-width: 900px) { .loop-arrow { transform: rotate(90deg); padding: 2px 0; } }
+
+  /* ── BANNER ── */
+  .banner-wrap { max-width: 1200px; margin: 0 auto 60px; padding: 0 24px; }
+  .banner {
+    background: linear-gradient(90deg, var(--primary-light), var(--purple-light));
+    border-radius: var(--radius-md);
+    padding: 26px 30px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .banner-left { display: flex; align-items: center; gap: 14px; }
+  .banner-icon {
+    width: 42px; height: 42px; border-radius: 11px; background: rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .banner-title { font-weight: 800; font-size: 1.02em; margin-bottom: 3px; }
+  .banner-sub { font-size: 0.85em; color: var(--text-muted); }
+  .banner .btn-primary { flex-shrink: 0; }
+
+  /* ── FOOTER FEATURE STRIP ── */
+  .feature-strip { background: var(--green-light); padding: 30px 24px; }
+  .feature-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
+  }
+  .feature-item { display: flex; align-items: center; gap: 12px; }
+  .feature-icon { font-size: 1.4em; }
+  .feature-title { font-weight: 800; font-size: 0.9em; margin-bottom: 2px; }
+  .feature-sub { font-size: 0.8em; color: var(--text-muted); }
 </style>
 </head>
 <body>
 
-<div class="lang-toggle" style="position:fixed;top:20px;right:20px;z-index:10;">
-  <button class="lang-btn active" data-lang="en" onclick="window.applyLanguage('en')">EN</button>
-  <button class="lang-btn" data-lang="es" onclick="window.applyLanguage('es')">ES</button>
+<div class="topbar">
+  <div class="logo"><div class="logo-mark">🎓</div>Learning <span class="accent">Academy</span></div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="en" onclick="window.applyLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="window.applyLanguage('es')">ES</button>
+  </div>
 </div>
 
-<div class="card">
-  <div class="logo-mark">🎓</div>
-  <h1>Learning <span>Academy</span></h1>
-  <p class="subtitle" data-i18n="home_subtitle">Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.</p>
+<!-- ── HERO ── -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">🧭 <span data-i18n="hero_eyebrow">Practice. Improve. Succeed.</span></div>
+      <h1 class="headline">
+        <span data-i18n="hero_line1">LEARN IN CLASS.</span>
+        <span class="accent" data-i18n="hero_line2">PRACTICE WITH LEARNING ACADEMY.</span>
+      </h1>
+      <div class="hero-ctas">
+        <a href="signup.html" class="btn btn-primary" data-i18n="hero_cta_primary">Get Started Free →</a>
+        <a href="login.html" class="btn btn-outline" data-i18n="hero_cta_secondary">Log In</a>
+      </div>
 
-  <div class="subject-pills">
-    <span class="pill math">➕ Math</span>
-    <span class="pill science">🔬 Science</span>
-    <span class="pill english">📖 English</span>
-    <span class="pill social">🌍 Social Studies</span>
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-icon"></span>
+          <div>
+            <div class="trust-title" data-i18n="trust_1_title">91+ Students</div>
+            <div class="trust-sub" data-i18n="trust_1_sub">Already Learning</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon"></span>
+          <div>
+            <div class="trust-title" data-i18n="trust_2_title">Practice Smarter</div>
+            <div class="trust-sub" data-i18n="trust_2_sub">Not Harder</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon"></span>
+          <div>
+            <div class="trust-title" data-i18n="trust_3_title">Track Progress</div>
+            <div class="trust-sub" data-i18n="trust_3_sub">Over Time</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon"></span>
+          <div>
+            <div class="trust-title" data-i18n="trust_4_title">100% Free</div>
+            <div class="trust-sub" data-i18n="trust_4_sub">Forever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: auth card, where the "Your Progress" preview would go -->
+    <div class="auth-card">
+      <h2 data-i18n="auth_title">Welcome!</h2>
+      <p class="sub" data-i18n="auth_sub">Log in or create a free account to start practicing.</p>
+      <div class="auth-actions">
+        <a href="login.html" class="btn btn-primary" style="justify-content:center;" data-i18n="auth_login">Log In →</a>
+        <div class="divider" data-i18n="auth_or">or</div>
+        <a href="signup.html" class="btn btn-outline" style="justify-content:center;" data-i18n="auth_signup">Create a Free Account</a>
+      </div>
+      <p class="auth-foot" data-i18n="auth_foot">Join students already learning with us</p>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <a href="login.html" class="btn btn-primary" data-i18n="home_login">Login to Your Account</a>
-    <div class="divider" data-i18n="home_or">or</div>
-    <a href="signup.html" class="btn btn-outline" data-i18n="home_signup">Create a Free Account</a>
+<!-- ── PRACTICE LOOP ── -->
+<div class="loop-wrap">
+  <div class="loop-inner">
+    <div class="loop-head">
+      <h2><span data-i18n="loop_head1">Our</span> <span class="accent" data-i18n="loop_head2">Practice Loop</span></h2>
+      <p data-i18n="loop_sub">A simple, powerful cycle designed to help every student improve.</p>
+    </div>
+
+    <div class="loop-row">
+      <a href="quiz.html" class="loop-step c1">
+        <div class="loop-icon">📋</div>
+        <div class="loop-title-row"><span class="loop-num">1</span><span class="loop-title" data-i18n="loop_1_title">Practice</span></div>
+        <div class="loop-desc" data-i18n="loop_1_desc">Take quizzes across topics you're learning.</div>
+      </a>
+      <div class="loop-arrow">→</div>
+      <a href="dashboard.html#masterySection" class="loop-step c2">
+        <div class="loop-icon">🧠</div>
+        <div class="loop-title-row"><span class="loop-num">2</span><span class="loop-title" data-i18n="loop_2_title">Diagnose</span></div>
+        <div class="loop-desc" data-i18n="loop_2_desc">We analyze your performance to find strengths and gaps.</div>
+      </a>
+      <div class="loop-arrow">→</div>
+      <a href="dashboard.html#recSection" class="loop-step c3">
+        <div class="loop-icon">🎯</div>
+        <div class="loop-title-row"><span class="loop-num">3</span><span class="loop-title" data-i18n="loop_3_title">Target</span></div>
+        <div class="loop-desc" data-i18n="loop_3_desc">Get personalized topic recommendations.</div>
+      </a>
+      <div class="loop-arrow">→</div>
+      <a href="quiz.html" class="loop-step c4">
+        <div class="loop-icon">✏️</div>
+        <div class="loop-title-row"><span class="loop-num">4</span><span class="loop-title" data-i18n="loop_4_title">Repeat</span></div>
+        <div class="loop-desc" data-i18n="loop_4_desc">Practice targeted questions to build mastery.</div>
+      </a>
+      <div class="loop-arrow">→</div>
+      <a href="progress.html" class="loop-step c5">
+        <div class="loop-icon">📈</div>
+        <div class="loop-title-row"><span class="loop-num">5</span><span class="loop-title" data-i18n="loop_5_title">Measure</span></div>
+        <div class="loop-desc" data-i18n="loop_5_desc">Track your improvement and keep growing.</div>
+      </a>
+    </div>
   </div>
-
-  <p class="footer-text" data-i18n="home_footer">Join students already learning with us ✨</p>
 </div>
 
 <script>
-/* ── Language toggle (EN / ES) ──
-   Translates static UI chrome — nav, headings, buttons, labels, empty
-   states. Does NOT translate quiz question content itself: those come
-   from the subject/grade JSON files, and auto-translating educational
-   content risks introducing factual/wording errors into what students
-   are being tested on, so that's intentionally left as a separate,
-   human-reviewed task rather than done here.
-   Preference is stored in localStorage so it's remembered per device
-   without needing a database write. */
+/* ── Language toggle (EN / ES) ── */
 window.I18N = {
   en: {
-    nav_dashboard: "Dashboard", nav_progress: "Progress", nav_viewer: "Family & Teacher View",
-    nav_takequiz: "✏️ Take Quiz", nav_home: "Home", nav_myown: "My Own Dashboard", signup_back_home: "← Home",
-    home_subtitle: "Quiz yourself on Math, Science, English, and Social Studies — Grades 1–8.",
-    home_login: "Login to Your Account", home_signup: "Create a Free Account",
-    home_footer: "Join students already learning with us ✨", home_or: "or",
-    login_welcome: "Welcome back!", login_sub: "Log in to your account",
-    login_email_ph: "Email", login_password_ph: "Password", login_btn: "Log In →",
-    login_noaccount: "Don't have an account?", login_signup_link: "Sign up",
-    signup_title: "Create your account", signup_sub: "Start tracking your learning journey.",
-    signup_name_label: "Full Name", signup_email_label: "Email", signup_password_label: "Password",
-    signup_btn: "Sign Up →", signup_haveaccount: "Already have an account?", signup_login_link: "Login",
-    dash_welcome_sub: "Here's how you're doing across all your quizzes.",
-    dash_progress_head: "📊 Your Progress — Overall Mastery",
-    dash_readiness_head: "📝 Exam Readiness", dash_rec_head: "🎯 Recommended For You",
-    dash_mastery_head: "🧠 Topic Mastery", dash_achv_head: "🏆 Achievements",
-    dash_history_head: "📋 Quiz History", dash_share_head: "👨‍👩‍👧 Share With a Teacher or Parent",
-    dash_share_desc: "Give this code to a teacher or parent so they can see your progress (read-only — they can't take quizzes or change anything for you).",
-    progress_title: "Your Progress", progress_sub: "A closer look at mastery across every subject and topic.",
-    progress_overall: "Overall Mastery", progress_subject: "📚 Subject Mastery",
-    progress_chart: "📈 Improvement Over Time", progress_activity: "⚡ Recent Activity",
-    viewer_title: "Family & Teacher View",
-    viewer_sub: "Link to a student's account with their share code to see their progress — read-only, nothing here can change their quizzes or answers.",
-    viewer_link_head: "🔗 Link a Student", viewer_link_btn: "Link Student",
-    viewer_link_hint: "Ask the student to open their dashboard → \"Share With a Teacher or Parent\" to get their code.",
-    viewer_roster_head: "👥 Linked Students",
+    hero_eyebrow: "Practice. Improve. Succeed.",
+    hero_line1: "LEARN IN CLASS.",
+    hero_line2: "PRACTICE WITH LEARNING ACADEMY.",
+    hero_sub: "The practice-first platform that helps students discover what they need to work on, gives them targeted practice, and measures real improvement.",
+    hero_cta_primary: "Get Started Free →", hero_cta_secondary: "Log In",
+    trust_1_title: "91+ Students", trust_1_sub: "Already Learning",
+    trust_2_title: "Practice Smarter", trust_2_sub: "Not Harder",
+    trust_3_title: "Track Progress", trust_3_sub: "Over Time",
+    trust_4_title: "100% Free", trust_4_sub: "Forever",
+    auth_title: "Welcome!", auth_sub: "Log in or create a free account to start practicing.",
+    auth_login: "Log In →", auth_or: "or", auth_signup: "Create a Free Account",
+    auth_foot: "Join students already learning with us",
+    loop_head1: "Our", loop_head2: "Practice Loop",
+    loop_sub: "A simple, powerful cycle designed to help every student improve.",
+    loop_1_title: "Practice", loop_1_desc: "Take quizzes across topics you're learning.",
+    loop_2_title: "Diagnose", loop_2_desc: "We analyze your performance to find strengths and gaps.",
+    loop_3_title: "Target", loop_3_desc: "Get personalized topic recommendations.",
+    loop_4_title: "Repeat", loop_4_desc: "Practice targeted questions to build mastery.",
+    loop_5_title: "Measure", loop_5_desc: "Track your improvement and keep growing.",
+    banner_title: "Practice with purpose. Improve with data. Succeed with confidence.",
+    banner_sub: "Learning Academy turns every quiz into real progress.",
+    banner_cta: "Start Your Journey →",
+    feat_1_title: "Safe & Secure", feat_1_sub: "Your data is private and protected.",
+    feat_2_title: "For Everyone", feat_2_sub: "Students, parents, and teachers.",
+    feat_3_title: "Built for Impact", feat_3_sub: "Helping students learn and grow every day.",
   },
   es: {
-    nav_dashboard: "Panel", nav_progress: "Progreso", nav_viewer: "Vista Familiar y Docente",
-    nav_takequiz: "✏️ Hacer Cuestionario", nav_home: "Inicio", nav_myown: "Mi Propio Panel", signup_back_home: "← Inicio",
-    home_subtitle: "Ponte a prueba en Matemáticas, Ciencias, Inglés y Estudios Sociales — Grados 1–8.",
-    home_login: "Iniciar Sesión", home_signup: "Crear Cuenta Gratis",
-    home_footer: "Únete a los estudiantes que ya aprenden con nosotros ✨", home_or: "o",
-    login_welcome: "¡Bienvenido de nuevo!", login_sub: "Inicia sesión en tu cuenta",
-    login_email_ph: "Correo electrónico", login_password_ph: "Contraseña", login_btn: "Iniciar Sesión →",
-    login_noaccount: "¿No tienes una cuenta?", login_signup_link: "Regístrate",
-    signup_title: "Crea tu cuenta", signup_sub: "Comienza a seguir tu progreso de aprendizaje.",
-    signup_name_label: "Nombre Completo", signup_email_label: "Correo Electrónico", signup_password_label: "Contraseña",
-    signup_btn: "Registrarse →", signup_haveaccount: "¿Ya tienes una cuenta?", signup_login_link: "Iniciar sesión",
-    dash_welcome_sub: "Así te está yendo en todos tus cuestionarios.",
-    dash_progress_head: "📊 Tu Progreso — Dominio General",
-    dash_readiness_head: "📝 Preparación para el Examen", dash_rec_head: "🎯 Recomendado Para Ti",
-    dash_mastery_head: "🧠 Dominio por Tema", dash_achv_head: "🏆 Logros",
-    dash_history_head: "📋 Historial de Cuestionarios", dash_share_head: "👨‍👩‍👧 Compartir con un Maestro o Familiar",
-    dash_share_desc: "Comparte este código con un maestro o familiar para que vean tu progreso (solo lectura: no pueden hacer cuestionarios ni cambiar nada por ti).",
-    progress_title: "Tu Progreso", progress_sub: "Un vistazo más de cerca al dominio en cada materia y tema.",
-    progress_overall: "Dominio General", progress_subject: "📚 Dominio por Materia",
-    progress_chart: "📈 Mejora a lo Largo del Tiempo", progress_activity: "⚡ Actividad Reciente",
-    viewer_title: "Vista Familiar y Docente",
-    viewer_sub: "Vincúlate a la cuenta de un estudiante con su código para ver su progreso — solo lectura, esto no puede cambiar sus cuestionarios ni respuestas.",
-    viewer_link_head: "🔗 Vincular un Estudiante", viewer_link_btn: "Vincular Estudiante",
-    viewer_link_hint: "Pide al estudiante que abra su panel → \"Compartir con un Maestro o Familiar\" para obtener su código.",
-    viewer_roster_head: "👥 Estudiantes Vinculados",
+    hero_eyebrow: "Practica. Mejora. Triunfa.",
+    hero_line1: "APRENDE EN CLASE.",
+    hero_line2: "PRACTICA CON LEARNING ACADEMY.",
+    hero_sub: "La plataforma centrada en la práctica que ayuda a los estudiantes a descubrir en qué necesitan trabajar, les da práctica dirigida y mide su mejora real.",
+    hero_cta_primary: "Comienza Gratis →", hero_cta_secondary: "Iniciar Sesión",
+    trust_1_title: "91+ Estudiantes", trust_1_sub: "Ya Aprendiendo",
+    trust_2_title: "Practica Mejor", trust_2_sub: "No Más Duro",
+    trust_3_title: "Sigue tu Progreso", trust_3_sub: "A lo Largo del Tiempo",
+    trust_4_title: "100% Gratis", trust_4_sub: "Para Siempre",
+    auth_title: "¡Bienvenido!", auth_sub: "Inicia sesión o crea una cuenta gratis para empezar a practicar.",
+    auth_login: "Iniciar Sesión →", auth_or: "o", auth_signup: "Crear Cuenta Gratis",
+    auth_foot: "Únete a los estudiantes que ya aprenden con nosotros",
+    loop_head1: "Nuestro", loop_head2: "Ciclo de Práctica",
+    loop_sub: "Un ciclo simple y poderoso diseñado para ayudar a cada estudiante a mejorar.",
+    loop_1_title: "Practicar", loop_1_desc: "Haz cuestionarios sobre los temas que estás aprendiendo.",
+    loop_2_title: "Diagnosticar", loop_2_desc: "Analizamos tu desempeño para encontrar fortalezas y vacíos.",
+    loop_3_title: "Enfocar", loop_3_desc: "Obtén recomendaciones de temas personalizadas.",
+    loop_4_title: "Repetir", loop_4_desc: "Practica preguntas dirigidas para construir dominio.",
+    loop_5_title: "Medir", loop_5_desc: "Sigue tu mejora y sigue creciendo.",
+    banner_title: "Practica con propósito. Mejora con datos. Triunfa con confianza.",
+    banner_sub: "Learning Academy convierte cada cuestionario en progreso real.",
+    banner_cta: "Comienza tu Viaje →",
+    feat_1_title: "Seguro y Protegido", feat_1_sub: "Tus datos son privados y están protegidos.",
+    feat_2_title: "Para Todos", feat_2_sub: "Estudiantes, padres y maestros.",
+    feat_3_title: "Hecho para Impactar", feat_3_sub: "Ayudando a los estudiantes a aprender y crecer cada día.",
   }
 };
 
@@ -273,10 +369,6 @@ window.applyLanguage = function (lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key] != null) el.textContent = dict[key];
-  });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph');
-    if (dict[key] != null) el.placeholder = dict[key];
   });
   document.documentElement.lang = lang;
   try { localStorage.setItem('lang', lang); } catch (e) {}
@@ -288,7 +380,6 @@ document.addEventListener('DOMContentLoaded', function () {
   try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
   window.applyLanguage(saved);
 });
-
 </script>
 </body>
 </html>

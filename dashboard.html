@@ -574,14 +574,6 @@
     </div>
   </div>
 
-  <!-- Recommended For You -->
-  <div class="full-section" id="recSection" style="display:none;">
-    <div class="section-card">
-      <div class="section-head"><h2 data-i18n="dash_rec_head">🎯 Recommended For You</h2></div>
-      <div class="section-body rec-card" id="recBody"></div>
-    </div>
-  </div>
-
   <!-- Topic Mastery -->
   <div class="full-section" id="masterySection" style="display:none;">
     <div class="section-card">
@@ -857,6 +849,13 @@ function distinctPracticeDays(quizResults, subject, grade) {
   return days.size;
 }
 
+// progressPct is now literally "topics mastered ÷ total topics in the
+// curriculum" — the SAME ratio Exam Readiness shows as its headline
+// number. Before, this used a separate 50/50 coverage+mastery blend,
+// which is what produced numbers like "92% ready" next to "50% grade
+// progress" for the identical subject+grade — an honest-looking but
+// confusing contradiction. Now there is exactly one definition of
+// "how far through this grade are you," used everywhere it's shown.
 function computeGradeProgress(quizResults, topicCounts = {}) {
   const combos = [...new Set(quizResults.map(r => `${r.subject}::${r.grade}`))];
   const topicList = computeTopicMastery(quizResults);
@@ -868,18 +867,54 @@ function computeGradeProgress(quizResults, topicCounts = {}) {
     const coveragePct = Math.round((practiced.length / totalTopics) * 100);
     const { mastery: subjectMastery } = calculateMastery(practiced.flatMap(t => t.events));
     const days = distinctPracticeDays(quizResults, subject, grade);
-    const combined = Math.min(100, Math.round(0.5 * coveragePct + 0.5 * (subjectMastery || 0)));
-    const isComplete    = combined >= GRADE_COMPLETE_THRESHOLD && days >= GRADE_COMPLETE_MIN_DAYS;
-    const needsMoreDays = combined >= GRADE_COMPLETE_THRESHOLD && days < GRADE_COMPLETE_MIN_DAYS;
-    return { subject, grade, topicsPracticed: practiced.length, totalTopics, coveragePct, subjectMastery: subjectMastery || 0, masteredCount, distinctDays: days, progressPct: combined, isComplete, needsMoreDays };
+    const progressPct = Math.round((masteredCount / totalTopics) * 100);
+    const isComplete    = masteredCount >= totalTopics && days >= GRADE_COMPLETE_MIN_DAYS;
+    const needsMoreDays = masteredCount >= totalTopics && days < GRADE_COMPLETE_MIN_DAYS;
+    return { subject, grade, topicsPracticed: practiced.length, totalTopics, coveragePct, subjectMastery: subjectMastery || 0, masteredCount, distinctDays: days, progressPct, isComplete, needsMoreDays };
   });
+}
+
+// "Your Mastery" is shown as topics-mastered / total-topics rather
+// than a single blended percentage — a fraction like "3/12" is more
+// concrete and harder to misread than "24%", and it's the same unit
+// Exam Readiness and Grade Progress already use, so every mastery
+// number on the dashboard now shares one definition.
+function computeMasteryRatio(quizResults, topicCounts = {}) {
+  const topics = computeTopicMastery(quizResults).filter(t => t.attempts > 0);
+  const masteredCount = topics.filter(t => t.isMastered).length;
+  const gradeProgress = computeGradeProgress(quizResults, topicCounts);
+  const totalTopics = gradeProgress.reduce((s, g) => s + g.totalTopics, 0);
+  return { masteredCount, totalTopics: Math.max(totalTopics, masteredCount) };
+}
+
+// Finds the most recent quiz that actually pushed overall mastery up,
+// and by how much — "when did I last get better" is a different,
+// more motivating question than "what's my trend," and unlike the
+// weekly chart it points to a specific, real event (an actual quiz on
+// an actual day), so it can never be a plausible-looking guess.
+function computeLastMasteryIncrease(quizResults) {
+  if (quizResults.length === 0) return null;
+  const sorted = [...quizResults].sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+  let cumulative = [];
+  let prevMastery = null;
+  let last = null;
+  sorted.forEach(r => {
+    cumulative.push(r);
+    const { mastery } = computeOverallMastery(cumulative);
+    if (prevMastery !== null && mastery !== null && mastery > prevMastery) {
+      last = { date: toDate(r.timestamp), gain: mastery - prevMastery };
+    }
+    if (mastery !== null) prevMastery = mastery;
+  });
+  return last;
 }
 
 const Mastery = {
   toDate, formatDuration, calculateMastery, masteryHistory, buildTopicMap, computeTopicMastery,
   computeOverallMastery, computeSubjectReadiness, isActionable, getWeakTopics, getLearningNeedsSummary,
   getStrengthsAndWeaknesses, getRecommendation, computeStreak, computeAchievements, computeProgressStats,
-  computeWeeklyMasterySeries, computeMilestoneBadges, computeAllBadges, distinctPracticeDays, computeGradeProgress
+  computeWeeklyMasterySeries, computeMilestoneBadges, computeAllBadges, distinctPracticeDays, computeGradeProgress,
+  computeMasteryRatio, computeLastMasteryIncrease
 };
 /* ══════════════════ END MASTERY ENGINE ══════════════════ */
 
@@ -1011,9 +1046,13 @@ function renderDashboard(results, topicCounts = {}) {
   }
 
   const total    = results.length;
-  const avgScore = Math.round(results.reduce((s, r) => s + (r.percentage || 0), 0) / total);
   const best     = Math.max(...results.map(r => r.percentage || 0));
   const totalCorrect = results.reduce((s, r) => s + (r.score || 0), 0);
+  const totalQuestionsAll = results.reduce((s, r) => s + (r.total || 0), 0);
+  // "Avg Score" = questions right ÷ all questions — a true accuracy
+  // rate, not an average of each quiz's own percentage (which would
+  // let a 3-question quiz count as much as a 30-question quiz).
+  const avgScore = totalQuestionsAll > 0 ? Math.round((totalCorrect / totalQuestionsAll) * 100) : 0;
 
   document.getElementById("statTotal").textContent   = total;
   document.getElementById("statAvg").textContent     = avgScore + "%";
@@ -1070,39 +1109,49 @@ function renderDashboard(results, topicCounts = {}) {
 
   document.getElementById("recentActivity").innerHTML = activityHTML || '<div class="empty-state"><div class="icon">🕐</div>No recent activity</div>';
 
-  try { renderHeroTrio(results); } catch (e) { console.error('renderHeroTrio failed:', e); }
-  try { renderProgressHero(results); } catch (e) { console.error('renderProgressHero failed:', e); }
+  try { renderHeroTrio(results, topicCounts); } catch (e) { console.error('renderHeroTrio failed:', e); }
+  try { renderProgressHero(results, topicCounts); } catch (e) { console.error('renderProgressHero failed:', e); }
   try { renderTopicMastery(results); } catch (e) { console.error('renderTopicMastery failed:', e); }
   try { renderRecommendation(results); } catch (e) { console.error('renderRecommendation failed:', e); }
   try { renderExamReadiness(results, topicCounts); } catch (e) { console.error('renderExamReadiness failed:', e); }
   try { renderAchievements(results); } catch (e) { console.error('renderAchievements failed:', e); }
 }
 
-function renderHeroTrio(results) {
+function renderHeroTrio(results, topicCounts = {}) {
   const trio = document.getElementById('heroTrio');
   if (results.length === 0) { trio.style.display = 'none'; return; }
   trio.style.display = 'grid';
 
-  const stats = Mastery.computeProgressStats(results);
   const topics = Mastery.computeTopicMastery(results).filter(t => t.attempts > 0);
   const sortedResults = [...results].sort((a, b) => Mastery.toDate(b.timestamp) - Mastery.toDate(a.timestamp));
   const lastTopics = sortedResults.length ? Object.keys(sortedResults[0].topicBreakdown || {}) : [];
   const rec = Mastery.getRecommendation(topics, lastTopics);
+  const ratio = Mastery.computeMasteryRatio(results, topicCounts);
 
+  // Improvement: how much overall mastery has moved since the first
+  // data point, plus WHEN it last actually went up — a specific date
+  // is more concrete (and harder to fake-seem-positive) than a bare
+  // trend line.
   const series = Mastery.computeWeeklyMasterySeries(results);
-  let deltaHTML = `<div class="hc-sub">Not enough data yet to measure change.</div>`;
-  if (series.length >= 2 && series[0].mastery !== null && stats.overallMastery !== null) {
-    const delta = stats.overallMastery - series[0].mastery;
-    if (delta >= 5) deltaHTML = `<div class="hc-sub up">↑ +${delta} pts since you started</div>`;
-    else if (delta <= -5) deltaHTML = `<div class="hc-sub down">↓ ${delta} pts since you started</div>`;
-    else deltaHTML = `<div class="hc-sub">→ No significant change yet</div>`;
+  const lastIncrease = Mastery.computeLastMasteryIncrease(results);
+  let deltaLine = `Not enough data yet to measure change.`;
+  let deltaClass = '';
+  if (series.length >= 2 && series[0].mastery !== null) {
+    const current = Mastery.computeOverallMastery(results).mastery;
+    const delta = current - series[0].mastery;
+    if (delta >= 5) { deltaLine = `↑ +${delta} pts since you started`; deltaClass = 'up'; }
+    else if (delta <= -5) { deltaLine = `↓ ${delta} pts since you started`; deltaClass = 'down'; }
+    else { deltaLine = `→ No significant change yet`; }
   }
+  const lastIncreaseLine = lastIncrease
+    ? `Last increase: +${lastIncrease.gain} pts on ${lastIncrease.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
+    : `No mastery increase recorded yet`;
 
   trio.innerHTML = `
     <div class="hero-card">
       <div class="hc-label">Your Mastery</div>
-      <div class="hc-value">${stats.overallMastery ?? '—'}%</div>
-      <div class="hc-sub">Overall, across every quiz</div>
+      <div class="hc-value">${ratio.totalTopics > 0 ? `${ratio.masteredCount}/${ratio.totalTopics}` : '—'}</div>
+      <div class="hc-sub">Topics mastered</div>
     </div>
     <div class="hero-card">
       <div class="hc-label">Your Next Best Step</div>
@@ -1113,8 +1162,8 @@ function renderHeroTrio(results) {
     </div>
     <div class="hero-card">
       <div class="hc-label">Your Improvement</div>
-      <div class="hc-value">${stats.overallMastery ?? '—'}%</div>
-      ${deltaHTML}
+      <div class="hc-sub ${deltaClass}" style="font-size:0.95em;font-weight:700;margin-top:0;">${deltaLine}</div>
+      <div class="hc-sub" style="margin-top:6px;">${lastIncreaseLine}</div>
     </div>`;
 }
 
@@ -1127,21 +1176,23 @@ function renderProgressHeroEmpty() {
     <a href="quiz.html" class="btn-practice">Start Your First Quiz →</a>`;
 }
 
-function renderProgressHero(results) {
+function renderProgressHero(results, topicCounts = {}) {
   const stats = Mastery.computeProgressStats(results);
+  const ratio = Mastery.computeMasteryRatio(results, topicCounts);
+  const barPct = ratio.totalTopics > 0 ? Math.round((ratio.masteredCount / ratio.totalTopics) * 100) : 0;
   const hero = document.getElementById("progressHero");
   hero.innerHTML = `
     <div class="mastery-hero-top">
       <div>
-        <div class="mastery-hero-label" data-i18n="dash_progress_head">📊 Your Progress — Overall Mastery</div>
-        <div class="mastery-hero-value">${stats.overallMastery ?? '—'}%</div>
+        <div class="mastery-hero-label" data-i18n="dash_progress_head">📊 Your Progress — Topics Mastered</div>
+        <div class="mastery-hero-value">${ratio.totalTopics > 0 ? `${ratio.masteredCount}/${ratio.totalTopics}` : '—'}</div>
       </div>
     </div>
-    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="heroBarFill" data-target="${stats.overallMastery ?? 0}"></div></div>
+    <div class="mastery-bar-track"><div class="mastery-bar-fill" id="heroBarFill" data-target="${barPct}"></div></div>
     <div class="mastery-meta-row">
       <span><strong>${stats.questionsAnswered}</strong> Questions</span>
       <span><strong>${stats.accuracy ?? '—'}%</strong> Accuracy</span>
-      <span><strong>${stats.topicsPracticed}</strong> Topics</span>
+      <span><strong>${stats.topicsPracticed}</strong> Topics Practiced</span>
       <span><strong>${stats.studyTimeLabel}</strong> Study Time</span>
       <span>🔥 <strong>${stats.streak}</strong> Day Streak</span>
     </div>`;
@@ -1297,15 +1348,19 @@ function renderExamReadiness(results, topicCounts = {}) {
         ${progress.needsMoreDays ? `<div class="grade-progress-note">Your scores are there — keep practicing across a few more days to lock in completion. Cramming in one sitting doesn't count toward finishing a grade.</div>` : ''}
       </div>` : '';
 
+    const readinessTopicsMastered = progress ? progress.masteredCount : unitList.filter(u => u.isMastered).length;
+    const readinessTopicsTotal = coverageTotal;
+    const readinessPct = readinessTopicsTotal > 0 ? Math.round((readinessTopicsMastered / readinessTopicsTotal) * 100) : 0;
+
     return `<div class="readiness-pane${i === 0 ? ' active' : ''}" data-key="${key}" data-subject="${subject}" data-grade="${grade}">
       <div class="readiness-top">
         <span class="readiness-subject">${subject} · Grade ${grade}</span>
-        <span class="readiness-pct">${readiness.mastery ?? '—'}%</span>
+        <span class="readiness-pct">${readinessTopicsMastered}/${readinessTopicsTotal} <span style="font-size:.55em;font-weight:700;color:var(--text-muted);">topics mastered</span></span>
       </div>
-      <div class="mastery-bar-track" style="margin-bottom:4px;"><div class="mastery-bar-fill" style="width:${readiness.mastery ?? 0}%;"></div></div>
+      <div class="mastery-bar-track" style="margin-bottom:4px;"><div class="mastery-bar-fill" style="width:${readinessPct}%;"></div></div>
       <div class="readiness-basis">
         Estimated Learning Academy readiness — not an official prediction of any standardized exam.<br>
-        Based on ✓ ${totalQs} questions · ✓ ${unitList.length}/${coverageTotal} topics practiced${readiness.attempts < 8 ? ' · still gathering data' : ''}
+        Based on ✓ ${totalQs} questions · ✓ ${unitList.length}/${coverageTotal} topics practiced · ✓ ${readinessTopicsMastered}/${readinessTopicsTotal} topics mastered${readiness.attempts < 8 ? ' · still gathering data' : ''}
       </div>
       ${strongWeakHTML}
       ${progressHTML}
