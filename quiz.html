@@ -765,6 +765,8 @@ function dateKey(d) {
    events: [{ correct, total, timestamp }], one entry per quiz attempt
    that touched this topic. Order does not need to be sorted — we sort
    internally. Returns null mastery if there is no data at all. */
+
+
 function calculateMastery(events) {
   if (!events || events.length === 0) {
     return { mastery: null, attempts: 0, isMastered: false };
@@ -896,6 +898,8 @@ function isActionable(topic) {
 // The one and only definition of "weak topic" in the app: enough
 // data to trust the number, not already mastered, mastery below the
 // needs-practice line. Sorted weakest-first.
+
+
 function getWeakTopics(topicMasteryList) {
   return topicMasteryList
     .filter(t => isActionable(t) && !t.isMastered && t.mastery < NEEDS_PRACTICE_THRESHOLD)
@@ -1849,6 +1853,7 @@ async function saveQuizResult() {
 
   try {
     await addDoc(collection(db, 'users', currentUser.uid, 'quizResults'), newResult);
+
   } catch(e) {
     console.error('Save error:', e);
     if (banner) {
